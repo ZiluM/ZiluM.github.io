@@ -30,6 +30,11 @@ jobs:
         with:
           name: my-artifact
           path: file.txt
+
+      - name: List files
+        run: ls -l
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          artifact_name: my-artifact
