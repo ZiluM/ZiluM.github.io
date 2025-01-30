@@ -29,6 +29,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Create a File
+        run: echo "hello from ${{ matrix.runs-on }}" > file-${{ matrix.runs-on }}.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
@@ -36,8 +38,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-        #   name: my-artifact-${{ matrix.runs-on }}
-          path: '.'
+          name: my-artifact-${{ matrix.runs-on }}
+          path: file-${{ matrix.runs-on }}.txt
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
