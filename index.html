@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 引入 Font Awesome（可根据需要保留/删除） -->
+    <meta charset="UTF-8">
+    <title>Zilu Meng's Academic Page</title>
+
+    <!-- Font Awesome (ensure integrity hash is correct if using) -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          integrity="sha512-..."
-          crossorigin="anonymous"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+          crossorigin="anonymous" 
           referrerpolicy="no-referrer" />
 
     <!-- Google tag (gtag.js) -->
@@ -18,330 +21,473 @@
     </script>
     <!-- End of Google tag -->
 
-    <meta charset="UTF-8">
-    <title>Zilu Meng's Academic Page</title>
     <style>
+        /* Basic Setup */
         body {
-            font-family: 'Times New Roman', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 20px; /* Increase font size */
+            /* font-family: 'Times New Roman', Times, serif; */ /* Classic academic look */
+            font-family: Tahoma, Geneva, Verdana, sans-serif; /* Cleaner alternative */
+            font-size: 19px;
+            line-height: 1.45; /* Reduced line height for compactness */
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
         .container {
-            max-width: 1000px;
-            margin: auto;
+            max-width: 1140px; /* Increased container width */
+            margin: 30px auto;
             padding: 20px;
         }
+
+        /* Links */
         a {
-            color: #007bff;
+            color: #0056b3;
             text-decoration: none;
+            transition: color 0.2s ease-in-out;
         }
         a:hover {
+            color: #007bff;
             text-decoration: underline;
         }
+
+        /* Images */
         img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
         }
-        /* 基本容器样式 */
+
+        /* Headings */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 5px;
+            margin-top: 0px;
+            /* Updated font-family */
+            font-family: 'Times New Roman', KaiTi, '楷体', serif; /* Prioritize Times New Roman, then KaiTi/楷体 for CJK, fallback to serif */
+            font-size: 2.5em; /* Increased font size */
+            font-weight: bold;
+        }
+        h3 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+
+        /* Top Navigation Links */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2em; /* Slightly reduced gap */
+            padding: 15px 0;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-links a {
+            color: #555;
+            transition: color 0.2s ease-in-out;
+        }
+         .nav-links a:hover {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .nav-links i {
+            margin-right: 0.3em;
+        }
+
+        /* Sections and Cards */
         .section {
             background-color: #fff;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin-bottom: 20px; /* Kept this spacing for section clarity */
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
         }
-        /* 折叠/展开的样式 */
+
+        /* Collapsible Details/Summary Styling */
         details {
-            margin-bottom: 20px;
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px; /* Reduced spacing between details sections */
+            border: 1px solid #e9ecef;
         }
         details summary {
             cursor: pointer;
             outline: none;
-            font-size: 1.2em;
+            padding: 15px 20px;
+            font-size: 1.3em;
             font-weight: bold;
             color: #0056b3;
-            margin-bottom: 10px;
+            transition: background-color 0.2s ease-in-out;
+            border-bottom: 1px solid #e9ecef;
+            list-style: none;
+            position: relative;
         }
-        /* 自定义收合/展开符号，可根据喜好调整 */
+        details summary:hover {
+            background-color: #f8f9fa;
+        }
+        details summary::-webkit-details-marker {
+           display: none;
+        }
         details summary::after {
             content: "▼";
-            float: right;
+            font-size: 0.8em;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] summary {
+             border-bottom: 1px solid #e9ecef;
         }
         details[open] summary::after {
             content: "▲";
+            transform: translateY(-50%) rotate(0deg);
+        }
+        details > *:not(summary) {
+             padding: 20px;
+        }
+         details > *:last-child {
+             margin-bottom: 0;
+             padding-bottom: 20px;
+         }
+
+        /* Specific Layouts */
+        .about-me-content,
+        .research-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Reduced gap */
+            align-items: flex-start;
+        }
+        .about-me-content img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .about-me-text,
+        .research-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: justify;
+        }
+        .research-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-basis: 300px;
+            flex-shrink: 0;
+        }
+        .research-images img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Education Section Styling */
+        .education-list dt {
+            font-weight: bold;
+            margin-top: 1em;
+            color: #333;
+        }
+        .education-list dt:first-of-type {
+            margin-top: 0;
+        }
+        .education-list dd {
+            margin-left: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .education-list dd strong {
+            color: #555;
+        }
+
+        /* Publications/Projects List Styling */
+        details ol, details ul {
+            padding-left: 2em;
+        }
+        details li {
+            margin-bottom: 0.8em; /* Reduced space between list items */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+             .container {
+                 max-width: 95%; /* Use percentage on smaller screens */
+             }
+            .about-me-content, .research-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-me-content img {
+                 margin-bottom: 20px;
+            }
+             .research-images {
+                flex-basis: auto;
+                width: 100%;
+                max-width: 400px;
+                margin-top: 20px;
+            }
+            .about-me-text, .research-text {
+                text-align: left;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            details summary {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Zilu Meng's Academic Page</h1>
+        <h1>Zilu Meng (孟子路)</h1> <!-- Simplified Title with Times New Roman/KaiTi font -->
 
-        <!-- 图标+文字导航示例（可选） -->
-        <div style="text-align: center;">
-            <p style="margin: 0.5em 0;">
-              <a href="mailto:zilumeng@uw.edu" title="Email" target="_blank" style="margin-right: 1em;">
+        <!-- Icon Links Navigation -->
+        <nav class="nav-links">
+            <a href="mailto:zilumeng@uw.edu" title="Email" target="_blank">
                 <i class="fas fa-envelope"></i> Email
-              </a>
-              <a href="https://github.com/ZiluM" title="GitHub" target="_blank" style="margin-right: 1em;">
+            </a>
+            <a href="https://github.com/ZiluM" title="GitHub" target="_blank">
                 <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" title="Google Scholar" target="_blank" style="margin-right: 1em;">
-                <i class="fas fa-graduation-cap"></i> Google Scholar
-              </a>
-              <a href="https://www.researchgate.net/profile/Zilu-Meng" title="ResearchGate" target="_blank">
-                <i class="fas fa-project-diagram"></i> ResearchGate
-              </a>
-              <a href="https://www.linkedin.com/in/zilu-meng-414560255/" title="LinkedIn" target="_blank" style="margin-right: 1em; margin-left: 1em;">
+            </a>
+            <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" title="Google Scholar" target="_blank">
+                <i class="fas fa-graduation-cap"></i> Scholar
+            </a>
+            <a href="https://www.researchgate.net/profile/Zilu-Meng" title="ResearchGate" target="_blank">
+                <i class="fab fa-researchgate"></i> ResearchGate
+            </a>
+            <a href="https://www.linkedin.com/in/zilu-meng-414560255/" title="LinkedIn" target="_blank">
                 <i class="fab fa-linkedin"></i> LinkedIn
-              </a>
-              <a href="https://www.zhihu.com/people/lowkkk/" title="Zhihu" target="_blank" style="margin-right: 1em;">
-                <i class="fas fa-question-circle"></i> Zhihu
-              </a>
-              <a href="https://x.com/Zilu4Climate" title="X (Twitter)" target="_blank">
+            </a>
+            <a href="https://www.zhihu.com/people/lowkkk/" title="Zhihu" target="_blank">
+                <i class="fab fa-zhihu"></i> Zhihu
+            </a>
+            <a href="https://x.com/Zilu4Climate" title="X (Twitter)" target="_blank">
                 <i class="fab fa-twitter"></i> Twitter
-              </a>
-            </p>
-        </div>
+            </a>
+        </nav>
         
-        <!-- About Me 折叠区 -->
+        <!-- About Me Section -->
         <details open>
             <summary>About Me</summary>
-            <!-- 去掉了 display:flex；使用float让图片右浮动 -->
-            <div class="section">
-                <img src="./IMG_3089.png" 
-                     alt="Zilu Meng" 
-                     style="float: right; margin: 0 0 1em 1em; width: 200px; border-radius: 30%;">
-                <p style="text-align: justify;">
-                    Hi, I am Zilu Meng, a Ph.D. student at the University of Washington, working under the guidance 
-                    of <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Prof. Gregory J. Hakim</a> 
-                    and <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Prof. Eric J. Steig</a>. 
-                    Prior to this, I earned my B.S. with honors in Atmospheric Sciences from Nanjing University of Information Science 
-                    and Technology (Nanjing Institute of Meteorology), where I conducted research on tropical dynamics 
-                    with <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a>. 
-                    My research interests include paleoclimate, machine learning, climate dynamics, and data assimilation. 
-                    Currently, I am focusing on paleoclimate data assimilation and exploring climate dynamics during the 
-                    last millennium. In my free time, I enjoy playing video games, reading, and hiking.
-                </p>
-                <p style="text-align: justify;">
-                    My Curriculum Vitae can be found 
-                    <a href="./resume_zlm1.pdf" target="_blank">here</a>.
-                </p>
+            <div class="section about-me-content">
+                <img src="./IMG_3089.png" alt="Zilu Meng">
+                <div class="about-me-text">
+                    <p>
+                        Hi, I am Zilu Meng, a Ph.D. student at the University of Washington, working under the guidance
+                        of <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Prof. Gregory J. Hakim</a>
+                        and <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Prof. Eric J. Steig</a>.
+                        Prior to this, I earned my B.S. with honors in Atmospheric Sciences from Nanjing University of Information Science
+                        and Technology (NUIST), where I conducted research on tropical dynamics
+                        with <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a>.
+                    </p>
+                    <p>
+                        My research interests include paleoclimate, machine learning, climate dynamics, and data assimilation.
+                        Currently, I am focusing on paleoclimate data assimilation and exploring climate dynamics during the
+                        last millennium. In my free time, I enjoy playing video games, reading, and hiking.
+                    </p>
+                    <p>
+                        My Curriculum Vitae can be found <a href="./resume_zlm1.pdf" target="_blank">here</a>.
+                    </p>
+                </div>
             </div>
         </details>
 
-        <!-- Recent Research 折叠区 -->
+        <!-- Research Section -->
         <details>
-            <summary>Recent Research</summary>
-            <div class="section">   
+            <summary>Research Highlights</summary>
+            <!-- Item 1: AMIP -->
+             <div class="section">
                 <h3> AMIP-like experiments on Deep learning based AGCM</h3>
-                Using the Deep Learning based AGCM: Neural GCM, DLESyM and ACE2 model, we conducted<a href="https://www.wcrp-climate.org/modelling-wgcm-mip-catalogue/modelling-wgcm-mips-2/240-modelling-wgcm-catalogue-amip" target="_blank"> AMIP-like experiments</a> from 1890 to 2020, to study two questions: Can the modelsimulate the Atmosphere out of the training range? How does the model simulate the climate sensitivity, physically consistent with the real world? 
+                <p> <!-- Wrapped in <p> for consistency -->
+                    Using Deep Learning based AGCMs (Neural GCM, DLESyM, ACE2), we conducted <a href="https://www.wcrp-climate.org/modelling-wgcm-mip-catalogue/modelling-wgcm-mips-2/240-modelling-wgcm-catalogue-amip" target="_blank">AMIP-like experiments</a> spanning 1890-2020. We investigate two key questions: (1) Can these models simulate atmospheric conditions outside their training range? (2) How well do these models capture climate sensitivity and physical consistency compared to the real world?
+                 </p>
             </div>
-            <div class="section">
-                <h3>Paleoclimate Data Assimilation</h3>
-                <!-- 两张图片可各自 float，让文字环绕；也可只右浮动一张。这里演示一起 float: right -->
-                <img src="./photo/dacycle.png" 
-                     alt="Seasonal Reanalysis"
-                     style="float: right; margin: 0 0 1em 1em; width: 280px; border-radius: 10%;">
-                <img src="./photo/Nino34_compare_HadISST.png" 
-                     alt="DAcycle"
-                     style="float: right; margin: 0 0 1em 1em; width: 280px; border-radius: 10%;">
-
-                <p style="text-align: justify;">
-                    Paleo data assimilation is a powerful tool to reconstruct past climate fields. Before the instrumental era, 
-                    the climate system was not well observed. And the instrumental data is not long enough and strongly forced 
-                    by human activities. This makes it difficult to study the earth climate variability. However, there are many 
-                    paleoclimate proxies that can represent the past climate variability, like tree rings, ice cores, and corals. 
-                    By combining these proxies with climate models, we can reconstruct the past climate fields, like temperature, 
-                    precipitation, and wind fields and study the past climate variability like ENSO, PDO and AMO.
-                </p>
-                <p style="text-align: justify;">
-                    I am currently working on developing the first seasonal reanalysis dataset for the last millennium using 
-                    "cycling" data assimilation. The reanalysis dataset will provide a gridded climate field for the last millennium, 
-                    which can be used to study the past climate variability and the climate change. For example, the left figure shows 
-                    the Nino3.4 Index (a measure of El Niño and Southern Oscillation) from our reanalysis comparing with the HadISST 
-                    dataset. The reanalysis dataset can provide an accurate ENSO variability for the last millennium. In this case, 
-                    we can study the ENSO variability in the past and compare it with the present. Additionally, the reanalysis dataset 
-                    can also be used to study the climate change in the past and compare it with the present.
-                </p>
-                <p style="text-align: justify;">
-                    The paper for this work has been submitted to <em>Journal of Climate</em> (preprint available <a href="https://arxiv.org/abs/2501.14130" target="_blank">here</a>).
-                </p>
+            <!-- Item 2: Paleo DA -->
+            <div class="section research-content">
+                <div class="research-text">
+                    <h3>Paleoclimate Data Assimilation</h3>
+                    <p>
+                        Paleoclimate data assimilation is a powerful technique for reconstructing past climate states before the instrumental era. Instrumental records are relatively short and heavily influenced by anthropogenic forcing, limiting our understanding of natural climate variability. Paleoclimate proxies (e.g., tree rings, ice cores, corals) provide valuable indirect information about past conditions. By integrating these proxies with climate models through data assimilation, we can generate comprehensive reconstructions of past climate fields (temperature, precipitation, etc.) and study phenomena like ENSO, PDO, and AMO over longer timescales.
+                    </p>
+                    <p>
+                        I am currently developing the first seasonal reanalysis dataset covering the last millennium using an "online" or "cycling" data assimilation approach. This dataset will provide gridded climate fields, enabling detailed studies of past climate variability and change. For instance, the comparison (shown right) of the Nino3.4 Index from our reanalysis with the HadISST dataset highlights the potential to accurately capture ENSO behavior over the millennium. This allows for comparisons between past and present climate dynamics.
+                    </p>
+                    <p>
+                        A manuscript detailing this work has been submitted to the <em>Journal of Climate</em> (preprint available <a href="https://arxiv.org/abs/2501.14130" target="_blank">here</a>).
+                    </p>
+                </div>
+                 <div class="research-images">
+                    <img src="./photo/Nino34_compare_HadISST.png" alt="Nino3.4 Index Comparison">
+                    <img src="./photo/dacycle.png" alt="Data Assimilation Cycle Diagram">
+                </div>
             </div>
         </details>
 
-        <!-- Publications 折叠区 -->
+        <!-- Publications Section -->
         <details>
             <summary>Publications</summary>
-            <ol reversed>
-                <li>
-                    <strong>Meng, Zilu</strong>,&amp; Lorenzo M. Polvani. (2025). No evidence for significant warming or cooling in Eurasian winter response to major volcanic eruptions over the last millennium. 
-                    <em>Geophysical Research Letters</em>, in prep. 
-                </li>
-                <li>
-                    <strong>Meng, Zilu</strong>, Hakim, Gregory J., &amp; Steig, Eric J. (2024). 
-                    Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium. 
-                    <em>Journal of Climate</em>, under review, 
-                    <a href="https://arxiv.org/abs/2501.14130" target="_blank">https://arxiv.org/abs/2501.14130</a>.
-                </li>
-                <li>
-                    <strong>Meng, Zilu</strong>, &amp; Hakim, Gregory J. (2024). 
-                    Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model. 
-                    <em>Journal of Advances in Modeling Earth Systems</em>, 16, e2024MS004422. 
-                    <a href="https://doi.org/10.1029/2024MS004422" target="_blank">https://doi.org/10.1029/2024MS004422</a>.
-                </li>
-                <li>
-                    <strong>Meng, Z.</strong>, &amp; Li, T. (2024). 
-                    Why is the Pacific meridional mode most pronounced in boreal spring? 
-                    <em>Climate Dynamics</em>, 62(1), 459–471. 
-                    <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank">https://doi.org/10.1007/s00382-023-06914-4</a>.
-                </li>
-                <li>
-                    Zhu, F., Emile-Geay, J., Anchukaitis, K. J., McKay, N. P., Stevenson, S., &amp; <strong>Meng, Z.</strong> (2023). 
-                    A pseudoproxy emulation of the PAGES 2k database using a hierarchy of proxy system models. 
-                    <em>Sci Data</em>, 10, 624. 
-                    <a href="https://doi.org/10.1038/s41597-023-02489-1" target="_blank">
-                        https://doi.org/10.1038/s41597-023-02489-1
-                    </a>.
-                </li>
-                <li>
-                    <strong>Meng, Z.</strong>, Hu, Z., Ai, Z., Zhang, Y., &amp; Shan, K. (2021). 
-                    Research on Planar Double Compound Pendulum Based on RK-8 Algorithm. 
-                    <em>Journal on Big Data</em>, 3, 11–20, 
-                    <a href="https://doi.org/10.32604/jbd.2021.015208" target="_blank">
-                        https://doi.org/10.32604/jbd.2021.015208
-                    </a>.
-                </li>
-            </ol>
+            <div class="section">
+                <ol reversed>
+                     <li>
+                        <strong>Meng, Z.</strong>, & Polvani, L. M. (2025). No evidence for significant warming or cooling in Eurasian winter response to major volcanic eruptions over the last millennium.
+                        <em>Geophysical Research Letters</em>, in preparation.
+                    </li>
+                    <li>
+                        <strong>Meng, Z.</strong>, Hakim, G. J., & Steig, E. J. (2024).
+                        Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium.
+                        <em>Journal of Climate</em>, under review.
+                        [<a href="https://arxiv.org/abs/2501.14130" target="_blank">Preprint</a>]
+                    </li>
+                    <li>
+                        <strong>Meng, Z.</strong>, & Hakim, G. J. (2024).
+                        Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model.
+                        <em>Journal of Advances in Modeling Earth Systems</em>, 16, e2024MS004422.
+                        <a href="https://doi.org/10.1029/2024MS004422" target="_blank">https://doi.org/10.1029/2024MS004422</a>.
+                    </li>
+                    <li>
+                        <strong>Meng, Z.</strong>, & Li, T. (2024).
+                        Why is the Pacific meridional mode most pronounced in boreal spring?
+                        <em>Climate Dynamics</em>, 62(1), 459–471.
+                        <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank">https://doi.org/10.1007/s00382-023-06914-4</a>.
+                    </li>
+                    <li>
+                        Zhu, F., Emile-Geay, J., Anchukaitis, K. J., McKay, N. P., Stevenson, S., & <strong>Meng, Z.</strong> (2023).
+                        A pseudoproxy emulation of the PAGES 2k database using a hierarchy of proxy system models.
+                        <em>Scientific Data</em>, 10, 624.
+                        <a href="https://doi.org/10.1038/s41597-023-02489-1" target="_blank">https://doi.org/10.1038/s41597-023-02489-1</a>.
+                    </li>
+                    <li>
+                        <strong>Meng, Z.</strong>, Hu, Z., Ai, Z., Zhang, Y., & Shan, K. (2021).
+                        Research on Planar Double Compound Pendulum Based on RK-8 Algorithm.
+                        <em>Journal on Big Data</em>, 3, 11–20.
+                        <a href="https://doi.org/10.32604/jbd.2021.015208" target="_blank">https://doi.org/10.32604/jbd.2021.015208</a>.
+                    </li>
+                </ol>
+            </div>
         </details>
 
-        <!-- Education 折叠区 -->
+        <!-- Education Section -->
         <details>
             <summary>Education</summary>
-            <p>
-                <strong>Ph.D. Student in Climate and Atmospheric Sciences</strong>, 
-                University of Washington, 2023 - Now <br>
-                &emsp;<strong>Advisor</strong>: 
-                <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Gregory J. Hakim</a> &amp; 
-                <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Eric J. Steig</a> <br>
-                &emsp;<strong>Research interests</strong>: Data assimilation, Machine learning, Climate dynamics,Paleoclimate <br>
-                <!-- &emsp;<strong>GPA:</strong> 3.99/4.0 -->
-            </p>
-        
-            <p>
-                <strong>B.S. in Atmospheric Science with Honors</strong>, 
-                Nanjing University of Information Science and Technology, 2019 - 2023 <br>
-                &emsp;<strong>Advisor</strong>: 
-                <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Tim Li</a> <br>
-                &emsp;<strong>Core Courses</strong>: Atmospheric (Fluids) dynamics, Atmospheric Physics, Synoptic Meteorology <br>
-                &emsp;<strong>GPA</strong>: 95/100 (Ranked 1st/50 in the class with honors) <br>
-                &emsp;<strong>Thesis</strong>: Why is the Pacific meridional mode most pronounced in boreal spring? 
-                [<a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank">Paper in English</a>, 
-                <a href="./zilu_undergradThesis.pdf" target="_blank">Thesis in Chinese</a>]
-            </p>
+            <div class="section">
+                 <dl class="education-list">
+                    <dt>Ph.D. in Climate and Atmospheric Sciences</dt>
+                    <dd>University of Washington, Seattle, WA, USA (2023 - Present)</dd>
+                    <dd><strong>Advisors:</strong> <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Prof. Gregory J. Hakim</a> & <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Prof. Eric J. Steig</a></dd>
+                    <dd><strong>Research Interests:</strong> Data assimilation, Machine learning, Climate dynamics, Paleoclimate</dd>
+                    <!-- <dd><strong>GPA:</strong> 3.99/4.0</dd> -->
+
+                    <dt>B.S. in Atmospheric Science (with Honors)</dt>
+                    <dd>Nanjing University of Information Science and Technology (NUIST), Nanjing, China (2019 - 2023)</dd>
+                    <dd><strong>Advisor:</strong> <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a></dd>
+                    <dd><strong>Core Courses:</strong> Atmospheric (Fluid) Dynamics, Atmospheric Physics, Synoptic Meteorology</dd>
+                    <dd><strong>GPA:</strong> 95/100 (Ranked 1st/50 in honors class)</dd>
+                    <dd><strong>Thesis:</strong> Why is the Pacific meridional mode most pronounced in boreal spring? [<a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank">Paper</a>, <a href="./zilu_undergradThesis.pdf" target="_blank">Thesis (Chinese)</a>]</dd>
+                 </dl>
+            </div>
         </details>
 
-        <!-- Projects 折叠区 -->
+        <!-- Projects Section -->
         <details>
             <summary>Projects</summary>
-            <ol>
-                <li>
-                    <strong>CFR</strong>, Participated in developing a universal framework for climate field reconstruction. 
-                    <a href="https://fzhu2e.github.io/cfr/" target="_blank">Github</a>
-                </li>
-                <li>
-                    <strong>Deep Learning for ENSO</strong>, Deep learning and Grad-CAM are used to study the cause of El Nino (La Nina). 
-                    Over 100,000 people have read articles on 
-                    <a href="https://zhuanlan.zhihu.com/p/435607626" target="_blank">Zhihu</a>. 
-                    <a href="https://github.com/ZiluM/Deep-learning-for-multi-year-ENSO-Reproduction" target="_blank">Github</a>.
-                </li>
-                <li>
-                    <strong>Sacpy</strong>, Built an efficient and useful Statistical Analysis module for Climate data in Python. 
-                    Over 20000 people have used it so far on 
-                    <a href="https://zilum.github.io/sacpy/" target="_blank">Github</a>. 
-                    <a href="./sacpy_poster.png" target="_blank">Poster</a>.
-                </li>
-                <li>
-                    <strong>Deep Learning for tropical pacific reconstruction</strong>, 
-                    developed a deep learning model to reconstruct tropical climate fields. 
-                    <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">Github</a>. 
-                    <a href="https://arxiv.org/abs/2406.07063" target="_blank">Paper</a>. 
-                    <a href="./dl4enso.pdf" target="_blank">Poster</a>.
-                </li>
-                <li>
-                    <strong>Last Millennium Seasonal Reanalysis</strong>, 
-                    Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. 
-                    <a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>,
-                    <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>.
-                </li>
-                <li>
-                    <strong>AMIP experiments on the Deep Learning GCMs.</strong> 
-                    Conducted AMIP experiments on the Deep Learning GCMs to study the climate sensitivity.
-                </li>
-                <li>
-                    <strong> Prof. John Mike Wallace's Website. </strong> Helped Prof. John Mike Wallace to build his personal website <a href="https://atmos.washington.edu/wallace/" target="_blank">here</a>.
-                </li>
-            </ol>
+             <div class="section">
+                <ol>
+                    <li>
+                        <strong>Last Millennium Seasonal Reanalysis:</strong> Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>]
+                    </li>
+                     <li>
+                        <strong>Deep Learning for Tropical Pacific Reconstruction:</strong> Developed a deep learning model coupled with online data assimilation to reconstruct tropical climate fields. [<a href="https://arxiv.org/abs/2406.07063" target="_blank">Paper</a>, <a href="./dl4enso.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">GitHub</a>]
+                    </li>
+                    <li>
+                        <strong>AMIP experiments on Deep Learning GCMs:</strong> Conducted AMIP experiments on various deep learning GCMs to study climate sensitivity and long-term simulation capabilities.
+                    </li>
+                     <li>
+                        <strong>Sacpy:</strong> Built an efficient and user-friendly Python module for Statistical Analysis of Climate data. Widely used in the community. [<a href="https://zilum.github.io/sacpy/" target="_blank">Docs & GitHub</a>, <a href="./sacpy_poster.png" target="_blank">Poster</a>]
+                    </li>
+                     <li>
+                        <strong>CFR Framework:</strong> Contributed to developing CFR, a universal framework for climate field reconstruction. [<a href="https://fzhu2e.github.io/cfr/" target="_blank">GitHub</a>]
+                    </li>
+                    <li>
+                        <strong>Deep Learning for ENSO Prediction:</strong> Used deep learning (CNNs) and Grad-CAM to study predictability and precursors of El Niño/La Niña events. [<a href="https://zhuanlan.zhihu.com/p/435607626" target="_blank">Zhihu Article</a>, <a href="https://github.com/ZiluM/Deep-learning-for-multi-year-ENSO-Reproduction" target="_blank">GitHub</a>]
+                    </li>
+                    <li>
+                        <strong>Prof. John Mike Wallace's Website:</strong> Assisted Prof. J. M. Wallace in building his personal academic website. [<a href="https://atmos.washington.edu/wallace/" target="_blank">Website</a>]
+                    </li>
+                </ol>
+            </div>
         </details>
 
-        <!-- Conference Presentations 折叠区 -->
+        <!-- Conference Presentations Section -->
         <details>
-            <summary>Conference Presentations</summary>
-            <p>
-                Climate Dynamics Seminar, Nanjing Normal University, Nanjing, China, 2025 Mar.
-                Title: "Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics".
-            </p>
-            <p>
-                Data Assimilation Seminar, Nanjing University, Nanjing, China, 2025 Mar.
-                Title: "Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium".
-            </p>
-            <p>
-                Climate Dynamics Seminar, UW, Seattle, WA, USA, 2025 Feb.
-                Title: "Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation of Sea   Ice, Ocean, and Atmospheric Dynamics".
-            </p>
-            <p>
-                AGU Fall Meeting, Washington, D.C., USA, 2024 Dec. Oral Presentation. 
-                Title: "Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model". 
-                <a href="https://doi.org/10.1029/2024MS004422" target="_blank">Paper</a>.
-            </p>
-            <p>
-                Graduate Climate Conference, Seattle, WA, USA, 2024 Oct. 
-                Title: "Last Millennium Seasonal Reanalysis". 
-                <a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>
-            </p>
-            <p>
-                Nanjing Data Assimilation Workshop, Nanjing, China, 2024 June. 
-                Title: "Deep Learning for tropical pacific reconstruction".
-                <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">Github</a>.
-                <a href="./dl4enso.pdf" target="_blank">Poster</a>
-            </p>
-            <p>
-                GCC Meeting 2024, Seattle, WA, USA, 2024 May. Title: "Deep Learning for Data Assimilation".
-            </p>
-            <p>
-                AGU Fall Meeting, San Francisco, CA, USA, 2023 Dec. 
-                Title: "Sacpy: Python Package for Statistical Analysis of Climate". 
-                <a href="https://zilum.github.io/sacpy/" target="_blank">Github</a>.
-                <a href="./sacpy_poster.png" target="_blank">Poster</a>
-            </p>
+            <summary>Conference Presentations & Talks</summary>
+            <div class="section">
+                <ul> <!-- Using UL as order might not be strictly chronological/important -->
+                     <li>
+                        <strong>Climate Dynamics Seminar, Nanjing Normal University</strong>, Nanjing, China, Mar 2025. (Invited Talk) <br>
+                        <em>Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics</em>.
+                    </li>
+                    <li>
+                        <strong>Data Assimilation Seminar, Nanjing University</strong>, Nanjing, China, Mar 2025. (Invited Talk) <br>
+                        <em>Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</em>.
+                    </li>
+                    <li>
+                        <strong>Climate Dynamics Seminar, University of Washington</strong>, Seattle, WA, USA, Feb 2025. <br>
+                        <em>Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation...</em>
+                    </li>
+                    <li>
+                        <strong>AGU Fall Meeting</strong>, Washington, D.C., USA, Dec 2024. (Oral Presentation) <br>
+                        <em>Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model</em>. [<a href="https://doi.org/10.1029/2024MS004422" target="_blank">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Graduate Climate Conference (GCC)</strong>, Seattle, WA, USA, Oct 2024. (Poster) <br>
+                        <em>Last Millennium Seasonal Reanalysis</em>. [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>]
+                    </li>
+                    <li>
+                        <strong>Nanjing Data Assimilation Workshop</strong>, Nanjing, China, June 2024. (Poster) <br>
+                        <em>Deep Learning for Tropical Pacific Reconstruction</em>. [<a href="./dl4enso.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">GitHub</a>]
+                    </li>
+                    <li>
+                        <strong>PCC Summer Institute Talk, UW</strong>, Seattle, WA, USA, May 2024. <br> 
+                        <em>Deep Learning for Data Assimilation</em>.
+                    </li>
+                    <li>
+                        <strong>AGU Fall Meeting</strong>, San Francisco, CA, USA, Dec 2023. (Poster) <br>
+                        <em>Sacpy: Python Package for Statistical Analysis of Climate</em>. [<a href="./sacpy_poster.png" target="_blank">Poster</a>, <a href="https://zilum.github.io/sacpy/" target="_blank">GitHub</a>]
+                    </li>
+                </ul>
+            </div>
         </details>
 
-        <!-- Peer Review Summary 折叠区 -->
+        <!-- Peer Review Summary Section -->
         <details>
-            <summary>Peer Review Summary</summary>
-            <p> <strong>Earth System Science Data</strong> (2) </p>
-            <p> <strong>Plos One</strong> (3) </p>
-            <p> <strong>Climate Dynamics</strong> (1) </p>
-            <p> <strong>JGR Machine Learning and Computation</strong> (1) </p>
-            <p> <strong>Atmosphere</strong> (1) </p>
-            <p> <strong>Radio Science</strong> (1) </p>
-            <p> <strong>Frontiers in Earth Science</strong> (1) </p>
+            <summary>Peer Review Service</summary>
+            <div class="section">
+                 <ul> <!-- Using a list might be slightly better than separate paragraphs -->
+                     <li>Earth System Science Data (2)</li>
+                     <li>PLOS ONE (3)</li>
+                     <li>Climate Dynamics (1)</li>
+                     <li>JGR: Machine Learning and Computation (1)</li>
+                     <li>Atmosphere (1)</li>
+                     <li>Radio Science (1)</li>
+                     <li>Frontiers in Earth Science (1)</li>
+                 </ul>
+                 <p><small><i>Summary of completed reviews.</i></small></p>
+            </div>
         </details>
-    </div>
+
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;">
+            <p>© 2025 Zilu Meng. Last updated: Apr 2025</p> 
+            <!-- Remember to update the date here manually when you make changes -->
+        </footer>
+
+    </div> <!-- End Container -->
 </body>
+</html>
