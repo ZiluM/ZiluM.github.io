@@ -214,6 +214,35 @@
             margin-bottom: 0.8em; /* Reduced space between list items */
         }
 
+        /* Visitor Counter Box */
+        .visitor-counter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            font-family: 'Courier New', monospace;
+        }
+        .visitor-counter h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .visitor-counter .count {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 5px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .visitor-counter .label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
              .container {
@@ -275,6 +304,8 @@
                 <i class="fas fa-id-badge"></i> ORCID
             </a>
         </nav>
+        
+
         
         <!-- About Me Section -->
         <details open>
@@ -505,6 +536,20 @@
                  <p><small><i>Summary of completed reviews.</i></small></p>
             </div>
         </details>
+                <!-- Visitor Counter Box -->
+        <div class="visitor-counter">
+            <h4><i class="fas fa-eye"></i> Website Analytics</h4>
+            <div class="count" id="visitor-count">5011</div>
+            <div class="label">Total Page Views</div>
+            <div class="label" style="font-size: 0.8em; margin-top: 8px;">
+                <i class="fas fa-chart-line"></i> 
+                <a href="https://analytics.google.com/analytics/web/#/p430075348/reports/intelligenthome" 
+                   target="_blank" 
+                   style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">
+                   View detailed analytics
+                </a>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;">
@@ -514,5 +559,41 @@
         
 
     </div> <!-- End Container -->
+
+    <!-- Visitor Counter Script -->
+    <script>
+        // Simple visitor counter with localStorage for demonstration
+        // You can replace this with actual Google Analytics data or other tracking service
+        
+        function updateVisitorCount() {
+            // You can manually update this number based on your Google Analytics data
+            const actualCount = 5011; // Update this number manually from your analytics
+
+            // Optional: Add some animation to the counter
+            const countElement = document.getElementById('visitor-count');
+            
+            // Simple counter animation
+            let currentCount = 0;
+            const increment = Math.ceil(actualCount / 100);
+            
+            const timer = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= actualCount) {
+                    currentCount = actualCount;
+                    clearInterval(timer);
+                }
+                countElement.textContent = currentCount.toLocaleString();
+            }, 20);
+        }
+        
+        // Initialize counter when page loads
+        document.addEventListener('DOMContentLoaded', updateVisitorCount);
+        
+        // Optional: Add click event to refresh counter (for testing)
+        document.getElementById('visitor-count').addEventListener('click', function() {
+            // You could implement a function here to fetch real-time data
+            console.log('Visitor counter clicked - you can implement real-time updates here');
+        });
+    </script>
 </body>
 </html>
