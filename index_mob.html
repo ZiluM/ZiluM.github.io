@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zilu Meng's Academic Page</title>
 
     <!-- Font Awesome (ensure integrity hash is correct if using) -->
@@ -56,10 +55,6 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            transition: transform 0.2s ease-in-out;
-        }
-        img:hover {
-            transform: scale(1.02);
         }
 
         /* Headings */
@@ -229,11 +224,6 @@
             margin: 20px 0;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
             font-family: 'Courier New', monospace;
-            transition: transform 0.2s ease-in-out;
-        }
-        .visitor-counter:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
         .visitor-counter h4 {
             margin: 0 0 10px 0;
@@ -254,159 +244,31 @@
         }
 
         /* Responsive Adjustments */
-        /* Mobile First - Small devices (phones, 600px and down) */
-        @media (max-width: 600px) {
-            body {
-                font-size: 16px;
-                line-height: 1.5;
-            }
-            .container {
-                max-width: 95%;
-                margin: 15px auto;
-                padding: 10px;
-            }
-            h1 {
-                font-size: 1.6em;
-                margin-bottom: 10px;
-            }
-            .nav-links {
-                gap: 0.8em;
-                padding: 10px 0;
-                margin-bottom: 15px;
-            }
-            .nav-links a {
-                font-size: 0.9em;
-                padding: 8px 12px;
-                border-radius: 20px;
-                background-color: rgba(0, 86, 179, 0.1);
-                transition: all 0.2s ease-in-out;
-            }
-            .nav-links a:hover {
-                background-color: rgba(0, 86, 179, 0.2);
-                transform: translateY(-1px);
-            }
+        @media (max-width: 768px) {
+             .container {
+                 max-width: 95%; /* Use percentage on smaller screens */
+             }
             .about-me-content, .research-content {
                 flex-direction: column;
                 align-items: center;
-                gap: 15px;
             }
             .about-me-content img {
-                width: 200px;
-                height: 200px;
-                margin-bottom: 15px;
+                 margin-bottom: 20px;
             }
-            .research-images {
-                flex-basis: auto;
-                width: 100%;
-                max-width: 350px;
-                margin-top: 15px;
-                order: -1; /* Move images to top on mobile */
-            }
-            .about-me-text, .research-text {
-                text-align: left;
-                min-width: auto;
-            }
-            details summary {
-                font-size: 1.1em;
-                padding: 12px 15px;
-            }
-            details summary::after {
-                right: 15px;
-            }
-            details > *:not(summary) {
-                padding: 15px;
-            }
-            .section {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            /* Mobile-friendly lists */
-            details ol, details ul {
-                padding-left: 1.2em;
-            }
-            details li {
-                margin-bottom: 1em;
-                line-height: 1.6;
-            }
-            /* Visitor counter mobile adjustments */
-            .visitor-counter {
-                margin: 15px 0;
-                padding: 12px 15px;
-            }
-            .visitor-counter .count {
-                font-size: 1.6em;
-            }
-        }
-
-        /* Tablet devices (601px to 768px) */
-        @media (min-width: 601px) and (max-width: 768px) {
-            .container {
-                max-width: 90%;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            .about-me-content, .research-content {
-                flex-direction: column;
-                align-items: center;
-                gap: 18px;
-            }
-            .about-me-content img {
-                width: 220px;
-                height: 220px;
-                margin-bottom: 18px;
-            }
-            .research-images {
+             .research-images {
                 flex-basis: auto;
                 width: 100%;
                 max-width: 400px;
-                margin-top: 18px;
+                margin-top: 20px;
             }
             .about-me-text, .research-text {
                 text-align: left;
             }
+            h1 {
+                font-size: 1.8em;
+            }
             details summary {
                 font-size: 1.2em;
-            }
-        }
-
-        /* Large tablets and small desktops (769px to 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                max-width: 85%;
-            }
-            .about-me-content img {
-                width: 240px;
-                height: 240px;
-            }
-        }
-
-        /* Touch device improvements */
-        @media (hover: none) and (pointer: coarse) {
-            details summary {
-                padding: 18px 20px;
-                font-size: 1.15em;
-            }
-            .nav-links a {
-                padding: 12px 16px;
-                min-height: 44px; /* Apple's recommended touch target size */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            /* Larger touch targets for mobile */
-            a {
-                padding: 2px 4px;
-                margin: -2px -4px;
-            }
-        }
-
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            img {
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
             }
         }
     </style>
