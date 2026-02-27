@@ -409,9 +409,290 @@
                 image-rendering: crisp-edges;
             }
         }
+
+        :root {
+            --bg: #f4f8fb;
+            --bg-2: #e8f1f7;
+            --surface: #ffffff;
+            --text: #1f2933;
+            --muted: #607080;
+            --accent: #0f766e;
+            --accent-2: #0b5560;
+            --border: #d8e2ea;
+            --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --bg-2: #1e293b;
+            --surface: #111827;
+            --text: #e2e8f0;
+            --muted: #9ca3af;
+            --accent: #34d399;
+            --accent-2: #10b981;
+            --border: #334155;
+            --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            color: var(--text);
+            background:
+                radial-gradient(circle at 18% -10%, rgba(56, 189, 248, 0.24), transparent 38%),
+                radial-gradient(circle at 85% 3%, rgba(16, 185, 129, 0.22), transparent 42%),
+                linear-gradient(180deg, var(--bg), var(--bg-2));
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent), #22d3ee);
+            z-index: 9999;
+            transition: width 0.08s linear;
+        }
+
+        .theme-toggle,
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            z-index: 1200;
+        }
+
+        .theme-toggle {
+            top: 18px;
+        }
+
+        .back-to-top {
+            bottom: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hero {
+            background: linear-gradient(130deg, rgba(15, 118, 110, 0.1), rgba(34, 211, 238, 0.14));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 26px;
+            margin: 4px 0 18px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .hero h2 {
+            margin: 0 0 10px;
+            color: var(--accent-2);
+            font-size: 1.5em;
+        }
+
+        .hero p {
+            margin: 0 0 14px;
+            color: var(--text);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-cta a {
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95em;
+        }
+
+        .hero-cta a.primary {
+            background: linear-gradient(100deg, var(--accent), #22d3ee);
+            color: #fff;
+            border: none;
+        }
+
+        .section,
+        details {
+            background-color: var(--surface);
+            border-color: var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        details summary,
+        h3 {
+            color: var(--accent-2);
+        }
+
+        .pub-toolbar {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        #pub-search {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-size: 0.95em;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--muted);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+
+        .chip.active {
+            background: rgba(15, 118, 110, 0.15);
+            color: var(--accent-2);
+            border-color: rgba(15, 118, 110, 0.32);
+        }
+
+        .pub-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .pub-stat {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px;
+            background: linear-gradient(145deg, rgba(15, 118, 110, 0.08), rgba(34, 211, 238, 0.04));
+        }
+
+        .pub-stat strong {
+            font-size: 1.15em;
+            display: block;
+            color: var(--accent-2);
+        }
+
+        .pub-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .pub-actions button {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 0.8em;
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+
+        .pub-actions button:hover {
+            color: var(--accent-2);
+            border-color: var(--accent);
+        }
+
+        .hidden-pub {
+            display: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        a:focus-visible,
+        summary:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid rgba(34, 211, 238, 0.45);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 820px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-photo {
+                margin: 0 auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .pub-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .nav-links {
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
+    <div id="progress-bar"></div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <div class="container">
         <h1>Zilu Meng (孟子路)</h1> <!-- Simplified Title with Times New Roman/KaiTi font -->
 
@@ -442,14 +723,24 @@
                 <i class="fas fa-id-badge"></i> ORCID
             </a>
         </nav>
-        
 
-        
+        <section class="hero reveal">
+            <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo">
+            <div>
+                <h2>Data Assimilation & Climate Dynamics & Extreme Weathers</h2>
+                <p>I develop physically informed data assimilation and machine-learning methods to reconstruct climate variability from seasonal to millennial timescales, and to investigate large-scale climate dynamics and extreme weather risks.</p>
+                <div class="hero-cta">
+                    <a class="primary" href="https://github.com/ZiluM" target="_blank">GitHub</a>
+                    <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" target="_blank">Google Scholar</a>
+                    <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data</a>
+                </div>
+            </div>
+        </section>
+
         <!-- About Me Section -->
-        <details open>
+        <details open class="reveal">
             <summary>About Me</summary>
             <div class="section about-me-content">
-                <img src="./new_fig.jpg" alt="Zilu Meng">
                 <div class="about-me-text">
                     <p>
                         Hi, I am Zilu Meng, a Ph.D. Candidate at the University of Washington, working under the guidance
@@ -460,7 +751,7 @@
                         with <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a>.
                     </p>
                     <p>
-                        My research interests include data assimilation, climate dynamics, paleoclimate, and machine learning. Currently, my work focuses on paleoclimate data assimilation and investigating climate dynamics over the last millennium. I develop statistical approaches and physical models to better understand past climate variability and dynamics, with the ultimate goal of improving the accuracy of weather and climate predictions. In my free time, I enjoy playing video games, reading, and hiking.
+                        Currently, my work focuses on paleoclimate data assimilation and climate dynamics over the last millennium. I develop statistical approaches and physical models to better understand past climate variability and dynamics, with the goal of improving weather and climate prediction. In my free time, I enjoy playing video games, reading, and hiking.
                     </p>
                     <!-- <p>
                         My Curriculum Vitae can be found <a href="./resume_zlm1.pdf" target="_blank">here</a>.
@@ -469,70 +760,33 @@
             </div>
         </details>
 
-        <!-- Research Section -->
-        <details>
-            <summary>Research Highlights</summary>
-            <!-- Item 1: AMIP -->
-             <div class="section">
-                <h3> AMIP-like experiments on Deep learning based AGCM</h3>
-                <p> <!-- Wrapped in <p> for consistency -->
-                    Using Deep Learning based AGCMs (Neural GCM, DLESyM, ACE2), we conducted <a href="https://www.wcrp-climate.org/modelling-wgcm-mip-catalogue/modelling-wgcm-mips-2/240-modelling-wgcm-catalogue-amip" target="_blank">AMIP-like experiments</a> spanning 1890-2020. We investigate two key questions: (1) Can these models simulate atmospheric conditions outside their training range? (2) How well do these models capture climate sensitivity and physical consistency compared to the real world?
-                 </p>
-            </div>
-            <!-- Item 2: Paleo DA -->
-            <div class="section research-content">
-                <div class="research-text">
-                    <h3>Paleoclimate Data Assimilation</h3>
-                    <p>
-                        Paleoclimate data assimilation is a powerful technique for reconstructing past climate states before the instrumental era. Instrumental records are relatively short and heavily influenced by anthropogenic forcing, limiting our understanding of natural climate variability. Paleoclimate proxies (e.g., tree rings, ice cores, corals) provide valuable indirect information about past conditions. By integrating these proxies with climate models through data assimilation, we can generate comprehensive reconstructions of past climate fields (temperature, precipitation, etc.) and study phenomena like ENSO, PDO, and AMO over longer timescales.
-                    </p>
-                    <p>
-                        I am currently developing the first seasonal reanalysis dataset covering the last millennium using an "online" or "cycling" data assimilation approach. This dataset will provide gridded climate fields, enabling detailed studies of past climate variability and change. For instance, the comparison (shown right) of the Nino3.4 Index from our reanalysis with the HadISST dataset highlights the potential to accurately capture ENSO behavior over the millennium. This allows for comparisons between past and present climate dynamics.
-                    </p>
-                    <p>
-                        A manuscript detailing this work has been published in the <em>Journal of Climate</em> (<a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">Meng et al., 2025</a>, <a href="./paper/clim-JCLI-D-25-0048.1-2.pdf" target="_blank">[PDF]</a>).
-                    </p>
-                </div>
-                 <div class="research-images">
-                    <img src="./photo/Nino34_compare_HadISST.png" alt="Nino3.4 Index Comparison">
-                    <img src="./photo/dacycle.png" alt="Data Assimilation Cycle Diagram">
-                </div>
-            </div>
-        </details>
-
-        <!-- Data Section -->
-        <details>
-            <summary>Data</summary>
-            <div class="section">
-                <h3>LMR Seasonal - Last Millennium Reanalysis with Seasonal Resolution</h3>
-                <p>
-                    <strong>Dataset:</strong> <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data Portal</a>
-                </p>
-                <p>
-                    "Online" data assimilation (DA) is used to generate a seasonal-resolution reanalysis dataset over the last millennium by combining forecasts from an ocean–atmosphere–sea-ice coupled linear inverse model with climate proxy records. Instrumental verification reveals that this reconstruction achieves the highest correlation skill, while using fewer proxies, in surface temperature reconstructions compared to other paleo-DA products, particularly during boreal winter when proxy data are scarce. Reconstructed ocean and sea-ice variables also have high correlation with instrumental and satellite datasets. Verification against independent proxy records shows that reconstruction skill is robust throughout the last millennium. Analysis of the results reveals that the method effectively captures the seasonal evolution and amplitude of El Niño events, seasonal temperature trends that are consistent with orbital forcing over the last millennium, and polar-amplified cooling in the transition from the Medieval Climate Anomaly to the Little Ice Age.
-                </p>
-                <p>
-                    <strong>Key Features:</strong>
-                </p>
-                <ul>
-                    <li>Seasonal resolution paleoclimate reanalysis spanning the last millennium (850-2000 CE)</li>
-                    <li>Coupled ocean-atmosphere-sea ice reconstruction using online data assimilation</li>
-                    <li>High correlation skill with instrumental data, especially during data-sparse winter months</li>
-                    <li>Captures seasonal evolution and amplitude of ENSO events</li>
-                    <li>Consistent with orbital forcing patterns over the millennium</li>
-                    <li>Documents polar-amplified cooling during Medieval Climate Anomaly to Little Ice Age transition</li>
-                </ul>
-                <p>
-                    <strong>Related Publication:</strong> 
-                    <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">Meng et al. (2025), Journal of Climate</a>
-                </p>
-            </div>
-        </details>
-
         <!-- Publications Section -->
-        <details>
+        <details class="reveal" id="publications">
             <summary>Publications</summary>
             <div class="section">
+                <div class="pub-toolbar">
+                    <input id="pub-search" type="search" placeholder="Search title, author, journal...">
+                    <div class="chip-row" id="pub-tags">
+                        <button class="chip active" data-tag="all">All</button>
+                        <button class="chip" data-tag="data-assimilation">Data Assimilation</button>
+                        <button class="chip" data-tag="machine-learning">Machine Learning</button>
+                        <button class="chip" data-tag="enso">ENSO</button>
+                        <button class="chip" data-tag="paleoclimate">Paleoclimate</button>
+                    </div>
+                    <div class="chip-row" id="pub-years">
+                        <button class="chip active" data-year="all">All Years</button>
+                        <button class="chip" data-year="2026">2026</button>
+                        <button class="chip" data-year="2025">2025</button>
+                        <button class="chip" data-year="2024">2024</button>
+                        <button class="chip" data-year="2023">2023</button>
+                        <button class="chip" data-year="2021">2021</button>
+                    </div>
+                </div>
+                <div class="pub-stats">
+                    <div class="pub-stat"><strong id="stat-total">0</strong>Total publications</div>
+                    <div class="pub-stat"><strong id="stat-first">0</strong>First-author papers</div>
+                    <div class="pub-stat"><strong id="stat-year">0</strong>Selected year papers</div>
+                </div>
                 <ol reversed>
                     <li>
                         Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong>Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2025). 
@@ -543,7 +797,7 @@
                         Hua, Z., Karamperidou, C., <strong>Meng, Z.</strong> (2025). Extratropical Atmospheric Circulation Response to ENSO in Deep Learning Pacific Pacemaker Experiments. <a href="https://arxiv.org/pdf/2511.20899" target="_blank">arXiv:2511.20899</a>
                     </li>
                     <li>
-                        <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2025).
+                        <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
                         Large-Ensemble Simulations Reveal Links Between Atmospheric Blocking Frequency and Sea Surface Temperature Variability. <a href="https://arxiv.org/abs/2602.05083" target="_blank">arXiv:2602.05083</a>.
                     </li>
                     <li>
@@ -604,8 +858,67 @@
             </div>
         </details>
 
+        <!-- Research Section -->
+        <details class="reveal">
+            <summary>Research Highlights</summary>
+            <!-- Item 1: AMIP -->
+             <div class="section">
+                <h3> AMIP-like experiments on Deep learning based AGCM</h3>
+                <p> <!-- Wrapped in <p> for consistency -->
+                    Using Deep Learning based AGCMs (Neural GCM, DLESyM, ACE2), we conducted <a href="https://www.wcrp-climate.org/modelling-wgcm-mip-catalogue/modelling-wgcm-mips-2/240-modelling-wgcm-catalogue-amip" target="_blank">AMIP-like experiments</a> spanning 1890-2020. We investigate two key questions: (1) Can these models simulate atmospheric conditions outside their training range? (2) How well do these models capture climate sensitivity and physical consistency compared to the real world?
+                 </p>
+            </div>
+            <!-- Item 2: Paleo DA -->
+            <div class="section research-content">
+                <div class="research-text">
+                    <h3>Paleoclimate Data Assimilation</h3>
+                    <p>
+                        Paleoclimate data assimilation is a powerful technique for reconstructing past climate states before the instrumental era. Instrumental records are relatively short and heavily influenced by anthropogenic forcing, limiting our understanding of natural climate variability. Paleoclimate proxies (e.g., tree rings, ice cores, corals) provide valuable indirect information about past conditions. By integrating these proxies with climate models through data assimilation, we can generate comprehensive reconstructions of past climate fields (temperature, precipitation, etc.) and study phenomena like ENSO, PDO, and AMO over longer timescales.
+                    </p>
+                    <p>
+                        I am currently developing the first seasonal reanalysis dataset covering the last millennium using an "online" or "cycling" data assimilation approach. This dataset will provide gridded climate fields, enabling detailed studies of past climate variability and change. For instance, the comparison (shown right) of the Nino3.4 Index from our reanalysis with the HadISST dataset highlights the potential to accurately capture ENSO behavior over the millennium. This allows for comparisons between past and present climate dynamics.
+                    </p>
+                    <p>
+                        A manuscript detailing this work has been published in the <em>Journal of Climate</em> (<a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">Meng et al., 2025</a>, <a href="./paper/clim-JCLI-D-25-0048.1-2.pdf" target="_blank">[PDF]</a>).
+                    </p>
+                </div>
+                 <div class="research-images">
+                    <img src="./photo/Nino34_compare_HadISST.png" alt="Nino3.4 Index Comparison">
+                    <img src="./photo/dacycle.png" alt="Data Assimilation Cycle Diagram">
+                </div>
+            </div>
+        </details>
+
+        <!-- Data Section -->
+        <details class="reveal">
+            <summary>Data</summary>
+            <div class="section">
+                <h3>LMR Seasonal - Last Millennium Reanalysis with Seasonal Resolution</h3>
+                <p>
+                    <strong>Dataset:</strong> <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data Portal</a>
+                </p>
+                <p>
+                    "Online" data assimilation (DA) is used to generate a seasonal-resolution reanalysis dataset over the last millennium by combining forecasts from an ocean–atmosphere–sea-ice coupled linear inverse model with climate proxy records. Instrumental verification reveals that this reconstruction achieves the highest correlation skill, while using fewer proxies, in surface temperature reconstructions compared to other paleo-DA products, particularly during boreal winter when proxy data are scarce. Reconstructed ocean and sea-ice variables also have high correlation with instrumental and satellite datasets. Verification against independent proxy records shows that reconstruction skill is robust throughout the last millennium. Analysis of the results reveals that the method effectively captures the seasonal evolution and amplitude of El Niño events, seasonal temperature trends that are consistent with orbital forcing over the last millennium, and polar-amplified cooling in the transition from the Medieval Climate Anomaly to the Little Ice Age.
+                </p>
+                <p>
+                    <strong>Key Features:</strong>
+                </p>
+                <ul>
+                    <li>Seasonal resolution paleoclimate reanalysis spanning the last millennium (850-2000 CE)</li>
+                    <li>Coupled ocean-atmosphere-sea ice reconstruction using online data assimilation</li>
+                    <li>High correlation skill with instrumental data, especially during data-sparse winter months</li>
+                    <li>Captures seasonal evolution and amplitude of ENSO events</li>
+                    <li>Consistent with orbital forcing patterns over the millennium</li>
+                    <li>Documents polar-amplified cooling during Medieval Climate Anomaly to Little Ice Age transition</li>
+                </ul>
+                <p>
+                    <strong>Related Publication:</strong> 
+                    <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">Meng et al. (2025), Journal of Climate</a>
+                </p>
+            </div>
+        </details>
         <!-- Education Section -->
-        <details>
+        <details class="reveal">
             <summary>Education</summary>
             <div class="section">
                  <dl class="education-list">
@@ -626,7 +939,7 @@
         </details>
 
         <!-- Projects Section -->
-        <details>
+        <details class="reveal">
             <summary>Projects</summary>
              <div class="section">
                 <ol>
@@ -656,7 +969,7 @@
         </details>
 
         <!-- Conference Presentations Section -->
-        <details>
+        <details class="reveal">
             <summary>Conference Presentations & Talks</summary>
             <div class="section">
                 <ul> <!-- Using UL as order might not be strictly chronological/important -->
@@ -689,6 +1002,7 @@
                         <em>Last Millennium Seasonal Reanalysis</em>. 
                         [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>]
                     </li>
+                    <li>
                         <strong> Paleoclimate Seminar</strong>, Ohio State University, Columbus, OH, USA, Apr 2025. (Invited Talk) <br>
                         <em>Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</em>.
                     </li>
@@ -730,7 +1044,7 @@
         </details>
 
         <!-- Peer Review Summary Section -->
-        <details>
+        <details class="reveal">
             <summary>Peer Review Service</summary>
             <div class="section">
                  <ul> <!-- Using a list might be slightly better than separate paragraphs -->
@@ -774,17 +1088,11 @@
 
     <!-- Visitor Counter Script -->
     <script>
-        // Simple visitor counter with localStorage for demonstration
-        // You can replace this with actual Google Analytics data or other tracking service
-        
         function updateVisitorCount() {
-            // You can manually update this number based on your Google Analytics data
             const actualCount = 6042; // Update this number manually from your analytics
-
-            // Optional: Add some animation to the counter
             const countElement = document.getElementById('visitor-count');
+            if (!countElement) return;
             
-            // Simple counter animation
             let currentCount = 0;
             const increment = Math.ceil(actualCount / 100);
             
@@ -797,14 +1105,179 @@
                 countElement.textContent = currentCount.toLocaleString();
             }, 20);
         }
-        
-        // Initialize counter when page loads
-        document.addEventListener('DOMContentLoaded', updateVisitorCount);
-        
-        // Optional: Add click event to refresh counter (for testing)
-        document.getElementById('visitor-count').addEventListener('click', function() {
-            // You could implement a function here to fetch real-time data
-            console.log('Visitor counter clicked - you can implement real-time updates here');
+
+        function setupTheme() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const storedTheme = localStorage.getItem('homepage-theme');
+            if (storedTheme === 'dark') {
+                document.body.classList.add('dark');
+            }
+            const setIcon = () => {
+                themeToggle.innerHTML = document.body.classList.contains('dark')
+                    ? '<i class="fas fa-sun"></i>'
+                    : '<i class="fas fa-moon"></i>';
+            };
+            setIcon();
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+                localStorage.setItem('homepage-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+                setIcon();
+            });
+        }
+
+        function setupScrollUI() {
+            const progressBar = document.getElementById('progress-bar');
+            const backToTop = document.getElementById('back-to-top');
+            const onScroll = () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                backToTop.classList.toggle('visible', scrollTop > 500);
+            };
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+            backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+
+        function setupReveal() {
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealElements.forEach((el) => observer.observe(el));
+        }
+
+        function inferTags(text) {
+            const t = text.toLowerCase();
+            const tags = [];
+            if (t.includes('assimilation')) tags.push('data-assimilation');
+            if (t.includes('deep learning') || t.includes('machine learning')) tags.push('machine-learning');
+            if (t.includes('enso') || t.includes('el niño') || t.includes('la niña') || t.includes('nino')) tags.push('enso');
+            if (t.includes('paleo') || t.includes('millennium') || t.includes('proxy')) tags.push('paleoclimate');
+            return Array.from(new Set(tags));
+        }
+
+        function buildBibtex(citation, year, index) {
+            const safeYear = year || 'n.d.';
+            const key = `meng${safeYear}${index + 1}`;
+            return `@misc{${key},
+  author = {Zilu Meng et al.},
+  title = {Publication ${index + 1}},
+  year = {${safeYear}},
+  note = {${citation.replace(/[{}]/g, '')}}
+}`;
+        }
+
+        function setupPublicationTools() {
+            const pubRoot = document.getElementById('publications');
+            if (!pubRoot) return;
+            const items = Array.from(pubRoot.querySelectorAll('ol li'));
+            const searchInput = document.getElementById('pub-search');
+            const tagChips = Array.from(document.querySelectorAll('#pub-tags .chip'));
+            const yearChips = Array.from(document.querySelectorAll('#pub-years .chip'));
+            const statTotal = document.getElementById('stat-total');
+            const statFirst = document.getElementById('stat-first');
+            const statYear = document.getElementById('stat-year');
+
+            items.forEach((li, idx) => {
+                const text = li.textContent.replace(/\s+/g, ' ').trim();
+                const yearMatch = text.match(/\b(20\d{2})\b/);
+                const tags = inferTags(text);
+                li.dataset.year = yearMatch ? yearMatch[1] : '';
+                li.dataset.tags = tags.join(',');
+                li.dataset.firstAuthor = text.startsWith('Meng, Z.') ? '1' : '0';
+
+                const actions = document.createElement('div');
+                actions.className = 'pub-actions';
+                const citationButton = document.createElement('button');
+                citationButton.type = 'button';
+                citationButton.textContent = 'Copy Citation';
+                citationButton.addEventListener('click', async () => {
+                    await navigator.clipboard.writeText(text);
+                    citationButton.textContent = 'Copied';
+                    setTimeout(() => { citationButton.textContent = 'Copy Citation'; }, 1200);
+                });
+
+                const bibButton = document.createElement('button');
+                bibButton.type = 'button';
+                bibButton.textContent = 'Copy BibTeX';
+                bibButton.addEventListener('click', async () => {
+                    const bib = buildBibtex(text, li.dataset.year, idx);
+                    await navigator.clipboard.writeText(bib);
+                    bibButton.textContent = 'Copied';
+                    setTimeout(() => { bibButton.textContent = 'Copy BibTeX'; }, 1200);
+                });
+
+                actions.appendChild(citationButton);
+                actions.appendChild(bibButton);
+                li.appendChild(actions);
+            });
+
+            let activeTag = 'all';
+            let activeYear = 'all';
+
+            function updateStats() {
+                const selectedYearCount = items.filter((li) => activeYear === 'all' || li.dataset.year === activeYear).length;
+                statTotal.textContent = String(items.length);
+                statFirst.textContent = String(items.filter((li) => li.dataset.firstAuthor === '1').length);
+                statYear.textContent = String(selectedYearCount);
+            }
+
+            function applyFilter() {
+                const q = searchInput.value.toLowerCase().trim();
+                items.forEach((li) => {
+                    const text = li.textContent.toLowerCase();
+                    const tags = li.dataset.tags ? li.dataset.tags.split(',') : [];
+                    const byTag = activeTag === 'all' || tags.includes(activeTag);
+                    const byYear = activeYear === 'all' || li.dataset.year === activeYear;
+                    const bySearch = !q || text.includes(q);
+                    li.classList.toggle('hidden-pub', !(byTag && byYear && bySearch));
+                });
+                updateStats();
+            }
+
+            tagChips.forEach((chip) => {
+                chip.addEventListener('click', () => {
+                    activeTag = chip.dataset.tag;
+                    tagChips.forEach((c) => c.classList.toggle('active', c === chip));
+                    applyFilter();
+                });
+            });
+
+            yearChips.forEach((chip) => {
+                chip.addEventListener('click', () => {
+                    activeYear = chip.dataset.year;
+                    yearChips.forEach((c) => c.classList.toggle('active', c === chip));
+                    applyFilter();
+                });
+            });
+
+            searchInput.addEventListener('input', applyFilter);
+            updateStats();
+        }
+
+        function secureExternalLinks() {
+            document.querySelectorAll('a[target="_blank"]').forEach((a) => {
+                const rel = (a.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+                if (!rel.includes('noopener')) rel.push('noopener');
+                if (!rel.includes('noreferrer')) rel.push('noreferrer');
+                a.setAttribute('rel', rel.join(' '));
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitorCount();
+            setupTheme();
+            setupScrollUI();
+            setupReveal();
+            setupPublicationTools();
+            secureExternalLinks();
         });
     </script>
 </body>
