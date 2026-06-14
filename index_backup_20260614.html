@@ -437,20 +437,10 @@
         body {
             color: var(--text);
             background:
-                linear-gradient(115deg, rgba(14, 165, 233, 0.14), transparent 34%),
-                linear-gradient(245deg, rgba(16, 185, 129, 0.16), transparent 36%),
+                radial-gradient(circle at 18% -10%, rgba(56, 189, 248, 0.24), transparent 38%),
+                radial-gradient(circle at 85% 3%, rgba(16, 185, 129, 0.22), transparent 42%),
                 linear-gradient(180deg, var(--bg), var(--bg-2));
             min-height: 100vh;
-        }
-
-        .climate-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.34;
         }
 
         .container {
@@ -503,32 +493,16 @@
         }
 
         .hero {
-            position: relative;
-            overflow: hidden;
-            background:
-                linear-gradient(130deg, rgba(15, 118, 110, 0.11), rgba(34, 211, 238, 0.13)),
-                repeating-linear-gradient(102deg, transparent 0 23px, rgba(255, 255, 255, 0.16) 24px, transparent 25px 48px);
+            background: linear-gradient(130deg, rgba(15, 118, 110, 0.1), rgba(34, 211, 238, 0.14));
             border: 1px solid var(--border);
             border-radius: 18px;
             box-shadow: var(--shadow);
             padding: 26px;
             margin: 4px 0 18px;
             display: grid;
-            grid-template-columns: 200px minmax(0, 1fr) 330px;
+            grid-template-columns: 200px 1fr;
             gap: 24px;
             align-items: center;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: -30% -10%;
-            background:
-                repeating-linear-gradient(8deg, transparent 0 34px, rgba(15, 118, 110, 0.1) 35px, transparent 37px 70px),
-                repeating-linear-gradient(96deg, transparent 0 38px, rgba(245, 158, 11, 0.12) 39px, transparent 41px 82px);
-            transform: translateX(-18px);
-            animation: climateFieldDrift 18s linear infinite;
-            z-index: -1;
         }
 
         .hero-photo {
@@ -549,27 +523,6 @@
         .hero p {
             margin: 0 0 14px;
             color: var(--text);
-        }
-
-        .signal-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0 16px;
-        }
-
-        .signal-row span {
-            border: 1px solid rgba(15, 118, 110, 0.25);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.55);
-            color: var(--accent-2);
-            padding: 5px 10px;
-            font-size: 0.82em;
-            line-height: 1.2;
-        }
-
-        body.dark .signal-row span {
-            background: rgba(15, 23, 42, 0.5);
         }
 
         .hero-cta {
@@ -594,166 +547,6 @@
             border: none;
         }
 
-        .field-panel {
-            box-sizing: border-box;
-            width: 100%;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.68);
-            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.1);
-            padding: 14px;
-        }
-
-        body.dark .field-panel {
-            background: rgba(17, 24, 39, 0.76);
-        }
-
-        .field-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--accent-2);
-            font-size: 0.78em;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .field-map {
-            position: relative;
-            height: 190px;
-            overflow: hidden;
-            border-radius: 10px;
-            background:
-                linear-gradient(180deg, rgba(15, 23, 42, 0.08), rgba(14, 165, 233, 0.12)),
-                repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.1) 0 1px, transparent 1px 28px),
-                repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.1) 0 1px, transparent 1px 28px);
-            display: grid;
-            place-items: center;
-        }
-
-        .temperature-chart {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-        }
-
-        .field-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-            font-size: 0.76em;
-            color: var(--muted);
-        }
-
-        .field-metrics strong {
-            display: block;
-            color: var(--text);
-            font-size: 1.08em;
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 12px;
-            margin: 0 0 20px;
-        }
-
-        .expertise-card {
-            position: relative;
-            overflow: hidden;
-            min-height: 118px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            padding: 15px;
-        }
-
-        .expertise-card::after {
-            content: "";
-            position: absolute;
-            left: 14px;
-            right: 14px;
-            bottom: 12px;
-            height: 3px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, #0f766e, #22d3ee, #f59e0b);
-            transform: scaleX(0.35);
-            transform-origin: left;
-            transition: transform 0.28s ease;
-        }
-
-        .expertise-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .expertise-card i {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .expertise-card strong {
-            display: block;
-            color: var(--text);
-            margin-bottom: 6px;
-            font-size: 0.95em;
-        }
-
-        .expertise-card span {
-            display: block;
-            color: var(--muted);
-            font-size: 0.82em;
-            line-height: 1.35;
-        }
-
-        .climate-workflow {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px;
-            margin: 12px 0 18px;
-        }
-
-        .workflow-step {
-            position: relative;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: linear-gradient(145deg, rgba(15, 118, 110, 0.08), rgba(245, 158, 11, 0.06));
-            padding: 13px 12px;
-            min-height: 88px;
-        }
-
-        .workflow-step:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            width: 10px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), #f59e0b);
-            animation: dataPulse 1.8s ease-in-out infinite;
-        }
-
-        .workflow-step i {
-            color: var(--accent-2);
-            margin-right: 6px;
-        }
-
-        .workflow-step strong {
-            display: block;
-            color: var(--text);
-            margin-bottom: 6px;
-            font-size: 0.92em;
-        }
-
-        .workflow-step span {
-            color: var(--muted);
-            font-size: 0.8em;
-            line-height: 1.35;
-        }
-
         .section,
         details {
             background-color: var(--surface);
@@ -764,22 +557,6 @@
         details summary,
         h3 {
             color: var(--accent-2);
-        }
-
-        body.dark h1 {
-            color: #e5e7eb;
-        }
-
-        body.dark .nav-links {
-            border-bottom-color: var(--border);
-        }
-
-        body.dark .nav-links a {
-            color: #d1d5db;
-        }
-
-        body.dark .nav-links a:hover {
-            color: var(--accent);
         }
 
         .pub-toolbar {
@@ -898,74 +675,8 @@
                 justify-content: center;
             }
 
-            .signal-row {
-                justify-content: center;
-            }
-
-            .field-panel {
-                max-width: 360px;
-                margin: 0 auto;
-            }
-
-            .expertise-grid,
-            .climate-workflow {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
             .pub-stats {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .expertise-grid,
-            .climate-workflow {
-                grid-template-columns: 1fr;
-            }
-
-            .workflow-step:not(:last-child)::after {
-                right: auto;
-                left: 22px;
-                top: auto;
-                bottom: -10px;
-                width: 2px;
-                height: 10px;
-            }
-        }
-
-        @keyframes climateFieldDrift {
-            from { transform: translateX(-18px); }
-            to { transform: translateX(46px); }
-        }
-
-        @keyframes mapSpin {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        @keyframes proxyPulse {
-            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.42); }
-            70% { box-shadow: 0 0 0 13px rgba(239, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-        }
-
-        @keyframes dataPulse {
-            0%, 100% { opacity: 0.35; transform: scaleX(0.65); }
-            50% { opacity: 1; transform: scaleX(1); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.001ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: 0.001ms !important;
-            }
-
-            .climate-canvas {
-                display: none;
             }
         }
 
@@ -976,7 +687,6 @@
 </head>
 <body>
     <div id="progress-bar"></div>
-    <canvas class="climate-canvas" id="climate-canvas" aria-hidden="true"></canvas>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
@@ -1017,56 +727,13 @@
         <section class="hero reveal">
             <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo">
             <div>
-                <h2>Climate, Weather, and Data Science</h2>
-                <p>I study how Earth's climate has changed in the past and what that can teach us about the future. My work combines climate records, computer models, and machine learning to better understand patterns such as El Niño, sea ice change, heat waves, and cold spells.</p>
-                <div class="signal-row" aria-label="Research keywords">
-                    <span>Last Millennium Reanalysis</span>
-                    <span>ENSO</span>
-                    <span>Sea Ice</span>
-                    <span>Deep Learning GCMs</span>
-                </div>
+                <h2>Data Assimilation & Climate Dynamics & Extreme Weathers</h2>
+                <p>I develop physically informed data assimilation and machine-learning methods to reconstruct climate variability from seasonal to millennial timescales, and to investigate large-scale climate dynamics and extreme weather risks.</p>
                 <div class="hero-cta">
                     <a class="primary" href="https://github.com/ZiluM" target="_blank">GitHub</a>
                     <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" target="_blank">Google Scholar</a>
                     <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data</a>
                 </div>
-            </div>
-            <aside class="field-panel" aria-label="Global temperature time series preview">
-                <div class="field-title">
-                    <span>Warming Since 1850</span>
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="field-map">
-                    <img class="temperature-chart" src="./assets/global_temperature_timeseries.svg" alt="HadCRUT5 global mean temperature change from 1850 to 2025">
-                </div>
-                <div class="field-metrics">
-                    <span><strong>1850</strong>Start</span>
-                    <span><strong>+1.41°C</strong>2025</span>
-                    <span><strong>HadCRUT5</strong>Data</span>
-                </div>
-            </aside>
-        </section>
-
-        <section class="expertise-grid reveal" aria-label="Research focus areas">
-            <div class="expertise-card">
-                <i class="fas fa-tree"></i>
-                <strong>Proxy Networks</strong>
-                <span>Tree rings, corals, ice cores, and sparse-observation constraints.</span>
-            </div>
-            <div class="expertise-card">
-                <i class="fas fa-sync-alt"></i>
-                <strong>Online Assimilation</strong>
-                <span>Cycling forecast-update systems for seasonal paleoclimate states.</span>
-            </div>
-            <div class="expertise-card">
-                <i class="fas fa-temperature-high"></i>
-                <strong>Extreme Weather</strong>
-                <span>Heat waves, cold waves, blocking, and SST-linked variability.</span>
-            </div>
-            <div class="expertise-card">
-                <i class="fas fa-brain"></i>
-                <strong>ML Atmospheres</strong>
-                <span>Deep-learning AGCM experiments and out-of-sample climate tests.</span>
             </div>
         </section>
 
@@ -1084,7 +751,7 @@
                         with <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a>.
                     </p>
                     <p>
-                        I am interested in how we can use limited clues from the past, such as tree rings, ice cores, corals, and old observations, to build a clearer picture of Earth's climate history. I also use modern computer models and AI tools to study why climate patterns change, how extreme weather happens, and how our understanding of the past can improve future climate and weather prediction. In my free time, I enjoy playing video games, reading, and hiking.
+                        Currently, my work focuses on paleoclimate data assimilation and climate dynamics over the last millennium. I develop statistical approaches and physical models to better understand past climate variability and dynamics, with the goal of improving weather and climate prediction. In my free time, I enjoy playing video games, reading, and hiking.
                     </p>
                     <!-- <p>
                         My Curriculum Vitae can be found <a href="./resume_zlm1.pdf" target="_blank">here</a>.
@@ -1192,43 +859,8 @@
         </details>
 
         <!-- Research Section -->
-            <details class="reveal">
+        <details class="reveal">
             <summary>Research Highlights</summary>
-            <div class="section">
-                <h3>Multiscale proxy data assimilation using weak-constraint 4D-Var</h3>
-                <p>
-                    My recent work develops <strong>LMR4D</strong>, a new way to reconstruct past climate by combining many kinds of climate evidence that record time differently. Tree rings may record year-to-year changes, sediments and ice cores may average over decades, and boreholes can remember centuries of surface temperature change. LMR4D brings these records into one physically guided reconstruction instead of treating them as separate problems.
-                </p>
-                <p>
-                    The framework optimizes a continuous climate history while allowing the model to be imperfect. This makes it possible to combine PAGES2k, Temp12k, and borehole records, and to estimate not only past surface temperature but also slower parts of the climate system such as upper-ocean heat content. The results suggest that recent upper-ocean warming is large compared with late Common Era variability, and show how long-memory records like boreholes can add information that annual proxies alone cannot provide.
-                </p>
-                <ul>
-                    <li><strong>Big idea:</strong> combine climate clues with different time resolutions in one reconstruction.</li>
-                    <li><strong>Why it matters:</strong> a longer view of climate history helps put modern warming and ocean heat uptake in context.</li>
-                    <li><strong>Method:</strong> weak-constraint 4D-Var with a coupled ocean-atmosphere-sea-ice emulator.</li>
-                </ul>
-            </div>
-            <div class="section">
-                <h3>How my reconstruction workflow thinks</h3>
-                <div class="climate-workflow" aria-label="Data assimilation workflow">
-                    <div class="workflow-step">
-                        <strong><i class="fas fa-cloud-sun"></i>Forecast</strong>
-                        <span>Coupled ocean-atmosphere-sea-ice model advances the prior climate state.</span>
-                    </div>
-                    <div class="workflow-step">
-                        <strong><i class="fas fa-map-marker-alt"></i>Proxy Observations</strong>
-                        <span>Sparse proxy records sample local seasonal climate signals.</span>
-                    </div>
-                    <div class="workflow-step">
-                        <strong><i class="fas fa-code-branch"></i>Update</strong>
-                        <span>Data assimilation blends physical forecasts with proxy constraints.</span>
-                    </div>
-                    <div class="workflow-step">
-                        <strong><i class="fas fa-globe-americas"></i>Reanalysis</strong>
-                        <span>Gridded fields reveal ENSO, sea ice, circulation, and extremes.</span>
-                    </div>
-                </div>
-            </div>
             <!-- Item 1: AMIP -->
              <div class="section">
                 <h3> AMIP-like experiments on Deep learning based AGCM</h3>
@@ -1639,84 +1271,6 @@
             });
         }
 
-        function setupClimateCanvas() {
-            const canvas = document.getElementById('climate-canvas');
-            if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            const ctx = canvas.getContext('2d');
-            let width = 0;
-            let height = 0;
-            let particles = [];
-            let frame = 0;
-
-            const palette = [
-                'rgba(14, 165, 233, 0.42)',
-                'rgba(16, 185, 129, 0.36)',
-                'rgba(245, 158, 11, 0.32)',
-                'rgba(99, 102, 241, 0.28)'
-            ];
-
-            function resize() {
-                const ratio = Math.min(window.devicePixelRatio || 1, 2);
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = Math.floor(width * ratio);
-                canvas.height = Math.floor(height * ratio);
-                canvas.style.width = width + 'px';
-                canvas.style.height = height + 'px';
-                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-                const count = Math.max(38, Math.min(92, Math.floor(width / 18)));
-                particles = Array.from({ length: count }, (_, index) => ({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    speed: 0.22 + Math.random() * 0.58,
-                    phase: Math.random() * Math.PI * 2,
-                    color: palette[index % palette.length]
-                }));
-            }
-
-            function drawContours(time) {
-                ctx.lineWidth = 1;
-                for (let row = -1; row < 8; row += 1) {
-                    ctx.beginPath();
-                    const yBase = (height / 7) * row + 34;
-                    for (let x = -30; x <= width + 30; x += 18) {
-                        const wave = Math.sin((x * 0.012) + time + row) * 18 + Math.cos((x * 0.006) - time) * 10;
-                        const y = yBase + wave;
-                        if (x === -30) ctx.moveTo(x, y);
-                        else ctx.lineTo(x, y);
-                    }
-                    ctx.strokeStyle = row % 3 === 0 ? 'rgba(245, 158, 11, 0.12)' : 'rgba(14, 165, 233, 0.12)';
-                    ctx.stroke();
-                }
-            }
-
-            function animate() {
-                frame += 0.006;
-                ctx.clearRect(0, 0, width, height);
-                drawContours(frame);
-
-                particles.forEach((particle) => {
-                    particle.x += particle.speed;
-                    particle.y += Math.sin(frame * 2 + particle.phase + particle.x * 0.01) * 0.28;
-                    if (particle.x > width + 20) {
-                        particle.x = -20;
-                        particle.y = Math.random() * height;
-                    }
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, 1.7, 0, Math.PI * 2);
-                    ctx.fillStyle = particle.color;
-                    ctx.fill();
-                });
-
-                requestAnimationFrame(animate);
-            }
-
-            window.addEventListener('resize', resize);
-            resize();
-            animate();
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             updateVisitorCount();
             setupTheme();
@@ -1724,7 +1278,6 @@
             setupReveal();
             setupPublicationTools();
             secureExternalLinks();
-            setupClimateCanvas();
         });
     </script>
 </body>
