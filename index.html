@@ -345,7 +345,10 @@
                 padding: 15px;
             }
             h1 {
-                font-size: 2em;
+                font-size: 1.72em;
+                max-width: calc(100% - 70px);
+                margin-left: auto;
+                margin-right: auto;
             }
             .about-me-content, .research-content {
                 flex-direction: column;
@@ -411,27 +414,33 @@
         }
 
         :root {
-            --bg: #f4f8fb;
-            --bg-2: #e8f1f7;
+            --bg: #f5f9fb;
+            --bg-2: #e9f3f5;
             --surface: #ffffff;
+            --surface-soft: rgba(255, 255, 255, 0.72);
             --text: #1f2933;
             --muted: #607080;
             --accent: #0f766e;
             --accent-2: #0b5560;
+            --accent-warm: #d97706;
             --border: #d8e2ea;
             --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.1);
         }
 
         body.dark {
             --bg: #0f172a;
             --bg-2: #1e293b;
             --surface: #111827;
+            --surface-soft: rgba(17, 24, 39, 0.7);
             --text: #e2e8f0;
             --muted: #9ca3af;
             --accent: #34d399;
             --accent-2: #10b981;
+            --accent-warm: #fbbf24;
             --border: #334155;
             --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.42);
         }
 
         body {
@@ -441,6 +450,38 @@
                 linear-gradient(245deg, rgba(16, 185, 129, 0.16), transparent 36%),
                 linear-gradient(180deg, var(--bg), var(--bg-2));
             min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                linear-gradient(120deg, transparent 0 35%, rgba(34, 211, 238, 0.12) 42%, transparent 50% 100%),
+                linear-gradient(240deg, transparent 0 48%, rgba(245, 158, 11, 0.1) 54%, transparent 62% 100%);
+            background-size: 180% 180%, 220% 220%;
+            animation: auroraSweep 16s ease-in-out infinite alternate;
+            mix-blend-mode: screen;
+        }
+
+        .cursor-spotlight {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transform: translate3d(-50%, -50%, 0);
+            background:
+                radial-gradient(circle, rgba(34, 211, 238, 0.22), rgba(16, 185, 129, 0.12) 32%, transparent 68%);
+            filter: blur(4px);
+            mix-blend-mode: screen;
+            transition: opacity 0.25s ease;
         }
 
         .climate-canvas {
@@ -456,6 +497,7 @@
         .container {
             position: relative;
             z-index: 1;
+            max-width: 1180px;
         }
 
         #progress-bar {
@@ -482,6 +524,13 @@
             box-shadow: var(--shadow);
             cursor: pointer;
             z-index: 1200;
+            transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+        }
+
+        .theme-toggle:hover,
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            border-color: rgba(15, 118, 110, 0.42);
         }
 
         .theme-toggle {
@@ -510,9 +559,9 @@
                 repeating-linear-gradient(102deg, transparent 0 23px, rgba(255, 255, 255, 0.16) 24px, transparent 25px 48px);
             border: 1px solid var(--border);
             border-radius: 18px;
-            box-shadow: var(--shadow);
-            padding: 26px;
-            margin: 4px 0 18px;
+            box-shadow: var(--shadow-soft);
+            padding: 28px;
+            margin: 10px 0 20px;
             display: grid;
             grid-template-columns: 200px minmax(0, 1fr) 330px;
             gap: 24px;
@@ -531,10 +580,53 @@
             z-index: -1;
         }
 
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.26) 48%, transparent 56% 100%);
+            transform: translateX(-120%);
+            animation: heroScan 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .data-rain {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .data-rain span {
+            position: absolute;
+            left: var(--x);
+            top: 105%;
+            color: rgba(34, 211, 238, 0.34);
+            font-family: "Courier New", monospace;
+            font-size: 0.72em;
+            letter-spacing: 0.08em;
+            transform: rotate(-16deg);
+            animation: dataRise var(--speed) linear infinite;
+            animation-delay: var(--delay);
+            white-space: nowrap;
+        }
+
+        body.dark .data-rain span {
+            color: rgba(52, 211, 153, 0.3);
+        }
+
+        .hero > img,
+        .hero > div:not(.data-rain),
+        .hero > aside {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-photo {
             width: 200px;
             height: 200px;
-            border-radius: 20px;
+            border-radius: 24px;
             object-fit: cover;
             border: 2px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
@@ -543,12 +635,39 @@
         .hero h2 {
             margin: 0 0 10px;
             color: var(--accent-2);
-            font-size: 1.5em;
+            font-size: 1.65em;
+            line-height: 1.15;
         }
 
         .hero p {
             margin: 0 0 14px;
             color: var(--text);
+        }
+
+        .identity-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0 18px;
+            color: var(--muted);
+            font-size: 0.92em;
+        }
+
+        .identity-strip span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .identity-strip i {
+            color: var(--accent);
         }
 
         .signal-row {
@@ -561,7 +680,7 @@
         .signal-row span {
             border: 1px solid rgba(15, 118, 110, 0.25);
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.66);
             color: var(--accent-2);
             padding: 5px 10px;
             font-size: 0.82em;
@@ -579,13 +698,21 @@
         }
 
         .hero-cta a {
-            padding: 8px 14px;
+            padding: 9px 15px;
             border-radius: 999px;
             border: 1px solid var(--border);
             background: var(--surface);
             text-decoration: none;
             color: var(--text);
             font-size: 0.95em;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .hero-cta a:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+            border-color: rgba(15, 118, 110, 0.36);
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
         }
 
         .hero-cta a.primary {
@@ -599,9 +726,18 @@
             width: 100%;
             border: 1px solid var(--border);
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.68);
+            background: rgba(255, 255, 255, 0.74);
             box-shadow: 0 12px 26px rgba(15, 23, 42, 0.1);
             padding: 14px;
+            backdrop-filter: blur(12px);
+            transform-style: preserve-3d;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .field-panel:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 211, 238, 0.42);
+            box-shadow: 0 22px 44px rgba(15, 23, 42, 0.18);
         }
 
         body.dark .field-panel {
@@ -630,6 +766,7 @@
                 repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.1) 0 1px, transparent 1px 28px);
             display: grid;
             place-items: center;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
         .temperature-chart {
@@ -639,6 +776,11 @@
             object-fit: contain;
         }
 
+        .temperature-chart:hover,
+        .research-images img:hover {
+            transform: none;
+        }
+
         .field-metrics {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -646,6 +788,13 @@
             margin-top: 10px;
             font-size: 0.76em;
             color: var(--muted);
+        }
+
+        .field-metrics span {
+            min-width: 0;
+            padding: 8px 7px;
+            border-radius: 10px;
+            background: rgba(15, 118, 110, 0.06);
         }
 
         .field-metrics strong {
@@ -670,6 +819,32 @@
             background: var(--surface);
             box-shadow: var(--shadow);
             padding: 15px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .tilt-ready {
+            will-change: transform;
+        }
+
+        .expertise-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.34), transparent 32%, rgba(245, 158, 11, 0.26));
+            opacity: 0;
+            transition: opacity 0.22s ease;
+            pointer-events: none;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(15, 118, 110, 0.32);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .expertise-card:hover::before {
+            opacity: 1;
         }
 
         .expertise-card::after {
@@ -761,9 +936,53 @@
             box-shadow: var(--shadow);
         }
 
+        .section {
+            border: 1px solid var(--border);
+        }
+
         details summary,
         h3 {
             color: var(--accent-2);
+        }
+
+        h1 {
+            color: var(--text);
+            font-size: 2.75em;
+            letter-spacing: 0;
+            text-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        details {
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        details[open] {
+            border-color: rgba(15, 118, 110, 0.24);
+        }
+
+        details summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background:
+                linear-gradient(90deg, rgba(15, 118, 110, 0.08), transparent 52%),
+                var(--surface);
+        }
+
+        details summary::before {
+            content: "";
+            width: 9px;
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-warm));
+            flex: 0 0 auto;
+        }
+
+        details summary:hover {
+            background:
+                linear-gradient(90deg, rgba(15, 118, 110, 0.12), transparent 58%),
+                var(--surface);
         }
 
         body.dark h1 {
@@ -780,6 +999,206 @@
 
         body.dark .nav-links a:hover {
             color: var(--accent);
+        }
+
+        .nav-links {
+            gap: 10px;
+            border-bottom-color: var(--border);
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 11px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.34);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-links a:hover {
+            border-color: rgba(15, 118, 110, 0.24);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark .nav-links a {
+            background: rgba(17, 24, 39, 0.42);
+        }
+
+        body.dark .nav-links a:hover {
+            background: rgba(17, 24, 39, 0.76);
+        }
+
+        .section-nav {
+            position: sticky;
+            top: 10px;
+            z-index: 900;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            width: fit-content;
+            max-width: calc(100% - 20px);
+            margin: 0 auto 18px;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.66);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+
+        body.dark .section-nav {
+            background: rgba(17, 24, 39, 0.72);
+        }
+
+        .section-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 0.82em;
+            text-decoration: none;
+            transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+        }
+
+        .section-nav a:hover {
+            color: var(--accent-2);
+            background: rgba(15, 118, 110, 0.1);
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .feature-stage {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+            gap: 14px;
+            margin: 0 0 20px;
+        }
+
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background:
+                linear-gradient(140deg, rgba(15, 118, 110, 0.12), rgba(34, 211, 238, 0.05) 45%, rgba(245, 158, 11, 0.08)),
+                var(--surface);
+            box-shadow: var(--shadow-soft);
+            padding: 20px;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: -40% -20%;
+            background:
+                repeating-linear-gradient(100deg, transparent 0 36px, rgba(255, 255, 255, 0.14) 37px, transparent 39px 76px);
+            animation: climateFieldDrift 22s linear infinite;
+            pointer-events: none;
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--accent-2);
+            font-size: 0.74em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h2,
+        .feature-card h3 {
+            margin: 0 0 10px;
+            color: var(--text);
+            line-height: 1.12;
+        }
+
+        .feature-card h2 {
+            font-size: 1.75em;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            margin: 0 0 14px;
+        }
+
+        .feature-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .feature-actions a {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-soft);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.88em;
+        }
+
+        .feature-actions a:hover {
+            border-color: rgba(15, 118, 110, 0.38);
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+
+        .data-card {
+            display: grid;
+            gap: 12px;
+        }
+
+        .data-pill {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 10px;
+            align-items: center;
+            padding: 11px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        body.dark .data-pill {
+            background: rgba(15, 23, 42, 0.42);
+        }
+
+        .data-pill i {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(15, 118, 110, 0.12);
+            color: var(--accent-2);
+        }
+
+        .data-pill strong {
+            display: block;
+            color: var(--text);
+            font-size: 0.9em;
+        }
+
+        .data-pill span {
+            color: var(--muted);
+            font-size: 0.78em;
+            line-height: 1.3;
         }
 
         .pub-toolbar {
@@ -846,6 +1265,38 @@
             margin-top: 8px;
         }
 
+        #publications ol {
+            counter-reset: publication;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #publications ol li {
+            position: relative;
+            padding: 14px 16px 14px 48px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(15, 118, 110, 0.045), transparent 68%);
+        }
+
+        #publications ol li::before {
+            counter-increment: publication;
+            content: counter(publication);
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(15, 118, 110, 0.12);
+            color: var(--accent-2);
+            font-size: 0.72em;
+            font-weight: 700;
+        }
+
         .pub-actions button {
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -888,6 +1339,16 @@
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 22px;
+            }
+
+            .section-nav {
+                position: static;
+                border-radius: 18px;
+            }
+
+            .feature-stage {
+                grid-template-columns: 1fr;
             }
 
             .hero-photo {
@@ -918,6 +1379,69 @@
         }
 
         @media (max-width: 600px) {
+            .container {
+                padding-top: 72px;
+            }
+
+            .theme-toggle {
+                top: 12px;
+                right: 12px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .back-to-top {
+                right: 12px;
+                bottom: 16px;
+                width: 40px;
+                height: 40px;
+            }
+
+            h1 {
+                font-size: 1.72em;
+                max-width: calc(100% - 70px);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .identity-strip {
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .identity-strip span {
+                justify-content: center;
+                flex: 1 1 100%;
+            }
+
+            .section-nav {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                width: auto;
+                max-width: 100%;
+            }
+
+            .section-nav a {
+                justify-content: center;
+                padding: 8px;
+            }
+
+            .feature-card {
+                padding: 17px;
+            }
+
+            .feature-card h2 {
+                font-size: 1.35em;
+            }
+
+            .hero h2 {
+                font-size: 1.45em;
+            }
+
+            .field-map {
+                height: 175px;
+            }
+
             .expertise-grid,
             .climate-workflow {
                 grid-template-columns: 1fr;
@@ -936,6 +1460,34 @@
         @keyframes climateFieldDrift {
             from { transform: translateX(-18px); }
             to { transform: translateX(46px); }
+        }
+
+        @keyframes auroraSweep {
+            from { background-position: 0% 20%, 100% 30%; opacity: 0.7; }
+            to { background-position: 100% 80%, 0% 60%; opacity: 1; }
+        }
+
+        @keyframes heroScan {
+            0%, 45% { transform: translateX(-120%); opacity: 0; }
+            52% { opacity: 1; }
+            68%, 100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes dataRise {
+            from {
+                transform: translateY(0) rotate(-16deg);
+                opacity: 0;
+            }
+            12% {
+                opacity: 1;
+            }
+            88% {
+                opacity: 0.75;
+            }
+            to {
+                transform: translateY(-1400%) rotate(-16deg);
+                opacity: 0;
+            }
         }
 
         @keyframes mapSpin {
@@ -967,6 +1519,13 @@
             .climate-canvas {
                 display: none;
             }
+
+            body::before,
+            .hero::after,
+            .data-rain,
+            .cursor-spotlight {
+                display: none;
+            }
         }
 
         .nav-links {
@@ -977,16 +1536,22 @@
 <body>
     <div id="progress-bar"></div>
     <canvas class="climate-canvas" id="climate-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
     <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <div class="container">
-        <h1>Zilu Meng (孟子路)</h1> <!-- Simplified Title with Times New Roman/KaiTi font -->
+	    <div class="container">
+	        <h1>Zilu Meng (孟子路)</h1> <!-- Simplified Title with Times New Roman/KaiTi font -->
+	        <div class="identity-strip" aria-label="Current affiliation and research areas">
+	            <span><i class="fas fa-university"></i> University of Washington</span>
+	            <span><i class="fas fa-cloud-sun"></i> Climate & Atmospheric Science</span>
+	            <span><i class="fas fa-map-marker-alt"></i> Seattle, WA</span>
+	        </div>
 
-        <!-- Icon Links Navigation -->
+	        <!-- Icon Links Navigation -->
         <nav class="nav-links">
             <a href="mailto:zilumeng@uw.edu" title="Email" target="_blank">
                 <i class="fas fa-envelope"></i> Email
@@ -1012,10 +1577,30 @@
             <a href="https://orcid.org/0000-0001-5706-592X" title="ORCID" target="_blank">
                 <i class="fas fa-id-badge"></i> ORCID
             </a>
-        </nav>
+	        </nav>
 
-        <section class="hero reveal">
-            <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo">
+	        <nav class="section-nav" aria-label="Page sections">
+	            <a href="#about"><i class="fas fa-user"></i> About</a>
+	            <a href="#publications"><i class="fas fa-book-open"></i> Publications</a>
+	            <a href="#research"><i class="fas fa-flask"></i> Research</a>
+	            <a href="#data"><i class="fas fa-database"></i> Data</a>
+	            <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+	        </nav>
+
+	        <section class="hero reveal">
+	            <div class="data-rain" aria-hidden="true">
+	                <span style="--x: 7%; --speed: 11s; --delay: -2s;">ENSO</span>
+	                <span style="--x: 19%; --speed: 14s; --delay: -8s;">OHC</span>
+		                <span style="--x: 31%; --speed: 12s; --delay: -4s;">4D-VAR</span>
+		                <span style="--x: 47%; --speed: 16s; --delay: -10s;">PAGES2k</span>
+		                <span style="--x: 63%; --speed: 13s; --delay: -6s;">TEMP12k</span>
+		                <span style="--x: 78%; --speed: 15s; --delay: -12s;">BOREHOLES</span>
+		                <span style="--x: 91%; --speed: 12s; --delay: -1s;">SEA ICE</span>
+		                <span style="--x: 39%; --speed: 17s; --delay: -13s;">HEAT WAVES</span>
+		                <span style="--x: 56%; --speed: 10s; --delay: -5s;">REANALYSIS</span>
+		                <span style="--x: 84%; --speed: 18s; --delay: -15s;">NEURAL GCM</span>
+		            </div>
+	            <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo">
             <div>
                 <h2>Climate, Weather, and Data Science</h2>
                 <p>I study how Earth's climate has changed in the past and what that can teach us about the future. My work combines climate records, computer models, and machine learning to better understand patterns such as El Niño, sea ice change, heat waves, and cold spells.</p>
@@ -1045,9 +1630,38 @@
                     <span><strong>HadCRUT5</strong>Data</span>
                 </div>
             </aside>
-        </section>
+		        </section>
 
-        <section class="expertise-grid reveal" aria-label="Research focus areas">
+	        <section class="feature-stage reveal" aria-label="Featured research and data">
+	            <article class="feature-card">
+	                <div class="feature-eyebrow"><i class="fas fa-star"></i> Featured Work</div>
+	                <h2>Reconstructing climate history from many imperfect clues</h2>
+	                <p>
+	                    My latest LMR4D work combines records that see climate on different clocks, from annual tree-ring signals to long-memory borehole temperatures, into one physically guided reconstruction of past climate and ocean heat content.
+	                </p>
+	                <div class="feature-actions">
+	                    <a href="#research"><i class="fas fa-arrow-down"></i> Read highlight</a>
+	                    <a href="./assets/global_temperature_timeseries.svg" target="_blank"><i class="fas fa-chart-line"></i> Temperature context</a>
+	                </div>
+	            </article>
+	            <aside class="feature-card data-card">
+	                <div class="feature-eyebrow"><i class="fas fa-satellite-dish"></i> Research Signals</div>
+	                <div class="data-pill">
+	                    <i class="fas fa-tree"></i>
+	                    <div><strong>Proxy evidence</strong><span>Tree rings, corals, ice cores, boreholes, and other climate archives.</span></div>
+	                </div>
+	                <div class="data-pill">
+	                    <i class="fas fa-water"></i>
+	                    <div><strong>Coupled climate state</strong><span>Atmosphere, ocean, and sea ice reconstructed together.</span></div>
+	                </div>
+	                <div class="data-pill">
+	                    <i class="fas fa-fire"></i>
+	                    <div><strong>Modern context</strong><span>Past variability helps frame recent warming and ocean heat uptake.</span></div>
+	                </div>
+	            </aside>
+	        </section>
+
+	        <section class="expertise-grid reveal" aria-label="Research focus areas">
             <div class="expertise-card">
                 <i class="fas fa-tree"></i>
                 <strong>Proxy Networks</strong>
@@ -1071,7 +1685,7 @@
         </section>
 
         <!-- About Me Section -->
-        <details open class="reveal">
+	        <details open class="reveal" id="about">
             <summary>About Me</summary>
             <div class="section about-me-content">
                 <div class="about-me-text">
@@ -1094,7 +1708,7 @@
         </details>
 
         <!-- Publications Section -->
-        <details class="reveal" id="publications">
+	        <details class="reveal" id="publications">
             <summary>Publications</summary>
             <div class="section">
                 <div class="pub-toolbar">
@@ -1192,7 +1806,7 @@
         </details>
 
         <!-- Research Section -->
-            <details class="reveal">
+	            <details class="reveal" id="research">
             <summary>Research Highlights</summary>
             <div class="section">
                 <h3>Multiscale proxy data assimilation using weak-constraint 4D-Var</h3>
@@ -1258,7 +1872,7 @@
         </details>
 
         <!-- Data Section -->
-        <details class="reveal">
+	        <details class="reveal" id="data">
             <summary>Data</summary>
             <div class="section">
                 <h3>LMR Seasonal - Last Millennium Reanalysis with Seasonal Resolution</h3>
@@ -1286,7 +1900,7 @@
             </div>
         </details>
         <!-- Education Section -->
-        <details class="reveal">
+	        <details class="reveal" id="education">
             <summary>Education</summary>
             <div class="section">
                  <dl class="education-list">
@@ -1718,6 +2332,54 @@
             animate();
         }
 
+        function setupInteractiveMotion() {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+            if (prefersReducedMotion || !isFinePointer) return;
+
+            const spotlight = document.getElementById('cursor-spotlight');
+            if (spotlight) {
+                let targetX = window.innerWidth / 2;
+                let targetY = window.innerHeight / 2;
+                let currentX = targetX;
+                let currentY = targetY;
+
+                window.addEventListener('pointermove', (event) => {
+                    targetX = event.clientX;
+                    targetY = event.clientY;
+                    spotlight.style.opacity = '1';
+                });
+
+                window.addEventListener('pointerleave', () => {
+                    spotlight.style.opacity = '0';
+                });
+
+                function animateSpotlight() {
+                    currentX += (targetX - currentX) * 0.14;
+                    currentY += (targetY - currentY) * 0.14;
+                    spotlight.style.transform = `translate3d(${currentX - 180}px, ${currentY - 180}px, 0)`;
+                    requestAnimationFrame(animateSpotlight);
+                }
+                animateSpotlight();
+            }
+
+            const tiltCards = document.querySelectorAll('.hero, .feature-card, .expertise-card, .field-panel');
+            tiltCards.forEach((card) => {
+                card.classList.add('tilt-ready');
+                card.addEventListener('pointermove', (event) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width - 0.5;
+                    const y = (event.clientY - rect.top) / rect.height - 0.5;
+                    const rotateX = (-y * 4).toFixed(2);
+                    const rotateY = (x * 4).toFixed(2);
+                    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+                });
+                card.addEventListener('pointerleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             updateVisitorCount();
             setupTheme();
@@ -1726,6 +2388,7 @@
             setupPublicationTools();
             secureExternalLinks();
             setupClimateCanvas();
+            setupInteractiveMotion();
         });
     </script>
 </body>
