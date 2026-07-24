@@ -1316,6 +1316,210 @@
             display: none;
         }
 
+        .peer-review summary .review-total {
+            margin-left: auto;
+            margin-right: 34px;
+            color: var(--muted);
+            font-size: 0.58em;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .peer-review-section {
+            padding: 0 !important;
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .review-intro {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 18px;
+            align-items: center;
+            padding: 24px 26px 18px;
+        }
+
+        .review-intro .review-number {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 3.5em;
+            line-height: 0.9;
+            color: var(--accent-2);
+        }
+
+        .review-intro strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.05em;
+            margin-bottom: 4px;
+        }
+
+        .review-intro p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9em;
+        }
+
+        .journal-shelf {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 17px;
+            align-items: end;
+            padding: 28px 26px 36px;
+            overflow: hidden;
+            perspective: 900px;
+            background:
+                linear-gradient(180deg, rgba(14, 116, 144, 0.04), rgba(15, 118, 110, 0.1)),
+                repeating-linear-gradient(0deg, transparent 0 31px, rgba(14, 116, 144, 0.05) 32px);
+        }
+
+        .journal-shelf::after {
+            content: "";
+            position: absolute;
+            right: 18px;
+            bottom: 20px;
+            left: 18px;
+            height: 10px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #0f766e, #22d3ee 46%, #f59e0b);
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.2);
+        }
+
+        .journal-cover {
+            --tilt: 0deg;
+            position: relative;
+            z-index: 1;
+            display: block;
+            aspect-ratio: 0.76;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 5px;
+            background: #e2e8f0;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.2);
+            transform: rotate(var(--tilt));
+            transform-origin: center bottom;
+            animation: coverFloat 5.6s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .journal-cover:hover {
+            z-index: 3;
+            text-decoration: none;
+            transform: rotate(0deg) translateY(-12px) scale(1.055);
+            box-shadow: 0 24px 42px rgba(15, 23, 42, 0.32);
+        }
+
+        .journal-cover img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 0;
+            object-fit: cover;
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .journal-cover:hover img {
+            transform: scale(1.035);
+            filter: saturate(1.08);
+        }
+
+        .journal-cover::after {
+            content: "";
+            position: absolute;
+            inset: -45% -80%;
+            background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.46) 49%, transparent 56%);
+            transform: translateX(-40%);
+            transition: transform 0.65s ease;
+            pointer-events: none;
+        }
+
+        .journal-cover:hover::after {
+            transform: translateX(38%);
+        }
+
+        .cover-count {
+            position: absolute;
+            z-index: 2;
+            top: 8px;
+            right: 8px;
+            display: grid;
+            place-items: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 7px;
+            border-radius: 999px;
+            background: rgba(7, 18, 30, 0.82);
+            color: #fff;
+            font-size: 0.72em;
+            font-weight: 800;
+            backdrop-filter: blur(8px);
+        }
+
+        .cover-label {
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            min-height: 48px;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px 9px 9px;
+            color: #fff;
+            font-size: 0.68em;
+            font-weight: 800;
+            line-height: 1.18;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.72);
+            background: linear-gradient(transparent, rgba(3, 12, 22, 0.92));
+        }
+
+        .review-more {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: start;
+            padding: 23px 26px 27px;
+        }
+
+        .review-more h4 {
+            margin: 2px 0 0;
+            color: var(--text);
+            font-size: 0.88em;
+            white-space: nowrap;
+        }
+
+        .review-journal-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 9px 28px;
+            margin: 0 !important;
+            padding: 0 !important;
+            list-style: none;
+        }
+
+        .review-journal-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0;
+            padding: 0 0 7px;
+            color: var(--muted);
+            font-size: 0.8em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .review-journal-list span {
+            color: var(--accent-2);
+            font-weight: 800;
+        }
+
+        @keyframes coverFloat {
+            0%, 100% { transform: rotate(var(--tilt)) translateY(0); }
+            50% { transform: rotate(var(--tilt)) translateY(-4px); }
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(14px);
@@ -1375,6 +1579,10 @@
 
             .pub-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .journal-shelf {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
 
@@ -1444,6 +1652,42 @@
 
             .expertise-grid,
             .climate-workflow {
+                grid-template-columns: 1fr;
+            }
+
+            .peer-review summary .review-total {
+                display: none;
+            }
+
+            .review-intro {
+                padding: 20px;
+            }
+
+            .review-number {
+                font-size: 2.8em;
+            }
+
+            .journal-shelf {
+                display: flex;
+                gap: 14px;
+                padding: 25px 20px 34px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: thin;
+            }
+
+            .journal-cover {
+                flex: 0 0 138px;
+                scroll-snap-align: start;
+            }
+
+            .review-more {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 21px 20px 24px;
+            }
+
+            .review-journal-list {
                 grid-template-columns: 1fr;
             }
 
@@ -2026,24 +2270,64 @@
         </details>
 
         <!-- Peer Review Summary Section -->
-        <details class="reveal">
-            <summary>Peer Review Service</summary>
-            <div class="section">
-                 <ul> <!-- Using a list might be slightly better than separate paragraphs -->
-                     <li>Earth System Science Data (3)</li>
-                     <li>PLOS ONE (3)</li>
-                     <li>Journal of Advances in Modeling Earth Systems (2) </li>
-                     <li>Journal of Climate (1)</li>
-                     <li>Climate Dynamics (1)</li>
-                     <li>JGR: Machine Learning and Computation (1)</li>
-                     <li>JGR Atmosphere (1)</li>
-                     <li>Atmosphere (1)</li>
-                     <li>Radio Science (1)</li>
-                     <li>Frontiers in Earth Science (1)</li>
-                     <li>npj Climate and Atmospheric Science (2)</li>
-                     <li>Geoscientific Model Development (1)</li> 
-                 </ul>
-                 <p><small><i>Summary of completed reviews.</i></small></p>
+        <details class="reveal peer-review">
+            <summary>
+                <span>Peer Review Service</span>
+                <span class="review-total">18 completed reviews · 12 journals</span>
+            </summary>
+            <div class="section peer-review-section">
+                <div class="review-intro">
+                    <strong class="review-number">18</strong>
+                    <div>
+                        <strong>Completed peer reviews</strong>
+                        <p>Supporting rigorous, open, and reproducible research across climate, weather, and Earth system science.</p>
+                    </div>
+                </div>
+
+                <div class="journal-shelf" aria-label="Selected journals reviewed for">
+                    <a class="journal-cover" href="https://www.earth-system-science-data.net/" target="_blank" rel="noopener" style="--tilt: -1.6deg; --delay: -0.4s;" aria-label="Earth System Science Data, 3 reviews">
+                        <img src="./assets/journal-covers/essd.jpg" alt="Earth System Science Data journal cover" loading="lazy" decoding="async">
+                        <span class="cover-count">3×</span>
+                        <span class="cover-label">Earth System Science Data</span>
+                    </a>
+                    <a class="journal-cover" href="https://agupubs.onlinelibrary.wiley.com/journal/19422466" target="_blank" rel="noopener" style="--tilt: 1.2deg; --delay: -1.8s;" aria-label="Journal of Advances in Modeling Earth Systems, 2 reviews">
+                        <img src="./assets/journal-covers/james.jpg" alt="Journal of Advances in Modeling Earth Systems cover" loading="lazy" decoding="async">
+                        <span class="cover-count">2×</span>
+                        <span class="cover-label">JAMES</span>
+                    </a>
+                    <a class="journal-cover" href="https://www.ametsoc.org/ams/publications/journals/journal-of-climate/" target="_blank" rel="noopener" style="--tilt: -0.7deg; --delay: -2.8s;" aria-label="Journal of Climate, 1 review">
+                        <img src="./assets/journal-covers/journal-of-climate.png" alt="Journal of Climate journal cover" loading="lazy" decoding="async">
+                        <span class="cover-count">1×</span>
+                        <span class="cover-label">Journal of Climate</span>
+                    </a>
+                    <a class="journal-cover" href="https://www.nature.com/npjclimatsci/" target="_blank" rel="noopener" style="--tilt: 1.7deg; --delay: -3.7s;" aria-label="npj Climate and Atmospheric Science, 2 reviews">
+                        <img src="./assets/journal-covers/npj-climate.jpg" alt="npj Climate and Atmospheric Science journal artwork" loading="lazy" decoding="async">
+                        <span class="cover-count">2×</span>
+                        <span class="cover-label">npj Climate and Atmospheric Science</span>
+                    </a>
+                    <a class="journal-cover" href="https://link.springer.com/journal/382" target="_blank" rel="noopener" style="--tilt: -1.2deg; --delay: -1.1s;" aria-label="Climate Dynamics, 1 review">
+                        <img src="./assets/journal-covers/climate-dynamics.jpg" alt="Climate Dynamics journal cover" loading="lazy" decoding="async">
+                        <span class="cover-count">1×</span>
+                        <span class="cover-label">Climate Dynamics</span>
+                    </a>
+                    <a class="journal-cover" href="https://www.geoscientific-model-development.net/" target="_blank" rel="noopener" style="--tilt: 0.8deg; --delay: -2.2s;" aria-label="Geoscientific Model Development, 1 review">
+                        <img src="./assets/journal-covers/gmd.jpg" alt="Geoscientific Model Development journal cover" loading="lazy" decoding="async">
+                        <span class="cover-count">1×</span>
+                        <span class="cover-label">Geoscientific Model Development</span>
+                    </a>
+                </div>
+
+                <div class="review-more">
+                    <h4>Also reviewed for</h4>
+                    <ul class="review-journal-list">
+                        <li>PLOS ONE <span>3×</span></li>
+                        <li>JGR: Machine Learning and Computation <span>1×</span></li>
+                        <li>JGR: Atmospheres <span>1×</span></li>
+                        <li>Atmosphere <span>1×</span></li>
+                        <li>Radio Science <span>1×</span></li>
+                        <li>Frontiers in Earth Science <span>1×</span></li>
+                    </ul>
+                </div>
             </div>
         </details>
                 <!-- Visitor Counter Box -->
@@ -2063,7 +2347,7 @@
 
         <!-- Footer -->
         <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;">
-            <p>© 2025 Zilu Meng. Last updated: Jul 2025</p> 
+            <p>© 2026 Zilu Meng. Last updated: Jul 2026</p>
             <!-- Remember to update the date here manually when you make changes -->
         </footer>
         
