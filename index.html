@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="theme-color" name="theme-color" content="#f3f7fa">
     <title>Zilu Meng's Academic Page</title>
 
     <!-- Font Awesome (ensure integrity hash is correct if using) -->
@@ -342,6 +343,16 @@
             --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.1);
         }
 
+        html {
+            background: #f3f7fa;
+            color-scheme: light;
+        }
+
+        html.dark {
+            background: #0f172a;
+            color-scheme: dark;
+        }
+
         body.dark {
             --bg: #0f172a;
             --bg-2: #1e293b;
@@ -673,6 +684,11 @@
             color: var(--accent-2);
         }
 
+        details summary,
+        details[open] summary {
+            border-bottom-color: var(--border);
+        }
+
         h1 {
             color: var(--text);
             font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti SC", STSong, Georgia, serif;
@@ -868,115 +884,271 @@
             flex-wrap: nowrap;
         }
 
-        .pub-toolbar {
+        .publication-section {
+            padding: 0 !important;
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .pub-overview {
             display: grid;
-            gap: 12px;
-            margin-bottom: 14px;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 28px;
+            padding: 24px 26px;
+            border-bottom: 1px solid var(--border);
+            background:
+                linear-gradient(110deg, rgba(14, 116, 144, 0.12), transparent 48%),
+                linear-gradient(290deg, rgba(245, 158, 11, 0.08), transparent 42%);
         }
 
-        #pub-search {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--text);
-            font-size: 0.95em;
-        }
-
-        .chip-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .chip {
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--muted);
-            border-radius: 999px;
-            padding: 6px 12px;
-            font-size: 0.85em;
-            cursor: pointer;
-        }
-
-        .chip.active {
-            background: rgba(15, 118, 110, 0.15);
+        .pub-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 6px;
             color: var(--accent-2);
-            border-color: rgba(15, 118, 110, 0.32);
+            font-size: 0.68em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .pub-kicker i {
+            color: var(--accent-warm);
+        }
+
+        .pub-overview h3 {
+            margin: 0 0 5px;
+            color: var(--text);
+            font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+            font-size: 1.35em;
+        }
+
+        .pub-overview p {
+            max-width: 700px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.84em;
         }
 
         .pub-stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin-bottom: 14px;
+            display: flex;
+            align-items: stretch;
         }
 
         .pub-stat {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 10px;
-            background: linear-gradient(145deg, rgba(15, 118, 110, 0.08), rgba(34, 211, 238, 0.04));
+            min-width: 86px;
+            padding: 4px 16px;
+            color: var(--muted);
+            font-size: 0.68em;
+            text-align: center;
+        }
+
+        .pub-stat + .pub-stat {
+            border-left: 1px solid var(--border);
         }
 
         .pub-stat strong {
-            font-size: 1.15em;
             display: block;
             color: var(--accent-2);
+            font-family: "Iowan Old Style", Georgia, serif;
+            font-size: 2em;
+            line-height: 1;
         }
 
-        .pub-actions {
+        .pub-toolbar {
+            display: grid;
+            gap: 11px;
+            padding: 17px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        body.dark .pub-toolbar {
+            background: rgba(15, 23, 42, 0.22);
+        }
+
+        .pub-search-wrap {
+            position: relative;
+        }
+
+        .pub-search-wrap i {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            color: var(--muted);
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        #pub-search {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px 12px 10px 38px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 0.88em;
+        }
+
+        .pub-filters {
             display: flex;
-            gap: 8px;
-            margin-top: 8px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .pub-filter-group,
+        .chip-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .pub-filter-label {
+            color: var(--muted);
+            font-size: 0.7em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .chip {
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            border-radius: 999px;
+            padding: 5px 9px;
+            font-size: 0.73em;
+            cursor: pointer;
+        }
+
+        .chip:hover {
+            color: var(--accent-2);
+            background: rgba(15, 118, 110, 0.07);
+        }
+
+        .chip.active {
+            background: rgba(15, 118, 110, 0.13);
+            color: var(--accent-2);
+            border-color: rgba(15, 118, 110, 0.24);
         }
 
         #publications ol {
-            counter-reset: publication;
             list-style: none;
-            padding-left: 0;
+            margin: 0;
+            padding: 0;
         }
 
         #publications ol li {
             position: relative;
-            padding: 14px 16px 14px 48px;
-            margin-bottom: 12px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: linear-gradient(145deg, rgba(15, 118, 110, 0.045), transparent 68%);
+            margin: 0;
+            padding: 19px 24px 18px 104px;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.86em;
+            line-height: 1.58;
+            transition: background 0.18s ease, border-color 0.18s ease;
+        }
+
+        #publications ol li:last-child {
+            border-bottom: 0;
+        }
+
+        #publications ol li:hover {
+            background: linear-gradient(90deg, rgba(15, 118, 110, 0.07), transparent 72%);
         }
 
         #publications ol li::before {
-            counter-increment: publication;
-            content: counter(publication);
+            content: attr(data-year);
             position: absolute;
-            left: 14px;
-            top: 14px;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: rgba(15, 118, 110, 0.12);
+            left: 24px;
+            top: 19px;
             color: var(--accent-2);
-            font-size: 0.72em;
+            font-family: "Iowan Old Style", Georgia, serif;
+            font-size: 1.15em;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        #publications ol li.first-author {
+            box-shadow: inset 3px 0 0 rgba(15, 118, 110, 0.7);
+        }
+
+        #publications ol li strong {
+            color: var(--text);
+        }
+
+        #publications ol li em {
+            color: var(--accent-2);
             font-weight: 700;
         }
 
-        .pub-actions button {
+        .pub-badges {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 5px;
+        }
+
+        .pub-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent-2);
+            font-size: 0.7em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .pub-status.preprint {
+            color: #b45309;
+        }
+
+        .pub-resource {
+            display: inline-flex;
+            align-items: center;
+            margin: 2px 2px;
+            padding: 2px 6px;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--surface);
+            border-radius: 5px;
+            color: var(--accent-2);
+            background: var(--surface-soft);
+            font-size: 0.82em;
+            line-height: 1.35;
+            text-decoration: none;
+        }
+
+        .pub-resource:hover {
+            border-color: rgba(15, 118, 110, 0.38);
+            text-decoration: none;
+        }
+
+        .pub-actions {
+            display: flex;
+            gap: 7px;
+            margin-top: 8px;
+        }
+
+        .pub-actions button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 0;
+            background: transparent;
             color: var(--muted);
-            font-size: 0.8em;
-            padding: 4px 8px;
+            font-size: 0.72em;
+            padding: 3px 0;
             cursor: pointer;
+        }
+
+        .pub-actions button + button {
+            margin-left: 7px;
         }
 
         .pub-actions button:hover {
             color: var(--accent-2);
-            border-color: var(--accent);
         }
 
         .hidden-pub {
@@ -1653,7 +1825,7 @@
             position: relative;
             display: block;
             box-sizing: border-box;
-            width: min(100%, 620px);
+            width: min(100%, 310px);
             margin-top: 13px;
             overflow: hidden;
             border: 1px solid var(--border);
@@ -1980,7 +2152,17 @@
             }
 
             .pub-stats {
+                justify-content: flex-start;
+            }
+
+            .pub-overview {
                 grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .pub-filters {
+                align-items: flex-start;
+                flex-direction: column;
             }
 
             .journal-shelf {
@@ -2056,6 +2238,32 @@
                 width: 36px;
                 height: 36px;
                 min-height: 36px;
+            }
+
+            .pub-overview {
+                padding: 20px;
+            }
+
+            .pub-toolbar {
+                padding: 15px 18px;
+            }
+
+            .pub-stat {
+                min-width: 0;
+                padding: 3px 12px;
+            }
+
+            .pub-stat:first-child {
+                padding-left: 0;
+            }
+
+            #publications ol li {
+                padding: 50px 18px 17px;
+            }
+
+            #publications ol li::before {
+                left: 18px;
+                top: 17px;
             }
 
             .section-nav {
@@ -2498,31 +2706,49 @@
         <!-- Publications Section -->
 	        <details class="reveal" id="publications">
             <summary>Publications</summary>
-            <div class="section">
+            <div class="section publication-section">
+                <div class="pub-overview">
+                    <div>
+                        <span class="pub-kicker"><i class="fas fa-book-open"></i> Research output</span>
+                        <h3>Climate dynamics across data, models, and time</h3>
+                        <p>Peer-reviewed articles and preprints spanning paleoclimate reconstruction, data assimilation, ENSO, and machine-learning Earth system models.</p>
+                    </div>
+                    <div class="pub-stats" aria-label="Publication statistics">
+                        <div class="pub-stat"><strong id="stat-total">0</strong>Total</div>
+                        <div class="pub-stat"><strong id="stat-first">0</strong>First author</div>
+                        <div class="pub-stat"><strong id="stat-year">0</strong>Showing</div>
+                    </div>
+                </div>
                 <div class="pub-toolbar">
-                    <input id="pub-search" type="search" placeholder="Search title, author, journal...">
-                    <div class="chip-row" id="pub-tags">
-                        <button class="chip active" data-tag="all">All</button>
-                        <button class="chip" data-tag="data-assimilation">Data Assimilation</button>
-                        <button class="chip" data-tag="machine-learning">Machine Learning</button>
-                        <button class="chip" data-tag="enso">ENSO</button>
-                        <button class="chip" data-tag="paleoclimate">Paleoclimate</button>
+                    <div class="pub-search-wrap">
+                        <i class="fas fa-search"></i>
+                        <input id="pub-search" type="search" placeholder="Search title, author, or journal" aria-label="Search publications">
                     </div>
-                    <div class="chip-row" id="pub-years">
-                        <button class="chip active" data-year="all">All Years</button>
-                        <button class="chip" data-year="2026">2026</button>
-                        <button class="chip" data-year="2025">2025</button>
-                        <button class="chip" data-year="2024">2024</button>
-                        <button class="chip" data-year="2023">2023</button>
-                        <button class="chip" data-year="2021">2021</button>
+                    <div class="pub-filters">
+                        <div class="pub-filter-group">
+                            <span class="pub-filter-label">Topic</span>
+                            <div class="chip-row" id="pub-tags">
+                                <button class="chip active" data-tag="all">All</button>
+                                <button class="chip" data-tag="data-assimilation">Data Assimilation</button>
+                                <button class="chip" data-tag="machine-learning">Machine Learning</button>
+                                <button class="chip" data-tag="enso">ENSO</button>
+                                <button class="chip" data-tag="paleoclimate">Paleoclimate</button>
+                            </div>
+                        </div>
+                        <div class="pub-filter-group">
+                            <span class="pub-filter-label">Year</span>
+                            <div class="chip-row" id="pub-years">
+                                <button class="chip active" data-year="all">All</button>
+                                <button class="chip" data-year="2026">2026</button>
+                                <button class="chip" data-year="2025">2025</button>
+                                <button class="chip" data-year="2024">2024</button>
+                                <button class="chip" data-year="2023">2023</button>
+                                <button class="chip" data-year="2021">2021</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="pub-stats">
-                    <div class="pub-stat"><strong id="stat-total">0</strong>Total publications</div>
-                    <div class="pub-stat"><strong id="stat-first">0</strong>First-author papers</div>
-                    <div class="pub-stat"><strong id="stat-year">0</strong>Selected year papers</div>
-                </div>
-                <ol reversed>
+                <ol class="pub-list">
                     <li>
                         Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong>Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2025). 
                         Progresses and Prospects of Paleoclimate Data Assimilation. 
@@ -3124,19 +3350,26 @@
     <script>
         function setupTheme() {
             const themeToggle = document.getElementById('theme-toggle');
+            const themeColor = document.getElementById('theme-color');
             const storedTheme = localStorage.getItem('homepage-theme');
             if (storedTheme === 'dark') {
                 document.body.classList.add('dark');
+                document.documentElement.classList.add('dark');
             }
             const setIcon = () => {
-                themeToggle.innerHTML = document.body.classList.contains('dark')
+                const isDark = document.body.classList.contains('dark');
+                document.documentElement.classList.toggle('dark', isDark);
+                themeColor.setAttribute('content', isDark ? '#0f172a' : '#f3f7fa');
+                themeToggle.innerHTML = isDark
                     ? '<i class="fas fa-sun"></i>'
                     : '<i class="fas fa-moon"></i>';
             };
             setIcon();
             themeToggle.addEventListener('click', () => {
                 document.body.classList.toggle('dark');
-                localStorage.setItem('homepage-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+                const isDark = document.body.classList.contains('dark');
+                document.documentElement.classList.toggle('dark', isDark);
+                localStorage.setItem('homepage-theme', isDark ? 'dark' : 'light');
                 setIcon();
             });
         }
@@ -3244,6 +3477,7 @@
             const statTotal = document.getElementById('stat-total');
             const statFirst = document.getElementById('stat-first');
             const statYear = document.getElementById('stat-year');
+            const list = pubRoot.querySelector('.pub-list');
 
             items.forEach((li, idx) => {
                 const text = li.textContent.replace(/\s+/g, ' ').trim();
@@ -3252,26 +3486,63 @@
                 li.dataset.year = yearMatch ? yearMatch[1] : '';
                 li.dataset.tags = tags.join(',');
                 li.dataset.firstAuthor = text.startsWith('Meng, Z.') ? '1' : '0';
+                li.dataset.searchText = text.toLowerCase();
+                li.classList.toggle('first-author', li.dataset.firstAuthor === '1');
+
+                const isPreprint = /arxiv/i.test(text);
+                const isJournal = Boolean(li.querySelector('em'));
+                const badges = document.createElement('div');
+                badges.className = 'pub-badges';
+
+                const status = document.createElement('span');
+                status.className = `pub-status${isPreprint ? ' preprint' : ''}`;
+                status.innerHTML = isPreprint
+                    ? '<i class="fas fa-file-alt"></i> Preprint'
+                    : isJournal
+                        ? '<i class="fas fa-book"></i> Journal article'
+                        : '<i class="fas fa-pen-nib"></i> Manuscript';
+                badges.appendChild(status);
+
+                if (li.dataset.firstAuthor === '1') {
+                    const firstAuthor = document.createElement('span');
+                    firstAuthor.className = 'pub-status';
+                    firstAuthor.innerHTML = '<i class="fas fa-user"></i> First author';
+                    badges.appendChild(firstAuthor);
+                }
+                li.prepend(badges);
+
+                li.querySelectorAll('a').forEach((link) => {
+                    const href = (link.getAttribute('href') || '').toLowerCase();
+                    const originalLabel = link.textContent.replace(/[\[\]]/g, '').trim();
+                    link.classList.add('pub-resource');
+                    link.title = originalLabel;
+
+                    if (href.includes('doi.org')) link.textContent = 'DOI';
+                    else if (href.includes('arxiv.org')) link.textContent = 'Preprint';
+                    else if (href.includes('github.com')) link.textContent = 'Code';
+                    else if (href.includes('bilibili.com')) link.textContent = 'Video';
+                    else if (href.endsWith('.pdf')) link.textContent = originalLabel || 'PDF';
+                });
 
                 const actions = document.createElement('div');
                 actions.className = 'pub-actions';
                 const citationButton = document.createElement('button');
                 citationButton.type = 'button';
-                citationButton.textContent = 'Copy Citation';
+                citationButton.innerHTML = '<i class="fas fa-copy"></i> Copy citation';
                 citationButton.addEventListener('click', async () => {
                     await navigator.clipboard.writeText(text);
-                    citationButton.textContent = 'Copied';
-                    setTimeout(() => { citationButton.textContent = 'Copy Citation'; }, 1200);
+                    citationButton.innerHTML = '<i class="fas fa-check"></i> Copied';
+                    setTimeout(() => { citationButton.innerHTML = '<i class="fas fa-copy"></i> Copy citation'; }, 1200);
                 });
 
                 const bibButton = document.createElement('button');
                 bibButton.type = 'button';
-                bibButton.textContent = 'Copy BibTeX';
+                bibButton.innerHTML = '<i class="fas fa-code"></i> Copy BibTeX';
                 bibButton.addEventListener('click', async () => {
                     const bib = buildBibtex(text, li.dataset.year, idx);
                     await navigator.clipboard.writeText(bib);
-                    bibButton.textContent = 'Copied';
-                    setTimeout(() => { bibButton.textContent = 'Copy BibTeX'; }, 1200);
+                    bibButton.innerHTML = '<i class="fas fa-check"></i> Copied';
+                    setTimeout(() => { bibButton.innerHTML = '<i class="fas fa-code"></i> Copy BibTeX'; }, 1200);
                 });
 
                 actions.appendChild(citationButton);
@@ -3279,24 +3550,26 @@
                 li.appendChild(actions);
             });
 
+            items
+                .sort((a, b) => Number(b.dataset.year) - Number(a.dataset.year))
+                .forEach((li) => list.appendChild(li));
+
             let activeTag = 'all';
             let activeYear = 'all';
 
             function updateStats() {
-                const selectedYearCount = items.filter((li) => activeYear === 'all' || li.dataset.year === activeYear).length;
                 statTotal.textContent = String(items.length);
                 statFirst.textContent = String(items.filter((li) => li.dataset.firstAuthor === '1').length);
-                statYear.textContent = String(selectedYearCount);
+                statYear.textContent = String(items.filter((li) => !li.classList.contains('hidden-pub')).length);
             }
 
             function applyFilter() {
                 const q = searchInput.value.toLowerCase().trim();
                 items.forEach((li) => {
-                    const text = li.textContent.toLowerCase();
                     const tags = li.dataset.tags ? li.dataset.tags.split(',') : [];
                     const byTag = activeTag === 'all' || tags.includes(activeTag);
                     const byYear = activeYear === 'all' || li.dataset.year === activeYear;
-                    const bySearch = !q || text.includes(q);
+                    const bySearch = !q || li.dataset.searchText.includes(q);
                     li.classList.toggle('hidden-pub', !(byTag && byYear && bySearch));
                 });
                 updateStats();
