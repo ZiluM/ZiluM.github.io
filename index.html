@@ -932,6 +932,30 @@
             font-size: 0.84em;
         }
 
+        .pub-scholar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 12px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+            color: var(--accent-2);
+            font-size: 0.78em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+        }
+
+        .pub-scholar-link:hover {
+            color: var(--accent);
+            border-color: currentColor;
+            transform: translateY(-1px);
+        }
+
+        .pub-scholar-link .fa-arrow-up-right-from-square {
+            font-size: 0.78em;
+        }
+
         .pub-stats {
             display: flex;
             align-items: stretch;
@@ -2712,6 +2736,11 @@
                         <span class="pub-kicker"><i class="fas fa-book-open"></i> Research output</span>
                         <h3>Climate dynamics across data, models, and time</h3>
                         <p>Peer-reviewed articles and preprints spanning paleoclimate reconstruction, data assimilation, ENSO, and machine-learning Earth system models.</p>
+                        <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <span>View all on Google Scholar</span>
+                            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
                     </div>
                     <div class="pub-stats" aria-label="Publication statistics">
                         <div class="pub-stat"><strong id="stat-total">0</strong>Total</div>
