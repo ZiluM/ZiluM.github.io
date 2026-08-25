@@ -1168,6 +1168,14 @@
             color: #b45309;
         }
 
+        .pub-status.accepted {
+            color: #15803d;
+        }
+
+        body.dark .pub-status.accepted {
+            color: #4ade80;
+        }
+
         .pub-resource {
             display: inline-flex;
             align-items: center;
@@ -2845,8 +2853,9 @@
                         <em>Geophysical Research Letters</em>, 53(3), e2025GL117990.
                         <a href="https://doi.org/10.1029/2025GL117990" target="_blank">https://doi.org/10.1029/2025GL117990</a>.
                     </li>                    
-                     <li>
-                        <strong>Meng, Z.</strong>, & Polvani, L. M. (2026). No evidence for significant warming or cooling in Eurasian winter response to major volcanic eruptions over the last millennium.
+                     <li data-status="accepted">
+                        <strong>Meng, Z.</strong>, & Polvani, L. M. (2026). No evidence of statistically significant Eurasian winter warming or cooling caused by large eruptions over the last millennium.
+                        <em>npj Climate and Atmospheric Science</em>, accepted.
                         <!-- [<a href="./slides/Mar27NNU.pdf" target="_blank">Slides</a>]. -->
                     </li>
                     <li>
@@ -3576,16 +3585,19 @@
 
                 const isPreprint = /arxiv/i.test(text);
                 const isJournal = Boolean(li.querySelector('em'));
+                const isAccepted = li.dataset.status === 'accepted';
                 const badges = document.createElement('div');
                 badges.className = 'pub-badges';
 
                 const status = document.createElement('span');
-                status.className = `pub-status${isPreprint ? ' preprint' : ''}`;
-                status.innerHTML = isPreprint
-                    ? '<i class="fas fa-file-alt"></i> Preprint'
-                    : isJournal
-                        ? '<i class="fas fa-book"></i> Journal article'
-                        : '<i class="fas fa-pen-nib"></i> Manuscript';
+                status.className = `pub-status${isAccepted ? ' accepted' : isPreprint ? ' preprint' : ''}`;
+                status.innerHTML = isAccepted
+                    ? '<i class="fas fa-circle-check"></i> Accepted'
+                    : isPreprint
+                        ? '<i class="fas fa-file-alt"></i> Preprint'
+                        : isJournal
+                            ? '<i class="fas fa-book"></i> Journal article'
+                            : '<i class="fas fa-pen-nib"></i> Manuscript';
                 badges.appendChild(status);
 
                 if (li.dataset.firstAuthor === '1') {
