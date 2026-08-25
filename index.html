@@ -757,18 +757,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            min-height: 40px;
-            padding: 0;
+            gap: 6px;
+            width: auto;
+            height: 36px;
+            min-height: 36px;
+            padding: 0 10px;
             border: 1px solid var(--border);
-            border-radius: 50%;
+            border-radius: 5px;
             background: rgba(255, 255, 255, 0.42);
             backdrop-filter: blur(8px);
+            font-size: 0.72em;
+            font-weight: 800;
         }
 
         .nav-links i {
             margin: 0;
+        }
+
+        .nav-links .cv-link {
+            color: #fff;
+            border-color: var(--accent-2);
+            background: var(--accent-2);
+        }
+
+        .nav-links .cv-link:hover {
+            color: #fff;
+            border-color: var(--accent);
+            background: var(--accent);
         }
 
         .nav-links a:hover {
@@ -783,6 +798,29 @@
 
         body.dark .nav-links a:hover {
             background: rgba(17, 24, 39, 0.76);
+        }
+
+        body.dark .nav-links .cv-link,
+        body.dark .nav-links .cv-link:hover {
+            color: #07151b;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-2);
         }
 
         .section-nav {
@@ -2259,9 +2297,11 @@
             }
 
             .nav-links a {
-                width: 34px;
+                width: auto;
                 height: 34px;
                 min-height: 34px;
+                padding: 0 8px;
+                font-size: 0.68em;
             }
 
             .profile-actions .nav-links {
@@ -2589,30 +2629,23 @@
         <nav class="nav-links" aria-label="Profiles and contact">
             <a href="mailto:zilumeng@uw.edu" title="Email" aria-label="Email">
                 <i class="fas fa-envelope"></i>
+                <span>Email</span>
             </a>
-            <a href="./assets/Zilu_Meng_CV_Concise.pdf" title="Concise CV (PDF)" aria-label="Open concise CV PDF" target="_blank" rel="noopener">
+            <a class="cv-link" href="./assets/Zilu_Meng_CV_Concise.pdf" title="Concise CV (PDF)" aria-label="Open concise CV PDF" target="_blank" rel="noopener">
                 <i class="fas fa-file-alt"></i>
+                <span>CV</span>
             </a>
             <a href="https://github.com/ZiluM" title="GitHub" aria-label="GitHub" target="_blank">
                 <i class="fab fa-github"></i>
+                <span>GitHub</span>
             </a>
             <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar" target="_blank">
                 <i class="fas fa-graduation-cap"></i>
-            </a>
-            <a href="https://www.researchgate.net/profile/Zilu-Meng" title="ResearchGate" aria-label="ResearchGate" target="_blank">
-                <i class="fab fa-researchgate"></i>
+                <span>Scholar</span>
             </a>
             <a href="https://www.linkedin.com/in/zilu-meng-414560255/" title="LinkedIn" aria-label="LinkedIn" target="_blank">
                 <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.zhihu.com/people/lowkkk/" title="Zhihu" aria-label="Zhihu" target="_blank">
-                <i class="fab fa-zhihu"></i>
-            </a>
-            <a href="https://x.com/Zilu4Climate" title="X (Twitter)" aria-label="X (Twitter)" target="_blank">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://orcid.org/0000-0001-5706-592X" title="ORCID" aria-label="ORCID" target="_blank">
-                <i class="fas fa-id-badge"></i>
+                <span>LinkedIn</span>
             </a>
 	        </nav>
 
@@ -3386,7 +3419,13 @@
 
         <!-- Footer -->
         <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;">
-            <p>© 2026 Zilu Meng. Last updated: Jul 2026</p>
+            <nav class="footer-links" aria-label="Additional profiles">
+                <a href="https://www.researchgate.net/profile/Zilu-Meng" target="_blank" rel="noopener">ResearchGate</a>
+                <a href="https://orcid.org/0000-0001-5706-592X" target="_blank" rel="noopener">ORCID</a>
+                <a href="https://www.zhihu.com/people/lowkkk/" target="_blank" rel="noopener">Zhihu</a>
+                <a href="https://x.com/Zilu4Climate" target="_blank" rel="noopener">X</a>
+            </nav>
+            <p>© 2026 Zilu Meng. Last updated: Aug 2026</p>
             <!-- Remember to update the date here manually when you make changes -->
         </footer>
         
