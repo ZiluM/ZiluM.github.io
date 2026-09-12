@@ -2831,6 +2831,13 @@
                     </div>
                 </div>
                 <ol class="pub-list">
+                    <li data-status="preprint">
+                        Cuzzone, J., Briner, J., Otiniano, G., et al., including <strong>Meng, Z.</strong> (2026).
+                        Greenland Ice Sheet to fall below its Holocene minimum size by 2300.
+                        <em>Research Square</em>.
+                        <a href="https://doi.org/10.21203/rs.3.rs-9962320/v1" target="_blank">https://doi.org/10.21203/rs.3.rs-9962320/v1</a>,
+                        <a href="https://www.researchsquare.com/article/rs-9962320/v1" target="_blank">Research Square</a>.
+                    </li>
                     <li>
                         <strong>Meng, Z.</strong>, Hakim, G. J., Emile-Geay, J., Gondhalekar, T., & Steig, E. J. (2026).
                         Coupled multiscale paleoclimate reconstruction with four-dimensional variational data assimilation.
@@ -3569,7 +3576,7 @@
             if (t.includes('assimilation')) tags.push('data-assimilation');
             if (t.includes('deep learning') || t.includes('machine learning')) tags.push('machine-learning');
             if (t.includes('enso') || t.includes('el niño') || t.includes('la niña') || t.includes('nino')) tags.push('enso');
-            if (t.includes('paleo') || t.includes('millennium') || t.includes('proxy')) tags.push('paleoclimate');
+            if (t.includes('paleo') || t.includes('millennium') || t.includes('proxy') || t.includes('holocene')) tags.push('paleoclimate');
             return Array.from(new Set(tags));
         }
 
@@ -3606,7 +3613,7 @@
                 li.dataset.searchText = text.toLowerCase();
                 li.classList.toggle('first-author', li.dataset.firstAuthor === '1');
 
-                const isPreprint = /arxiv/i.test(text);
+                const isPreprint = li.dataset.status === 'preprint' || /arxiv|research square/i.test(text);
                 const isJournal = Boolean(li.querySelector('em'));
                 const isAccepted = li.dataset.status === 'accepted';
                 const badges = document.createElement('div');
@@ -3639,6 +3646,7 @@
 
                     if (href.includes('doi.org')) link.textContent = 'DOI';
                     else if (href.includes('arxiv.org')) link.textContent = 'Preprint';
+                    else if (href.includes('researchsquare.com')) link.textContent = 'Preprint';
                     else if (href.includes('github.com')) link.textContent = 'Code';
                     else if (href.includes('bilibili.com')) link.textContent = 'Video';
                     else if (href.endsWith('.pdf')) link.textContent = originalLabel || 'PDF';
