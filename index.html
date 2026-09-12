@@ -930,172 +930,44 @@
         }
 
         .pub-overview {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
+            display: flex;
             align-items: center;
-            gap: 28px;
-            padding: 24px 26px;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 22px;
             border-bottom: 1px solid var(--border);
-            background:
-                linear-gradient(110deg, rgba(14, 116, 144, 0.12), transparent 48%),
-                linear-gradient(290deg, rgba(245, 158, 11, 0.08), transparent 42%);
-        }
-
-        .pub-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            margin-bottom: 6px;
-            color: var(--accent-2);
-            font-size: 0.68em;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .pub-kicker i {
-            color: var(--accent-warm);
-        }
-
-        .pub-overview h3 {
-            margin: 0 0 5px;
-            color: var(--text);
-            font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-            font-size: 1.35em;
+            background: rgba(14, 116, 144, 0.055);
         }
 
         .pub-overview p {
-            max-width: 700px;
             margin: 0;
             color: var(--muted);
-            font-size: 0.84em;
+            font-size: 0.78em;
+        }
+
+        .pub-overview p strong {
+            color: var(--text);
         }
 
         .pub-scholar-link {
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            margin-top: 12px;
-            padding-bottom: 2px;
-            border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+            flex: 0 0 auto;
             color: var(--accent-2);
-            font-size: 0.78em;
+            font-size: 0.76em;
             font-weight: 800;
             text-decoration: none;
-            transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+            transition: color 0.18s ease, transform 0.18s ease;
         }
 
         .pub-scholar-link:hover {
             color: var(--accent);
-            border-color: currentColor;
             transform: translateY(-1px);
         }
 
         .pub-scholar-link .fa-arrow-up-right-from-square {
             font-size: 0.78em;
-        }
-
-        .pub-stats {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .pub-stat {
-            min-width: 86px;
-            padding: 4px 16px;
-            color: var(--muted);
-            font-size: 0.68em;
-            text-align: center;
-        }
-
-        .pub-stat + .pub-stat {
-            border-left: 1px solid var(--border);
-        }
-
-        .pub-stat strong {
-            display: block;
-            color: var(--accent-2);
-            font-family: "Iowan Old Style", Georgia, serif;
-            font-size: 2em;
-            line-height: 1;
-        }
-
-        .pub-toolbar {
-            display: grid;
-            gap: 11px;
-            padding: 17px 24px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.28);
-        }
-
-        body.dark .pub-toolbar {
-            background: rgba(15, 23, 42, 0.22);
-        }
-
-        .pub-search-wrap {
-            position: relative;
-        }
-
-        .pub-search-wrap i {
-            position: absolute;
-            left: 13px;
-            top: 50%;
-            color: var(--muted);
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
-        #pub-search {
-            box-sizing: border-box;
-            width: 100%;
-            padding: 10px 12px 10px 38px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--surface);
-            color: var(--text);
-            font-size: 0.88em;
-        }
-
-        .pub-filters {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
-        .pub-filter-group,
-        .chip-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
-        .pub-filter-label {
-            color: var(--muted);
-            font-size: 0.7em;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .chip {
-            border: 1px solid transparent;
-            background: transparent;
-            color: var(--muted);
-            border-radius: 999px;
-            padding: 5px 9px;
-            font-size: 0.73em;
-            cursor: pointer;
-        }
-
-        .chip:hover {
-            color: var(--accent-2);
-            background: rgba(15, 118, 110, 0.07);
-        }
-
-        .chip.active {
-            background: rgba(15, 118, 110, 0.13);
-            color: var(--accent-2);
-            border-color: rgba(15, 118, 110, 0.24);
         }
 
         #publications ol {
@@ -1107,11 +979,11 @@
         #publications ol li {
             position: relative;
             margin: 0;
-            padding: 19px 24px 18px 104px;
+            padding: 13px 20px 13px 76px;
             border-bottom: 1px solid var(--border);
             color: var(--muted);
-            font-size: 0.86em;
-            line-height: 1.58;
+            font-size: 0.8em;
+            line-height: 1.48;
             transition: background 0.18s ease, border-color 0.18s ease;
         }
 
@@ -1126,17 +998,16 @@
         #publications ol li::before {
             content: attr(data-year);
             position: absolute;
-            left: 24px;
-            top: 19px;
+            left: 20px;
+            top: 15px;
             color: var(--accent-2);
-            font-family: "Iowan Old Style", Georgia, serif;
-            font-size: 1.15em;
-            font-weight: 700;
+            font-size: 0.86em;
+            font-weight: 800;
             line-height: 1;
         }
 
         #publications ol li.first-author {
-            box-shadow: inset 3px 0 0 rgba(15, 118, 110, 0.7);
+            box-shadow: inset 2px 0 0 rgba(15, 118, 110, 0.55);
         }
 
         #publications ol li strong {
@@ -1148,77 +1019,39 @@
             font-weight: 700;
         }
 
-        .pub-badges {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 5px;
-        }
-
-        .pub-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--accent-2);
-            font-size: 0.7em;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .pub-status.preprint {
-            color: #b45309;
-        }
-
-        .pub-status.accepted {
-            color: #15803d;
-        }
-
-        body.dark .pub-status.accepted {
-            color: #4ade80;
-        }
-
         .pub-resource {
-            display: inline-flex;
-            align-items: center;
-            margin: 2px 2px;
-            padding: 2px 6px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
+            display: inline;
+            margin-left: 4px;
+            padding: 0;
+            border: 0;
             color: var(--accent-2);
-            background: var(--surface-soft);
-            font-size: 0.82em;
-            line-height: 1.35;
+            background: transparent;
+            font-size: 0.9em;
+            font-weight: 700;
             text-decoration: none;
         }
 
         .pub-resource:hover {
-            border-color: rgba(15, 118, 110, 0.38);
-            text-decoration: none;
+            text-decoration: underline;
         }
 
-        .pub-actions {
-            display: flex;
-            gap: 7px;
-            margin-top: 8px;
-        }
-
-        .pub-actions button {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .pub-toggle {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
             border: 0;
+            border-top: 1px solid var(--border);
             background: transparent;
             color: var(--muted);
-            font-size: 0.72em;
-            padding: 3px 0;
+            font: inherit;
+            font-size: 0.76em;
+            font-weight: 800;
             cursor: pointer;
         }
 
-        .pub-actions button + button {
-            margin-left: 7px;
-        }
-
-        .pub-actions button:hover {
+        .pub-toggle:hover {
             color: var(--accent-2);
+            background: rgba(15, 118, 110, 0.045);
         }
 
         .hidden-pub {
@@ -2225,20 +2058,6 @@
                 margin: 0 auto;
             }
 
-            .pub-stats {
-                justify-content: flex-start;
-            }
-
-            .pub-overview {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
-            .pub-filters {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
             .journal-shelf {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
@@ -2322,29 +2141,17 @@
             }
 
             .pub-overview {
-                padding: 20px;
-            }
-
-            .pub-toolbar {
-                padding: 15px 18px;
-            }
-
-            .pub-stat {
-                min-width: 0;
-                padding: 3px 12px;
-            }
-
-            .pub-stat:first-child {
-                padding-left: 0;
+                align-items: flex-start;
+                padding: 13px 16px;
             }
 
             #publications ol li {
-                padding: 50px 18px 17px;
+                padding: 38px 16px 12px;
             }
 
             #publications ol li::before {
-                left: 18px;
-                top: 17px;
+                left: 16px;
+                top: 13px;
             }
 
             .section-nav {
@@ -2785,50 +2592,12 @@
             <summary>Publications</summary>
             <div class="section publication-section">
                 <div class="pub-overview">
-                    <div>
-                        <span class="pub-kicker"><i class="fas fa-book-open"></i> Research output</span>
-                        <h3>Climate dynamics across data, models, and time</h3>
-                        <p>Peer-reviewed articles and preprints spanning paleoclimate reconstruction, data assimilation, ENSO, and machine-learning Earth system models.</p>
-                        <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar">
-                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                            <span>View all on Google Scholar</span>
-                            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="pub-stats" aria-label="Publication statistics">
-                        <div class="pub-stat"><strong id="stat-total">0</strong>Total</div>
-                        <div class="pub-stat"><strong id="stat-first">0</strong>First author</div>
-                        <div class="pub-stat"><strong id="stat-year">0</strong>Showing</div>
-                    </div>
-                </div>
-                <div class="pub-toolbar">
-                    <div class="pub-search-wrap">
-                        <i class="fas fa-search"></i>
-                        <input id="pub-search" type="search" placeholder="Search title, author, or journal" aria-label="Search publications">
-                    </div>
-                    <div class="pub-filters">
-                        <div class="pub-filter-group">
-                            <span class="pub-filter-label">Topic</span>
-                            <div class="chip-row" id="pub-tags">
-                                <button class="chip active" data-tag="all">All</button>
-                                <button class="chip" data-tag="data-assimilation">Data Assimilation</button>
-                                <button class="chip" data-tag="machine-learning">Machine Learning</button>
-                                <button class="chip" data-tag="enso">ENSO</button>
-                                <button class="chip" data-tag="paleoclimate">Paleoclimate</button>
-                            </div>
-                        </div>
-                        <div class="pub-filter-group">
-                            <span class="pub-filter-label">Year</span>
-                            <div class="chip-row" id="pub-years">
-                                <button class="chip active" data-year="all">All</button>
-                                <button class="chip" data-year="2026">2026</button>
-                                <button class="chip" data-year="2025">2025</button>
-                                <button class="chip" data-year="2024">2024</button>
-                                <button class="chip" data-year="2023">2023</button>
-                                <button class="chip" data-year="2021">2021</button>
-                            </div>
-                        </div>
-                    </div>
+                    <p><strong><span id="pub-count">0</span> publications</strong> · recent work shown first</p>
+                    <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar">
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        <span>Google Scholar</span>
+                        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <ol class="pub-list">
                     <li data-status="preprint">
@@ -2916,6 +2685,9 @@
                         [<a href="https://zilum.github.io/sacpy/" target="_blank">Sacpy Code</a>].
                     </li>
                 </ol>
+                <button class="pub-toggle" id="pub-toggle" type="button" aria-expanded="false">
+                    Show all publications
+                </button>
             </div>
         </details>
 
@@ -3570,73 +3342,21 @@
             revealElements.forEach((el) => observer.observe(el));
         }
 
-        function inferTags(text) {
-            const t = text.toLowerCase();
-            const tags = [];
-            if (t.includes('assimilation')) tags.push('data-assimilation');
-            if (t.includes('deep learning') || t.includes('machine learning')) tags.push('machine-learning');
-            if (t.includes('enso') || t.includes('el niño') || t.includes('la niña') || t.includes('nino')) tags.push('enso');
-            if (t.includes('paleo') || t.includes('millennium') || t.includes('proxy') || t.includes('holocene')) tags.push('paleoclimate');
-            return Array.from(new Set(tags));
-        }
-
-        function buildBibtex(citation, year, index) {
-            const safeYear = year || 'n.d.';
-            const key = `meng${safeYear}${index + 1}`;
-            return `@misc{${key},
-  author = {Zilu Meng et al.},
-  title = {Publication ${index + 1}},
-  year = {${safeYear}},
-  note = {${citation.replace(/[{}]/g, '')}}
-}`;
-        }
-
         function setupPublicationTools() {
             const pubRoot = document.getElementById('publications');
             if (!pubRoot) return;
             const items = Array.from(pubRoot.querySelectorAll('ol li'));
-            const searchInput = document.getElementById('pub-search');
-            const tagChips = Array.from(document.querySelectorAll('#pub-tags .chip'));
-            const yearChips = Array.from(document.querySelectorAll('#pub-years .chip'));
-            const statTotal = document.getElementById('stat-total');
-            const statFirst = document.getElementById('stat-first');
-            const statYear = document.getElementById('stat-year');
             const list = pubRoot.querySelector('.pub-list');
+            const count = document.getElementById('pub-count');
+            const toggle = document.getElementById('pub-toggle');
+            const visibleLimit = 6;
 
-            items.forEach((li, idx) => {
+            items.forEach((li) => {
                 const text = li.textContent.replace(/\s+/g, ' ').trim();
                 const yearMatch = text.match(/\b(20\d{2})\b/);
-                const tags = inferTags(text);
                 li.dataset.year = yearMatch ? yearMatch[1] : '';
-                li.dataset.tags = tags.join(',');
                 li.dataset.firstAuthor = text.startsWith('Meng, Z.') ? '1' : '0';
-                li.dataset.searchText = text.toLowerCase();
                 li.classList.toggle('first-author', li.dataset.firstAuthor === '1');
-
-                const isPreprint = li.dataset.status === 'preprint' || /arxiv|research square/i.test(text);
-                const isJournal = Boolean(li.querySelector('em'));
-                const isAccepted = li.dataset.status === 'accepted';
-                const badges = document.createElement('div');
-                badges.className = 'pub-badges';
-
-                const status = document.createElement('span');
-                status.className = `pub-status${isAccepted ? ' accepted' : isPreprint ? ' preprint' : ''}`;
-                status.innerHTML = isAccepted
-                    ? '<i class="fas fa-circle-check"></i> Accepted'
-                    : isPreprint
-                        ? '<i class="fas fa-file-alt"></i> Preprint'
-                        : isJournal
-                            ? '<i class="fas fa-book"></i> Journal article'
-                            : '<i class="fas fa-pen-nib"></i> Manuscript';
-                badges.appendChild(status);
-
-                if (li.dataset.firstAuthor === '1') {
-                    const firstAuthor = document.createElement('span');
-                    firstAuthor.className = 'pub-status';
-                    firstAuthor.innerHTML = '<i class="fas fa-user"></i> First author';
-                    badges.appendChild(firstAuthor);
-                }
-                li.prepend(badges);
 
                 li.querySelectorAll('a').forEach((link) => {
                     const href = (link.getAttribute('href') || '').toLowerCase();
@@ -3651,76 +3371,31 @@
                     else if (href.includes('bilibili.com')) link.textContent = 'Video';
                     else if (href.endsWith('.pdf')) link.textContent = originalLabel || 'PDF';
                 });
-
-                const actions = document.createElement('div');
-                actions.className = 'pub-actions';
-                const citationButton = document.createElement('button');
-                citationButton.type = 'button';
-                citationButton.innerHTML = '<i class="fas fa-copy"></i> Copy citation';
-                citationButton.addEventListener('click', async () => {
-                    await navigator.clipboard.writeText(text);
-                    citationButton.innerHTML = '<i class="fas fa-check"></i> Copied';
-                    setTimeout(() => { citationButton.innerHTML = '<i class="fas fa-copy"></i> Copy citation'; }, 1200);
-                });
-
-                const bibButton = document.createElement('button');
-                bibButton.type = 'button';
-                bibButton.innerHTML = '<i class="fas fa-code"></i> Copy BibTeX';
-                bibButton.addEventListener('click', async () => {
-                    const bib = buildBibtex(text, li.dataset.year, idx);
-                    await navigator.clipboard.writeText(bib);
-                    bibButton.innerHTML = '<i class="fas fa-check"></i> Copied';
-                    setTimeout(() => { bibButton.innerHTML = '<i class="fas fa-code"></i> Copy BibTeX'; }, 1200);
-                });
-
-                actions.appendChild(citationButton);
-                actions.appendChild(bibButton);
-                li.appendChild(actions);
             });
 
             items
                 .sort((a, b) => Number(b.dataset.year) - Number(a.dataset.year))
                 .forEach((li) => list.appendChild(li));
 
-            let activeTag = 'all';
-            let activeYear = 'all';
+            count.textContent = String(items.length);
+            let expanded = false;
 
-            function updateStats() {
-                statTotal.textContent = String(items.length);
-                statFirst.textContent = String(items.filter((li) => li.dataset.firstAuthor === '1').length);
-                statYear.textContent = String(items.filter((li) => !li.classList.contains('hidden-pub')).length);
+            function updateVisibleItems() {
+                items.forEach((li, index) => {
+                    li.classList.toggle('hidden-pub', !expanded && index >= visibleLimit);
+                });
+                toggle.hidden = items.length <= visibleLimit;
+                toggle.setAttribute('aria-expanded', String(expanded));
+                toggle.innerHTML = expanded
+                    ? '<i class="fas fa-chevron-up"></i> Show fewer'
+                    : `<i class="fas fa-chevron-down"></i> Show all ${items.length} publications`;
             }
 
-            function applyFilter() {
-                const q = searchInput.value.toLowerCase().trim();
-                items.forEach((li) => {
-                    const tags = li.dataset.tags ? li.dataset.tags.split(',') : [];
-                    const byTag = activeTag === 'all' || tags.includes(activeTag);
-                    const byYear = activeYear === 'all' || li.dataset.year === activeYear;
-                    const bySearch = !q || li.dataset.searchText.includes(q);
-                    li.classList.toggle('hidden-pub', !(byTag && byYear && bySearch));
-                });
-                updateStats();
-            }
-
-            tagChips.forEach((chip) => {
-                chip.addEventListener('click', () => {
-                    activeTag = chip.dataset.tag;
-                    tagChips.forEach((c) => c.classList.toggle('active', c === chip));
-                    applyFilter();
-                });
+            toggle.addEventListener('click', () => {
+                expanded = !expanded;
+                updateVisibleItems();
             });
-
-            yearChips.forEach((chip) => {
-                chip.addEventListener('click', () => {
-                    activeYear = chip.dataset.year;
-                    yearChips.forEach((c) => c.classList.toggle('active', c === chip));
-                    applyFilter();
-                });
-            });
-
-            searchInput.addEventListener('input', applyFilter);
-            updateStats();
+            updateVisibleItems();
         }
 
         function secureExternalLinks() {
