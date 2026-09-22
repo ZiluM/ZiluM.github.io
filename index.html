@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="theme-color" name="theme-color" content="#f3f7fa">
+<html lang="en" data-page-node-id="yCg9zJhzXaya82iYziXTrX">
+<head data-page-node-id="tzDOXDnCh5MnI6ieeRBaql">
+    <meta charset="UTF-8" data-page-node-id="y9fNMiOzmPZO5oMBKCxUOV">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="zeFfBfLXmNipPFYbEvNGbR">
+    <meta id="theme-color" name="theme-color" content="#f3f7fa" data-page-node-id="2Nr4nGvjgUaq7D1tXTHJuZ">
     <title>Zilu Meng's Academic Page</title>
 
     <!-- Font Awesome (ensure integrity hash is correct if using) -->
@@ -11,7 +11,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
           crossorigin="anonymous" 
-          referrerpolicy="no-referrer" />
+          referrerpolicy="no-referrer" data-page-node-id="pLzy8ixuRCU4BcNPHXm1rD" />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGE6Y107VX"></script>
@@ -630,7 +630,7 @@
 
         .field-map {
             position: relative;
-            height: 150px;
+            height: 210px;
             overflow: hidden;
             border-radius: 10px;
             background:
@@ -642,7 +642,8 @@
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
-        .temperature-chart {
+        .temperature-chart,
+        .field-video {
             width: 100%;
             height: 100%;
             display: block;
@@ -651,6 +652,114 @@
 
         .temperature-chart:hover {
             transform: none;
+        }
+
+        .field-video:hover {
+            transform: none;
+        }
+
+        .field-video {
+            cursor: zoom-in;
+        }
+
+        .field-expand {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 11px;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.74);
+            color: #fff;
+            font: inherit;
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            opacity: 0.94;
+            transition: background 0.18s ease, transform 0.18s ease;
+        }
+
+        .field-expand:hover {
+            background: var(--accent-2);
+            transform: translateY(-1px);
+        }
+
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(12px, 3vw, 28px);
+        }
+
+        .video-modal[hidden] {
+            display: none;
+        }
+
+        .video-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(5px);
+        }
+
+        .video-modal-frame {
+            position: relative;
+            z-index: 1;
+            width: min(94vw, 1040px);
+        }
+
+        .video-modal-player {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 78vh;
+            border-radius: 14px;
+            background: #000;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-modal-caption {
+            margin: 12px 0 0 !important;
+            color: #e5e7eb;
+            font-size: 0.82em;
+            text-align: center;
+        }
+
+        .video-modal-caption strong {
+            color: #fff;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 50%;
+            background: var(--accent-2);
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-modal-close:hover {
+            background: var(--accent);
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
 
         .field-caption {
@@ -1033,6 +1142,65 @@
 
         .pub-resource:hover {
             text-decoration: underline;
+        }
+
+        .pub-video-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0 2px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(15, 118, 110, 0.06);
+            color: var(--text);
+            text-decoration: none;
+            transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+        }
+
+        .pub-video-card:hover {
+            background: rgba(15, 118, 110, 0.13);
+            border-color: var(--accent-2);
+            transform: translateY(-1px);
+        }
+
+        .pub-video-card .pub-video-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent-2);
+            color: #fff;
+            font-size: 1.05em;
+        }
+
+        .pub-video-body {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .pub-video-title {
+            color: var(--accent-2);
+            font-size: 0.88em;
+            font-weight: 800;
+        }
+
+        .pub-video-desc {
+            color: var(--muted);
+            font-size: 0.8em;
+            line-height: 1.42;
+        }
+
+        .pub-video-card .fa-arrow-up-right-from-square {
+            margin-left: auto;
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 0.8em;
         }
 
         .pub-toggle {
@@ -2422,401 +2590,411 @@
         }
     </style>
 </head>
-<body>
-    <div id="progress-bar"></div>
-    <canvas class="climate-canvas" id="climate-canvas" aria-hidden="true"></canvas>
-    <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
-        <i class="fas fa-moon"></i>
+<body data-page-node-id="yiunIR0YrV0SwWeA7AZcdy">
+    <div id="progress-bar" data-page-node-id="oLKqvfMb1JU1tS08lWMlts"></div>
+    <canvas class="climate-canvas" id="climate-canvas" aria-hidden="true" data-page-node-id="9s6zXiWD7ldd0csC0QX7jj"></canvas>
+    <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true" data-page-node-id="HnNMVzJCvn9wO2160nyVEq"></div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-page-node-id="SjE88oE6WGC1TP7A286J5w">
+        <i class="fas fa-moon" data-page-node-id="F6UDDHgsKG8flEiqjK3AMz"></i>
     </button>
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top" data-page-node-id="laKzzbsxF2CxPEGMNdLGs4">
+        <i class="fas fa-arrow-up" data-page-node-id="JdwxDxly0dxCScqkZhgJFZ"></i>
     </button>
-		    <div class="container">
-        <header class="profile-header">
-            <div class="profile-primary">
-		        <h1>Zilu Meng (孟子路)</h1>
-		        <div class="identity-strip" aria-label="Current affiliation">
-		            <span>Ph.D. Candidate</span>
-		            <span>University of Washington</span>
-		            <span>Seattle, WA</span>
+		    <div class="container" data-page-node-id="oavD4WGqXS4NLxvH427w0e">
+        <header class="profile-header" data-page-node-id="z9Pz0zbXWHkrBoEYk9thYE">
+            <div class="profile-primary" data-page-node-id="Bxv9rpNZpzTVyBYoVYB9tS">
+		        <h1 data-page-node-id="YfS2HrIYxpMcTRA0vexM61">Zilu Meng (孟子路)</h1>
+		        <div class="identity-strip" aria-label="Current affiliation" data-page-node-id="X3mDXWrck4BTyqBi6xuHLe">
+		            <span data-page-node-id="9sah1RFqv6cScWzLBKeO76">Ph.D. Candidate</span>
+		            <span data-page-node-id="QVHW5h5s54DSOLmDCqMc8w">University of Washington</span>
+		            <span data-page-node-id="mod4kIwHiD9f2IBaOLEJat">Seattle, WA</span>
 		        </div>
             </div>
 
-            <div class="profile-actions">
+            <div class="profile-actions" data-page-node-id="gYDEthGfcAx2ebNq3UcPr2">
 		        <!-- Icon Links Navigation -->
-        <nav class="nav-links" aria-label="Profiles and contact">
-            <a href="mailto:zilumeng@uw.edu" title="Email" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
+        <nav class="nav-links" aria-label="Profiles and contact" data-page-node-id="bTYHqZrqMdxt6UKVuDpluL">
+            <a href="mailto:zilumeng@uw.edu" title="Email" aria-label="Email" data-page-node-id="n9zFbCPByKHT7relUWNIk1">
+                <i class="fas fa-envelope" data-page-node-id="WddnragLDLhoXXRcrhVbIU"></i>
+                <span data-page-node-id="RCvCieEtCRALa0v4fRY3AB">Email</span>
             </a>
-            <a class="cv-link" href="./assets/Zilu_Meng_CV_Concise.pdf" title="Concise CV (PDF)" aria-label="Open concise CV PDF" target="_blank" rel="noopener">
-                <i class="fas fa-file-alt"></i>
-                <span>CV</span>
+            <a class="cv-link" href="./assets/Zilu_Meng_CV_Concise.pdf" title="Concise CV (PDF)" aria-label="Open concise CV PDF" target="_blank" rel="noopener" data-page-node-id="XJi0mdcGOLuiX4O4UJmGI6">
+                <i class="fas fa-file-alt" data-page-node-id="cn6JAfkJ33bocHtI0B0hZw"></i>
+                <span data-page-node-id="KkXvK6JHsduBc1y1e2JZ5r">CV</span>
             </a>
-            <a href="https://github.com/ZiluM" title="GitHub" aria-label="GitHub" target="_blank">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
+            <a href="https://github.com/ZiluM" title="GitHub" aria-label="GitHub" target="_blank" data-page-node-id="ORI7y0LkkfNUjyorkit73L">
+                <i class="fab fa-github" data-page-node-id="XTcv9q6NT5D4Eeyz1uVzI8"></i>
+                <span data-page-node-id="8XrKuEz7y2smZBuqsJ8Cmh">GitHub</span>
             </a>
-            <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar" target="_blank">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Scholar</span>
+            <a href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar" target="_blank" data-page-node-id="6oWh3JC8XRABiuokUSKIDY">
+                <i class="fas fa-graduation-cap" data-page-node-id="2UXkF1R2wesHa6GNi9yOPv"></i>
+                <span data-page-node-id="lF9OoGUIoI0vUDvWkAEjwI">Scholar</span>
             </a>
-            <a href="https://www.linkedin.com/in/zilu-meng-414560255/" title="LinkedIn" aria-label="LinkedIn" target="_blank">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
+            <a href="https://www.linkedin.com/in/zilu-meng-414560255/" title="LinkedIn" aria-label="LinkedIn" target="_blank" data-page-node-id="4FAGkPi8XwPkYnnUvw1TUN">
+                <i class="fab fa-linkedin" data-page-node-id="wiP7c6fEBPmD7ajqjugt8m"></i>
+                <span data-page-node-id="qsnEyJVO98Jz9aHEBwdwWG">LinkedIn</span>
             </a>
 	        </nav>
 
-	        <nav class="section-nav" aria-label="Page sections">
-	            <a href="#about"><i class="fas fa-user"></i> About</a>
-	            <a href="#publications"><i class="fas fa-book-open"></i> Publications</a>
-	            <a href="#data"><i class="fas fa-database"></i> Data</a>
-	            <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+	        <nav class="section-nav" aria-label="Page sections" data-page-node-id="jtwBGNHUYpDiFQZYsdIb0V">
+	            <a href="#about" data-page-node-id="V0rK6ENH2UgXFM0yGUkANu"><i class="fas fa-user" data-page-node-id="cg57gMzg4tmhKUQat6vOLd"></i> About</a>
+	            <a href="#publications" data-page-node-id="0oTFqnuBW1G35VQOsabWa3"><i class="fas fa-book-open" data-page-node-id="koHEU5fQmWeVbFxC79j8WR"></i> Publications</a>
+	            <a href="#data" data-page-node-id="dtP8tjkdHeaR1e4W8Q9z78"><i class="fas fa-database" data-page-node-id="xtHooCTBvgL1ASmAtltOcK"></i> Data</a>
+	            <a href="#education" data-page-node-id="0WvbG4lGEUpRblRCbmeEZT"><i class="fas fa-graduation-cap" data-page-node-id="OsKFgUORN5n4dh5fp4zD2D"></i> Education</a>
 	        </nav>
             </div>
         </header>
 
-	        <section class="hero reveal">
-	            <div class="data-rain" aria-hidden="true">
-	                <span style="--x: 7%; --speed: 11s; --delay: -2s;">ENSO</span>
-	                <span style="--x: 19%; --speed: 14s; --delay: -8s;">OHC</span>
-		                <span style="--x: 31%; --speed: 12s; --delay: -4s;">4D-VAR</span>
-		                <span style="--x: 47%; --speed: 16s; --delay: -10s;">PAGES2k</span>
-		                <span style="--x: 63%; --speed: 13s; --delay: -6s;">TEMP12k</span>
-		                <span style="--x: 78%; --speed: 15s; --delay: -12s;">BOREHOLES</span>
-		                <span style="--x: 91%; --speed: 12s; --delay: -1s;">SEA ICE</span>
-		                <span style="--x: 39%; --speed: 17s; --delay: -13s;">HEAT WAVES</span>
-		                <span style="--x: 56%; --speed: 10s; --delay: -5s;">REANALYSIS</span>
-		                <span style="--x: 84%; --speed: 18s; --delay: -15s;">NEURAL GCM</span>
+	        <section class="hero reveal" data-page-node-id="G20EOCH76QMKoBjaQXWK5w">
+	            <div class="data-rain" aria-hidden="true" data-page-node-id="2PmvbF9UPRia9xHFPsXh53">
+	                <span style="--x: 7%; --speed: 11s; --delay: -2s;" data-page-node-id="A5jfyUjV9sR4dOhg95DRLN">ENSO</span>
+	                <span style="--x: 19%; --speed: 14s; --delay: -8s;" data-page-node-id="o7PVct5uXxZzR1qKQur17P">OHC</span>
+		                <span style="--x: 31%; --speed: 12s; --delay: -4s;" data-page-node-id="7bdrLlioqdTRFSTexNOukV">4D-VAR</span>
+		                <span style="--x: 47%; --speed: 16s; --delay: -10s;" data-page-node-id="A6nFPg4IKfhcEQXabeNG8F">PAGES2k</span>
+		                <span style="--x: 63%; --speed: 13s; --delay: -6s;" data-page-node-id="phnw6rlJOCgSl6pK9w4y30">TEMP12k</span>
+		                <span style="--x: 78%; --speed: 15s; --delay: -12s;" data-page-node-id="lTjtunHZHJ0HEEsLkhioy9">BOREHOLES</span>
+		                <span style="--x: 91%; --speed: 12s; --delay: -1s;" data-page-node-id="TAuteNhuFjkg8U5AqsPdWj">SEA ICE</span>
+		                <span style="--x: 39%; --speed: 17s; --delay: -13s;" data-page-node-id="lD8kUuSgFOVXdkIfQVwQeu">HEAT WAVES</span>
+		                <span style="--x: 56%; --speed: 10s; --delay: -5s;" data-page-node-id="X67St08O6ZkLhYME7Z8BRj">REANALYSIS</span>
+		                <span style="--x: 84%; --speed: 18s; --delay: -15s;" data-page-node-id="UpSfhoSI6jO0rKLBYgC0BQ">NEURAL GCM</span>
 		            </div>
-	            <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo">
-            <div>
-                <h2>Climate, Weather, and Data Science</h2>
-                <p>My work combines climate records, physical models, and machine learning to reconstruct past climate and understand El Niño, sea ice, and extreme weather.</p>
+	            <img src="./new_fig.jpg" alt="Zilu Meng portrait" class="hero-photo" data-page-node-id="NqNhl1fyP1RavzvZQ6ruNx">
+            <div data-page-node-id="trsrgtnXsIWYtmU2fEctZy">
+                <h2 data-page-node-id="UxbWFdBCHx5buO2H5mFOCC">Climate, Weather, and Data Science</h2>
+                <p data-page-node-id="vooUwo9rJhwaVaDF4j0ooJ">My work combines climate records, physical models, and machine learning to reconstruct past climate and understand El Niño, sea ice, and extreme weather.</p>
             </div>
-            <aside class="field-panel" aria-label="Global temperature time series preview">
-                <div class="field-title">
-                    <span>Warming Since 1850</span>
-                    <i class="fas fa-chart-line"></i>
+            <aside class="field-panel" aria-label="LMR4D-Var joint climate reconstruction animation" data-page-node-id="bxTdJtlT8enKgBokJM4mKI">
+                <div class="field-title" data-page-node-id="eIYIMMM5zy4th4RPLaorDZ">
+                    <span data-page-node-id="rvUUSAY0l1qfr6opAddkcU">Joint Reconstruction</span>
+                    <i class="fas fa-play-circle" data-page-node-id="XRtjC97UlP1JIhqdY8a7eY"></i>
                 </div>
-                <div class="field-map">
-                    <img class="temperature-chart" src="./assets/global_temperature_timeseries.svg" alt="HadCRUT5 global mean temperature change from 1850 to 2025">
+                <div class="field-map" data-page-node-id="Q5v9CwoIiBMXtvk0ngldX2">
+                    <video class="field-video" src="./videos/lmr4dvar_joint_optimization.mp4" poster="./videos/lmr4dvar_joint_optimization_poster.png" autoplay muted loop playsinline aria-label="Animation: weak-constraint 4D-Var jointly fitting proxies and model dynamics across 1000–2000 CE" data-page-node-id="SXwitw4X24OotNJYmVBhQv"></video>
+                    <button class="field-expand" type="button" data-video-open aria-label="Enlarge the LMR4D-Var animation">
+                        <i class="fas fa-expand-alt" aria-hidden="true"></i> Enlarge
+                    </button>
                 </div>
-                <p class="field-caption"><strong>HadCRUT5</strong> · 1850–2025 · +1.41°C</p>
+                <p class="field-caption" data-page-node-id="yO8yCKl4ouTuuwn83i2OsK"><strong data-page-node-id="pmshMmjjWpytf5RoOcu31l">LMR4D-Var</strong> · 1000–2000 · 1 objective</p>
             </aside>
 		        </section>
 
         <!-- About Me Section -->
-	        <details open class="reveal" id="about">
-            <summary>About Me</summary>
-            <div class="section about-section">
-                <div class="about-lead">
-                    <div class="about-story">
-                        <span class="about-kicker"><i class="fas fa-globe-americas"></i> Climate scientist and data explorer</span>
-                        <h3 class="about-headline">I reconstruct the climate we could not directly observe.</h3>
-                        <p>
+	        <details open class="reveal" id="about" data-page-node-id="tzVMWrQFoklk2QWhWmGfmK">
+            <summary data-page-node-id="WGTnjXImGAgoWBnXp1KXRD">About Me</summary>
+            <div class="section about-section" data-page-node-id="m2PmVcGdVkVfXvZkC3ViyJ">
+                <div class="about-lead" data-page-node-id="WYLS53q4gmxsdADc9CKNvA">
+                    <div class="about-story" data-page-node-id="3u1Yb9DlG0QSAj1ElcIFdB">
+                        <span class="about-kicker" data-page-node-id="ySwcB2enHKj1kfr9pfw6b5"><i class="fas fa-globe-americas" data-page-node-id="vd3CXJGlLr8cAV6n6DvDce"></i> Climate scientist and data explorer</span>
+                        <h3 class="about-headline" data-page-node-id="EvUQ4pliCc6BOuzAt4VD2P">I reconstruct the climate we could not directly observe.</h3>
+                        <p data-page-node-id="Y7uT5UtHMLSAFKia3tXh2u">
                             Earth's instrumental record covers only a small part of climate history. I combine natural archives,
                             including tree rings, ice cores, corals, and boreholes, with physical models and modern AI to estimate
                             how the atmosphere, ocean, and sea ice changed before widespread measurements.
                         </p>
-                        <p>
+                        <p data-page-node-id="sRcL5FCDZ3VHSTM4huSYkA">
                             This longer view helps us understand how climate patterns vary, why events such as heat waves and cold
                             spells occur, and how unusual recent changes are. My goal is to turn scattered evidence into climate
                             information that is physically consistent, useful, and easier to understand.
                         </p>
                     </div>
 
-                    <aside class="about-current" aria-label="Current position and academic background">
-                        <span class="about-current-label">At a glance</span>
-                        <div class="about-current-item">
-                            <i class="fas fa-university"></i>
-                            <div>
-                                <strong>Ph.D. Candidate</strong>
-                                <span>Climate and Atmospheric Sciences, University of Washington</span>
+                    <aside class="about-current" aria-label="Current position and academic background" data-page-node-id="1VvvrGEbPGZCN75ngxomZc">
+                        <span class="about-current-label" data-page-node-id="kj0y45sDSDJOByLfCkktqy">At a glance</span>
+                        <div class="about-current-item" data-page-node-id="f54Zqt8xwlHhRAWHXYTLQF">
+                            <i class="fas fa-university" data-page-node-id="KARD0azFQEjbqU1W7tiRrm"></i>
+                            <div data-page-node-id="ujkuh8NJbATFPjijtt6wuP">
+                                <strong data-page-node-id="hCjXiK6wljecjaDFDPYVsF">Ph.D. Candidate</strong>
+                                <span data-page-node-id="GNZ4bLuPlzMNH6ZCi1suZF">Climate and Atmospheric Sciences, University of Washington</span>
                             </div>
                         </div>
-                        <div class="about-current-item">
-                            <i class="fas fa-user-friends"></i>
-                            <div>
-                                <strong>Advisors</strong>
-                                <span>
-                                    <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Gregory J. Hakim</a>
+                        <div class="about-current-item" data-page-node-id="GTEhfiz1EpxhhlbPzqYsXl">
+                            <i class="fas fa-user-friends" data-page-node-id="NeQx18CKBiAE9FazAtIqm4"></i>
+                            <div data-page-node-id="W7UStJvyEwf00fWm9Gh9tn">
+                                <strong data-page-node-id="hnZdc0OQx6E8EwvROGQ6vQ">Advisors</strong>
+                                <span data-page-node-id="nNFUfBySyMHKHIh33a4CEy">
+                                    <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank" data-page-node-id="7j8Hp0MuUvYnJZEIOqzlFu">Gregory J. Hakim</a>
                                     and
-                                    <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Eric J. Steig</a>
+                                    <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank" data-page-node-id="ntARf9ZtPeSoBixiyD9MGS">Eric J. Steig</a>
                                 </span>
                             </div>
                         </div>
-                        <div class="about-current-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <strong>Background</strong>
-                                <span>B.S. with Honors from NUIST, advised by <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Tim Li</a></span>
+                        <div class="about-current-item" data-page-node-id="tGAIaMUyNrkrHljWWFA7oK">
+                            <i class="fas fa-graduation-cap" data-page-node-id="1E3lv8paDaWWuCPCWybL40"></i>
+                            <div data-page-node-id="mz6kQaaEJnJolgKo7pC4t1">
+                                <strong data-page-node-id="vAhhdCmHsXVBCYdnBhZ0Bx">Background</strong>
+                                <span data-page-node-id="POfH6rbME83zq94DLfkLaD">B.S. with Honors from NUIST, advised by <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank" data-page-node-id="YKUJs6HuZ6FdfgRNDP9ZQM">Tim Li</a></span>
                             </div>
                         </div>
                     </aside>
                 </div>
 
-                <div class="about-lens" aria-label="Research approach">
-                    <div class="about-lens-item">
-                        <span class="about-lens-number">01</span>
-                        <i class="fas fa-tree"></i>
-                        <strong>Read the past</strong>
-                        <p>Use natural records and historical observations to recover climate changes across seasons, centuries, and millennia.</p>
+                <div class="about-lens" aria-label="Research approach" data-page-node-id="z6rkfxC1AaNnaDof4U1n4l">
+                    <div class="about-lens-item" data-page-node-id="mYjRp1L86hMOTpVNbX33b0">
+                        <span class="about-lens-number" data-page-node-id="wCtWY8olh3AJWyHuAxe6af">01</span>
+                        <i class="fas fa-tree" data-page-node-id="ikDWKHQYPeV5Bv8Ewxzu70"></i>
+                        <strong data-page-node-id="4wUlLpY0mIcBGCrTBk8Dk3">Read the past</strong>
+                        <p data-page-node-id="HghiW96yBq1C1nN5sB44eK">Use natural records and historical observations to recover climate changes across seasons, centuries, and millennia.</p>
                     </div>
-                    <div class="about-lens-item">
-                        <span class="about-lens-number">02</span>
-                        <i class="fas fa-project-diagram"></i>
-                        <strong>Connect data with models</strong>
-                        <p>Blend incomplete evidence with climate physics through data assimilation, statistical tools, and machine learning.</p>
+                    <div class="about-lens-item" data-page-node-id="50e4Bd8w7rIiIkqBDqH3Tg">
+                        <span class="about-lens-number" data-page-node-id="2SZJGPLGZvxwIrSVX4xJBn">02</span>
+                        <i class="fas fa-project-diagram" data-page-node-id="TjnibK8panA5sJO9Rw1HCx"></i>
+                        <strong data-page-node-id="055st8IhtD4T930lCFD7nl">Connect data with models</strong>
+                        <p data-page-node-id="iUMFYHGGJhJxGHtMEEeNUQ">Blend incomplete evidence with climate physics through data assimilation, statistical tools, and machine learning.</p>
                     </div>
-                    <div class="about-lens-item">
-                        <span class="about-lens-number">03</span>
-                        <i class="fas fa-cloud-sun-rain"></i>
-                        <strong>Understand climate risk</strong>
-                        <p>Study ENSO, ocean and sea-ice change, atmospheric circulation, and the behavior of extreme heat and cold.</p>
+                    <div class="about-lens-item" data-page-node-id="gXm9LIPiMPFi0lufBUdVBn">
+                        <span class="about-lens-number" data-page-node-id="R45D56PBuaguwczjefyUqB">03</span>
+                        <i class="fas fa-cloud-sun-rain" data-page-node-id="sqsjURZJ9uGKKti3X2iAuG"></i>
+                        <strong data-page-node-id="bfqp3e6eJUPxOjEQEyACsw">Understand climate risk</strong>
+                        <p data-page-node-id="Jmq6CbNoEOjFPmoYxsgzCF">Study ENSO, ocean and sea-ice change, atmospheric circulation, and the behavior of extreme heat and cold.</p>
                     </div>
                 </div>
 
-                <div class="about-personal">
-                    <i class="fas fa-mountain"></i>
-                    <p>
-                        <strong>Beyond research:</strong> I enjoy building open-source scientific tools, playing video games, reading, and hiking.
+                <div class="about-personal" data-page-node-id="GdmNOVAIMVENlPX09cVLbU">
+                    <i class="fas fa-mountain" data-page-node-id="ehI3aKdECjwZpyU9q8EXFn"></i>
+                    <p data-page-node-id="QOWUIKqGeU4lq5Q6YzfpOX">
+                        <strong data-page-node-id="lP67OuCYbQDjRDe9BGvgWa">Beyond research:</strong> I enjoy building open-source scientific tools, playing video games, reading, and hiking.
                     </p>
                 </div>
             </div>
         </details>
 
         <!-- Publications Section -->
-	        <details class="reveal" id="publications">
-            <summary>Publications</summary>
-            <div class="section publication-section">
-                <div class="pub-overview">
-                    <p><strong><span id="pub-count">0</span> publications</strong> · recent work shown first</p>
-                    <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                        <span>Google Scholar</span>
-                        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+	        <details class="reveal" id="publications" data-page-node-id="7wLCQnhTU0CM1v5uFyitCS">
+            <summary data-page-node-id="vmQeBACrzsH3vf6HJdGLtI">Publications</summary>
+            <div class="section publication-section" data-page-node-id="EJChJjHva96vU1HWFa35dV">
+                <div class="pub-overview" data-page-node-id="Dbo3FKhnTIxBP0Ef9Fgmz0">
+                    <p data-page-node-id="I0mR9riEdpEIOcDF1u5qxK"><strong data-page-node-id="befsu4I5KPc2j7q7Xvoniy"><span id="pub-count" data-page-node-id="kGi8sWsKUbK7HacavDrdLa">0</span> publications</strong> · recent work shown first</p>
+                    <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar" data-page-node-id="nxKw2R1xWK92YF2ZmVICl4">
+                        <i class="fas fa-graduation-cap" aria-hidden="true" data-page-node-id="nvHwftJVa4W6PvcYtqg8qj"></i>
+                        <span data-page-node-id="Ges15wdBiyFRGNZF84L2W5">Google Scholar</span>
+                        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true" data-page-node-id="uXkILrXDGd1lYCxiPlO40o"></i>
                     </a>
                 </div>
-                <ol class="pub-list">
-                    <li data-status="preprint">
-                        Cuzzone, J., Briner, J., Otiniano, G., et al., including <strong>Meng, Z.</strong> (2026).
+                <ol class="pub-list" data-page-node-id="WidI7aqVWRIrWloWNXovWO">
+                    <li data-status="preprint" data-page-node-id="VFtgW8Lx8RW7SsBMoVElgN">
+                        Cuzzone, J., Briner, J., Otiniano, G., et al., including <strong data-page-node-id="osf6dlyfcKvfA1HWjOu36m">Meng, Z.</strong> (2026).
                         Greenland Ice Sheet to fall below its Holocene minimum size by 2300.
-                        <em>Research Square</em>.
-                        <a href="https://doi.org/10.21203/rs.3.rs-9962320/v1" target="_blank">https://doi.org/10.21203/rs.3.rs-9962320/v1</a>,
-                        <a href="https://www.researchsquare.com/article/rs-9962320/v1" target="_blank">Research Square</a>.
+                        <em data-page-node-id="miksZf3i2ur9IEbeCuAxYH">Research Square</em>.
+                        <a href="https://doi.org/10.21203/rs.3.rs-9962320/v1" target="_blank" data-page-node-id="zWca3ULdOjRVq5bcljLrPj">https://doi.org/10.21203/rs.3.rs-9962320/v1</a>,
+                        <a href="https://www.researchsquare.com/article/rs-9962320/v1" target="_blank" data-page-node-id="4hE76VCsyWSzE0uoPyE23x">Research Square</a>.
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, Hakim, G. J., Emile-Geay, J., Gondhalekar, T., & Steig, E. J. (2026).
+                    <li data-page-node-id="MV5Woj75AA3uyHHJyJYcBQ">
+                        <strong data-page-node-id="G8226QKsUPmmGHeIzlerji">Meng, Z.</strong>, Hakim, G. J., Emile-Geay, J., Gondhalekar, T., & Steig, E. J. (2026).
                         Coupled multiscale paleoclimate reconstruction with four-dimensional variational data assimilation.
-                        <a href="https://arxiv.org/abs/2608.19469" target="_blank">arXiv:2608.19469</a>.
-                        [<a href="https://www.bilibili.com/video/BV15yYr6FErj" target="_blank">Bilibili Video (Chinese)</a>].
+                        <a href="https://arxiv.org/abs/2608.19469" target="_blank" data-page-node-id="wntd0M4JbuFLGp4ztBEcWc">arXiv:2608.19469</a>.
+                        <a class="pub-video-card" href="https://www.bilibili.com/video/BV15yYr6FErj" target="_blank" rel="noopener">
+                            <span class="pub-video-icon"><i class="fas fa-play-circle" aria-hidden="true"></i></span>
+                            <span class="pub-video-body">
+                                <span class="pub-video-title">Video in Chinese</span>
+                                <span class="pub-video-desc">Recorded talk on this work: cross-timescale coupled atmosphere&ndash;ocean&ndash;sea ice paleoclimate reconstruction with four-dimensional variational data assimilation. In Chinese, 12 Sep 2026.</span>
+                            </span>
+                            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
                     </li>
-                    <li>
-                        Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong>Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2025). 
+                    <li data-page-node-id="4PBFrBqKs7Xi2JjI4iqqE2">
+                        Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong data-page-node-id="wzqakdmIDUKexBI8UkSoNE">Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2025). 
                         Progresses and Prospects of Paleoclimate Data Assimilation. 
-                        <em>SCIENCE CHINA: Earth Science</em>, <a href="https://doi.org/10.1007/s11430-025-1810-2" target="_blank">https://doi.org/10.1007/s11430-025-1810-2</a>, <a href="./paper/SCES_eng.pdf" target="_blank">[PDF]</a>, <a href="./paper/ScienceChinaEarthScience.pdf" target="_blank">[PDF in Chinese]</a>.
+                        <em data-page-node-id="IN2LV8bpYgXYAvrCKPe3x6">SCIENCE CHINA: Earth Science</em>, <a href="https://doi.org/10.1007/s11430-025-1810-2" target="_blank" data-page-node-id="2JsTAQxcx838Zzm1vlWLwX">https://doi.org/10.1007/s11430-025-1810-2</a>, <a href="./paper/SCES_eng.pdf" target="_blank" data-page-node-id="AJegxcmwbU78kU1gjTbGCS">[PDF]</a>, <a href="./paper/ScienceChinaEarthScience.pdf" target="_blank" data-page-node-id="VRIcR2jUEQlIyNcpZf6RMt">[PDF in Chinese]</a>.
                     </li>
-                    <li>
-                        Hua, Z., Karamperidou, C., & <strong>Meng, Z.</strong> (2026).
+                    <li data-page-node-id="Ig7ZpWznZRbBy2b9L1ebed">
+                        Hua, Z., Karamperidou, C., & <strong data-page-node-id="jFM4IUa73H3iwMzeqmnDWZ">Meng, Z.</strong> (2026).
                         Extratropical Atmospheric Circulation Response to ENSO in Deep Learning Pacific Pacemaker Experiments.
-                        <em>Artificial Intelligence for the Earth Systems</em>, 5(4), 250114.
-                        <a href="https://doi.org/10.1175/AIES-D-25-0114.1" target="_blank">https://doi.org/10.1175/AIES-D-25-0114.1</a>.
+                        <em data-page-node-id="eZ7gKpEjc3EQCX6BT6dbKq">Artificial Intelligence for the Earth Systems</em>, 5(4), 250114.
+                        <a href="https://doi.org/10.1175/AIES-D-25-0114.1" target="_blank" data-page-node-id="yNxrNqJITb4oLFVaIUejbA">https://doi.org/10.1175/AIES-D-25-0114.1</a>.
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
-                        Large-Ensemble Simulations Reveal Links Between Atmospheric Blocking Frequency and Sea Surface Temperature Variability. <a href="https://arxiv.org/abs/2602.05083" target="_blank">arXiv:2602.05083</a>.
+                    <li data-page-node-id="F8w0ffM3gJu1zFZme9ZW0l">
+                        <strong data-page-node-id="bn6Cr9BMUCPMiKElj28FQf">Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
+                        Large-Ensemble Simulations Reveal Links Between Atmospheric Blocking Frequency and Sea Surface Temperature Variability. <a href="https://arxiv.org/abs/2602.05083" target="_blank" data-page-node-id="anKuCBhC6ZK1EbTLoSmhfC">arXiv:2602.05083</a>.
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
+                    <li data-page-node-id="lz9HfB7feCz6DHRVvmAsl0">
+                        <strong data-page-node-id="Rbqt5pZt5GRvNaE0grCGDu">Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
                         Deep learning atmospheric models reliably simulate out-of-sample land heat and cold wave frequencies.
-                        <em>Geophysical Research Letters</em>, 53(3), e2025GL117990.
-                        <a href="https://doi.org/10.1029/2025GL117990" target="_blank">https://doi.org/10.1029/2025GL117990</a>.
+                        <em data-page-node-id="KvLm2Rw6BB1gBE0AvTy791">Geophysical Research Letters</em>, 53(3), e2025GL117990.
+                        <a href="https://doi.org/10.1029/2025GL117990" target="_blank" data-page-node-id="LZeoogZ6AJxw7R5DRjfSmd">https://doi.org/10.1029/2025GL117990</a>.
                     </li>                    
-                    <li>
-                        <strong>Meng, Z.</strong>, & Polvani, L. M. (2026).
+                    <li data-page-node-id="3ERbJDEHRAEaF2GGBYVoHV">
+                        <strong data-page-node-id="9H4fop4gzzCCis4oiPyOXD">Meng, Z.</strong>, & Polvani, L. M. (2026).
                         No evidence of statistically significant Eurasian winter warming or cooling caused by large eruptions over the last millennium.
-                        <em>npj Climate and Atmospheric Science</em>.
-                        <a href="https://doi.org/10.1038/s41612-026-01535-0" target="_blank">https://doi.org/10.1038/s41612-026-01535-0</a>.
+                        <em data-page-node-id="A3Fu2IlvMVIjdGr2eBsf7T">npj Climate and Atmospheric Science</em>.
+                        <a href="https://doi.org/10.1038/s41612-026-01535-0" target="_blank" data-page-node-id="umyab4NuSMux6NKvgjxAq9">https://doi.org/10.1038/s41612-026-01535-0</a>.
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, Hakim, G. J., & Steig, E. J. (2025).
+                    <li data-page-node-id="navFqo69VMwXhqvrpmHhRA">
+                        <strong data-page-node-id="RbjMCsBOmDYcYHsn7eojZy">Meng, Z.</strong>, Hakim, G. J., & Steig, E. J. (2025).
                         Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium.
-                        <em>Journal of Climate</em>, 38, 7229–7247. 
-                        <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">https://doi.org/10.1175/JCLI-D-25-0048.1</a>.
+                        <em data-page-node-id="lk79TfU8G7Z9opufGSFfGs">Journal of Climate</em>, 38, 7229–7247. 
+                        <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank" data-page-node-id="BzIbz3fGd4K60CZYVKNicN">https://doi.org/10.1175/JCLI-D-25-0048.1</a>.
                         <!-- [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>], -->
                         <!-- [<a href="./slides/Mar27NNU.pdf" target="_blank">Slides</a>], -->
-                        [<a href="./paper/clim-JCLI-D-25-0048.1-2.pdf" target="_blank">PDF</a>],
-                        [<a href="./paper/LMR_Season-2.pdf" target="_blank">Supplementary Material</a>],
-                        [<a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">Data</a>],
-                        [<a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>],
-                        [<a href="https://www.bilibili.com/video/BV19tGNzQE3R" target="_blank">Bilibili Video (Chinese)</a>].
+                        [<a href="./paper/clim-JCLI-D-25-0048.1-2.pdf" target="_blank" data-page-node-id="JW2DvXcvpBDM6kMXQdTjXT">PDF</a>],
+                        [<a href="./paper/LMR_Season-2.pdf" target="_blank" data-page-node-id="VMcHzzFdAEhACTv7CcM2qk">Supplementary Material</a>],
+                        [<a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank" data-page-node-id="RqGgd116P9pYj0YlrlU1jR">Data</a>],
+                        [<a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank" data-page-node-id="NgWBMzWFySgAxPFiwQvL1E">Code</a>],
+                        [<a href="https://www.bilibili.com/video/BV19tGNzQE3R" target="_blank" data-page-node-id="qOhzTq9Z4QPLXmrDRiTBIx">Bilibili Video (Chinese)</a>].
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, & Hakim, G. J. (2024).
+                    <li data-page-node-id="r1Bk1OTVBVeKJUX30UJcl3">
+                        <strong data-page-node-id="YIJG5JF5EhFhzwhNFR33DV">Meng, Z.</strong>, & Hakim, G. J. (2024).
                         Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model.
-                        <em>Journal of Advances in Modeling Earth Systems</em>, 16, e2024MS004422.
-                        <a href="https://doi.org/10.1029/2024MS004422" target="_blank">https://doi.org/10.1029/2024MS004422</a>.
-                        [<a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">Code</a>],
-                        [<a href="./dl4enso.pdf" target="_blank">Poster</a>].
+                        <em data-page-node-id="vwkaC4XBiD4Y8WexkxHkky">Journal of Advances in Modeling Earth Systems</em>, 16, e2024MS004422.
+                        <a href="https://doi.org/10.1029/2024MS004422" target="_blank" data-page-node-id="72RVXl3ojaikvXkwvBjrxb">https://doi.org/10.1029/2024MS004422</a>.
+                        [<a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank" data-page-node-id="U7xqYNbNNZ2RURMSqBWno2">Code</a>],
+                        [<a href="./dl4enso.pdf" target="_blank" data-page-node-id="Ox25pGPNBwsF8j5IOnN4of">Poster</a>].
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, & Li, T. (2024).
+                    <li data-page-node-id="ijWwcB9LiXuoEXxWKwG9Me">
+                        <strong data-page-node-id="BYmEAeprr3LxpvbeiGmhLG">Meng, Z.</strong>, & Li, T. (2024).
                         Why is the Pacific meridional mode most pronounced in boreal spring?
-                        <em>Climate Dynamics</em>, 62(1), 459–471.
-                        <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank">https://doi.org/10.1007/s00382-023-06914-4</a>.
-                        [<a href="https://github.com/ZiluM/PMMPhaseLocking" target="_blank">Code</a>],
-                        [<a href="./zilu_undergradThesis.pdf" target="_blank">Thesis (Chinese)</a>],
-                        [<a href="https://zilum.github.io/sacpy/" target="_blank">Sacpy Code</a>],
-                        [<a href="./sacpy_poster.png" target="_blank">Sacpy Poster</a>].
+                        <em data-page-node-id="Kz3hvcLm9NxXO8Gjzroh4Y">Climate Dynamics</em>, 62(1), 459–471.
+                        <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank" data-page-node-id="mNvMWCwkZE675UoWftIwRS">https://doi.org/10.1007/s00382-023-06914-4</a>.
+                        [<a href="https://github.com/ZiluM/PMMPhaseLocking" target="_blank" data-page-node-id="m26N3wFd4NGKjQrXFsO7iS">Code</a>],
+                        [<a href="./zilu_undergradThesis.pdf" target="_blank" data-page-node-id="NShKWu1TaFeEeebpVFAqsU">Thesis (Chinese)</a>],
+                        [<a href="https://zilum.github.io/sacpy/" target="_blank" data-page-node-id="56l3C3IXfjqoefpf9o3U4c">Sacpy Code</a>],
+                        [<a href="./sacpy_poster.png" target="_blank" data-page-node-id="CFP7Ek4DBtW05PpGwRFmhJ">Sacpy Poster</a>].
                     </li>
-                    <li>
-                        Zhu, F., Emile-Geay, J., Anchukaitis, K. J., McKay, N. P., Stevenson, S., & <strong>Meng, Z.</strong> (2023).
+                    <li data-page-node-id="OyAcivo6AxMqb2BmvYgCWR">
+                        Zhu, F., Emile-Geay, J., Anchukaitis, K. J., McKay, N. P., Stevenson, S., & <strong data-page-node-id="B0y5cITR9DP1HaUW7RjIUf">Meng, Z.</strong> (2023).
                         A pseudoproxy emulation of the PAGES 2k database using a hierarchy of proxy system models.
-                        <em>Scientific Data</em>, 10, 624.
-                        <a href="https://doi.org/10.1038/s41597-023-02489-1" target="_blank">https://doi.org/10.1038/s41597-023-02489-1</a>.
-                        [<a href="https://fzhu2e.github.io/cfr/" target="_blank">CFR Code</a>].
+                        <em data-page-node-id="var7h6JPp6GnnR5VGcksIv">Scientific Data</em>, 10, 624.
+                        <a href="https://doi.org/10.1038/s41597-023-02489-1" target="_blank" data-page-node-id="yWuPExy4PueuV1QMUvOgJ1">https://doi.org/10.1038/s41597-023-02489-1</a>.
+                        [<a href="https://fzhu2e.github.io/cfr/" target="_blank" data-page-node-id="qE4jfa2xOLs5A1YA5EckTZ">CFR Code</a>].
                     </li>
-                    <li>
-                        <strong>Meng, Z.</strong>, Hu, Z., Ai, Z., Zhang, Y., & Shan, K. (2021).
+                    <li data-page-node-id="2COxrKHt9xD2e8YDYUT6Bm">
+                        <strong data-page-node-id="COsdQWZQnd5nfPxP4TCv1X">Meng, Z.</strong>, Hu, Z., Ai, Z., Zhang, Y., & Shan, K. (2021).
                         Research on Planar Double Compound Pendulum Based on RK-8 Algorithm.
-                        <em>Journal on Big Data</em>, 3, 11–20.
-                        <a href="https://doi.org/10.32604/jbd.2021.015208" target="_blank">https://doi.org/10.32604/jbd.2021.015208</a>,
-                        [<a href="https://zilum.github.io/sacpy/" target="_blank">Sacpy Code</a>].
+                        <em data-page-node-id="mvSd6UzJC7sbc9YAPK3wlY">Journal on Big Data</em>, 3, 11–20.
+                        <a href="https://doi.org/10.32604/jbd.2021.015208" target="_blank" data-page-node-id="8NS7Og0r7w3nCPSqNyfJz7">https://doi.org/10.32604/jbd.2021.015208</a>,
+                        [<a href="https://zilum.github.io/sacpy/" target="_blank" data-page-node-id="R9xeW2by8migC0UaeztGYH">Sacpy Code</a>].
                     </li>
                 </ol>
-                <button class="pub-toggle" id="pub-toggle" type="button" aria-expanded="false">
+                <button class="pub-toggle" id="pub-toggle" type="button" aria-expanded="false" data-page-node-id="JXcFmzSOrC5qk7PrS4i2gG">
                     Show all publications
                 </button>
             </div>
         </details>
 
         <!-- Data Section -->
-	        <details class="reveal" id="data">
-            <summary>Data</summary>
-            <div class="section">
-                <h3>LMR Seasonal - Last Millennium Reanalysis with Seasonal Resolution</h3>
-                <p>
-                    <strong>Dataset:</strong> <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data Portal</a>
+	        <details class="reveal" id="data" data-page-node-id="bBlxquAd5aOOGIXbjn5jAK">
+            <summary data-page-node-id="6AS1geNs0a004R8IDxJbTl">Data</summary>
+            <div class="section" data-page-node-id="22t4cesCww61G7rgb3hBFT">
+                <h3 data-page-node-id="maNMlsBpxC3W4bXip7MMVW">LMR Seasonal - Last Millennium Reanalysis with Seasonal Resolution</h3>
+                <p data-page-node-id="S3HC0aJozH9TylYcVIXPcV">
+                    <strong data-page-node-id="2d7nD5ClZbR5Qb5UDxawJ8">Dataset:</strong> <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank" data-page-node-id="P43SwiO8Dd4WC7ieOASrPq">LMR Seasonal Data Portal</a>
                 </p>
-                <p>
+                <p data-page-node-id="rIq49SowMpj3K5cg09JVSH">
                     "Online" data assimilation (DA) is used to generate a seasonal-resolution reanalysis dataset over the last millennium by combining forecasts from an ocean–atmosphere–sea-ice coupled linear inverse model with climate proxy records. Instrumental verification reveals that this reconstruction achieves the highest correlation skill, while using fewer proxies, in surface temperature reconstructions compared to other paleo-DA products, particularly during boreal winter when proxy data are scarce. Reconstructed ocean and sea-ice variables also have high correlation with instrumental and satellite datasets. Verification against independent proxy records shows that reconstruction skill is robust throughout the last millennium. Analysis of the results reveals that the method effectively captures the seasonal evolution and amplitude of El Niño events, seasonal temperature trends that are consistent with orbital forcing over the last millennium, and polar-amplified cooling in the transition from the Medieval Climate Anomaly to the Little Ice Age.
                 </p>
-                <p>
-                    <strong>Key Features:</strong>
+                <p data-page-node-id="rjmM67seQv9vBuiJLKesbi">
+                    <strong data-page-node-id="b6IxzrVm9OJDf8V55IiJmP">Key Features:</strong>
                 </p>
-                <ul>
-                    <li>Seasonal resolution paleoclimate reanalysis spanning the last millennium (850-2000 CE)</li>
-                    <li>Coupled ocean-atmosphere-sea ice reconstruction using online data assimilation</li>
-                    <li>High correlation skill with instrumental data, especially during data-sparse winter months</li>
-                    <li>Captures seasonal evolution and amplitude of ENSO events</li>
-                    <li>Consistent with orbital forcing patterns over the millennium</li>
-                    <li>Documents polar-amplified cooling during Medieval Climate Anomaly to Little Ice Age transition</li>
+                <ul data-page-node-id="aORxxklsOAwEcAKZ4BkNqK">
+                    <li data-page-node-id="5Ttt5vZvXl47fRxGcPvdG7">Seasonal resolution paleoclimate reanalysis spanning the last millennium (850-2000 CE)</li>
+                    <li data-page-node-id="k4VSqA0W8FLeW4GLtMWZzZ">Coupled ocean-atmosphere-sea ice reconstruction using online data assimilation</li>
+                    <li data-page-node-id="cFR4bgxBpdEZZLlDguz2G3">High correlation skill with instrumental data, especially during data-sparse winter months</li>
+                    <li data-page-node-id="NhQbcu4ZGP1aSOd2K1vzEx">Captures seasonal evolution and amplitude of ENSO events</li>
+                    <li data-page-node-id="rZ9RPoNrCGGkTd5uzAw7Il">Consistent with orbital forcing patterns over the millennium</li>
+                    <li data-page-node-id="8T36Con8wyj532WKqrjkRy">Documents polar-amplified cooling during Medieval Climate Anomaly to Little Ice Age transition</li>
                 </ul>
-                <p>
-                    <strong>Related Publication:</strong> 
-                    <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank">Meng et al. (2025), Journal of Climate</a>
+                <p data-page-node-id="zVQRbFMZHuBIAgZfCoWF9M">
+                    <strong data-page-node-id="9psE1NeHtoZdzBHYnbSHPa">Related Publication:</strong> 
+                    <a href="https://doi.org/10.1175/JCLI-D-25-0048.1" target="_blank" data-page-node-id="OnWvew8uCZXW9lsnPR99EA">Meng et al. (2025), Journal of Climate</a>
                 </p>
             </div>
         </details>
         <!-- Education Section -->
-	        <details class="reveal" id="education">
-            <summary>Education</summary>
-            <div class="section education-section">
-                <div class="education-intro">
-                    <div>
-                        <h3>Academic training in atmosphere, climate, and data</h3>
-                        <p>From foundational atmospheric dynamics to data assimilation and paleoclimate reconstruction.</p>
+	        <details class="reveal" id="education" data-page-node-id="XBibX3Ge19uPeXirrGDI5S">
+            <summary data-page-node-id="FSLSGgYUfQny7LWhbxhOPq">Education</summary>
+            <div class="section education-section" data-page-node-id="uOJBHEi8RM7qA0EI9N4PH5">
+                <div class="education-intro" data-page-node-id="dpnEQ8UyORO4JM5cERDAif">
+                    <div data-page-node-id="etINa4ZCvDXAJFI43ZgBbo">
+                        <h3 data-page-node-id="EwbSOxmFCf9nChtV2dFgym">Academic training in atmosphere, climate, and data</h3>
+                        <p data-page-node-id="lpNoPBRBG72itNA9tlA8w4">From foundational atmospheric dynamics to data assimilation and paleoclimate reconstruction.</p>
                     </div>
-                    <span class="education-range"><i class="fas fa-graduation-cap"></i> 2019 - Present</span>
+                    <span class="education-range" data-page-node-id="qU9gqjk19PGUaYJXql6DaB"><i class="fas fa-graduation-cap" data-page-node-id="U0aZBPyJLE4YXN2xELOWYz"></i> 2019 - Present</span>
                 </div>
 
-                <div class="education-timeline">
-                    <article class="education-entry uw">
-                        <div class="education-rail" aria-hidden="true">
-                            <div class="education-mark">W</div>
-                            <span class="education-period">2023<br>Present</span>
+                <div class="education-timeline" data-page-node-id="HQ86fSPqDe1bvGReDdX7Bz">
+                    <article class="education-entry uw" data-page-node-id="vqmsxCEuGi5CiBoij66WF2">
+                        <div class="education-rail" aria-hidden="true" data-page-node-id="Hhk3A2YkD3Y4jaGR42cfMq">
+                            <div class="education-mark" data-page-node-id="9mtd5IEuQMysXwHcOgu1gP">W</div>
+                            <span class="education-period" data-page-node-id="BhL7egETRQKE40VimOmVOX">2023<br data-page-node-id="itou0NuyWFLQhqxSl3wemp">Present</span>
                         </div>
-                        <div class="education-body">
-                            <div class="education-heading">
-                                <div>
-                                    <h3 class="education-degree">Ph.D. in Climate and Atmospheric Sciences</h3>
-                                    <p class="education-institution">University of Washington</p>
-                                    <p class="education-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
+                        <div class="education-body" data-page-node-id="tJpdb7a4bBvgQFoyow4N4c">
+                            <div class="education-heading" data-page-node-id="RTjFiFswxRwv2eTnkefmM6">
+                                <div data-page-node-id="CnbzusKhJeiVrzVU5nVBEU">
+                                    <h3 class="education-degree" data-page-node-id="3DLCfuZyJF42CgaHazlCW3">Ph.D. in Climate and Atmospheric Sciences</h3>
+                                    <p class="education-institution" data-page-node-id="1tSAzLf3YsfHL2GCSZ1Lye">University of Washington</p>
+                                    <p class="education-location" data-page-node-id="iGtZTlPrdgkFUuTKNUOkHW"><i class="fas fa-map-marker-alt" data-page-node-id="aQHbcxOb58IdP9Dcd6QZ0V"></i> Seattle, WA, USA</p>
                                 </div>
-                                <span class="education-status"><i class="fas fa-flask"></i> Ph.D. Candidate</span>
+                                <span class="education-status" data-page-node-id="kFmCHdAOHCUf31anRel9ZK"><i class="fas fa-flask" data-page-node-id="apeKEBc0GSts3dCsw0ED1m"></i> Ph.D. Candidate</span>
                             </div>
 
-                            <div class="education-details">
-                                <div class="education-detail">
-                                    <i class="fas fa-user-friends"></i>
-                                    <div>
-                                        <span class="education-detail-label">Advisors</span>
-                                        <p>
-                                            <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank">Prof. Gregory J. Hakim</a>
+                            <div class="education-details" data-page-node-id="4q1AWASywN7QALrjXGkPWf">
+                                <div class="education-detail" data-page-node-id="P9x7Lqhs2PHCOrZmDHJAH7">
+                                    <i class="fas fa-user-friends" data-page-node-id="1hf3VEwH6Cqp4Vzzzw4qHO"></i>
+                                    <div data-page-node-id="N5GjlFz0E3INDb0W87fCed">
+                                        <span class="education-detail-label" data-page-node-id="vvTRcqw6FXdFCjZM5dAmOa">Advisors</span>
+                                        <p data-page-node-id="Bp3vAseTv2o3ksksTNzN7q">
+                                            <a href="https://environment.uw.edu/faculty/gregory-hakim/" target="_blank" data-page-node-id="0vcyloJevNXFuZqa8TUouW">Prof. Gregory J. Hakim</a>
                                             and
-                                            <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank">Prof. Eric J. Steig</a>
+                                            <a href="https://environment.uw.edu/faculty/eric-steig/" target="_blank" data-page-node-id="qAVkGmlE4E1KV4S5c4nqZD">Prof. Eric J. Steig</a>
                                         </p>
                                     </div>
                                 </div>
-                                <div class="education-detail">
-                                    <i class="fas fa-compass"></i>
-                                    <div>
-                                        <span class="education-detail-label">Research Focus</span>
-                                        <p>Data assimilation, machine learning, climate dynamics, and paleoclimate.</p>
+                                <div class="education-detail" data-page-node-id="LFvmWx1srz2CxwpDxXV32q">
+                                    <i class="fas fa-compass" data-page-node-id="r9I641Ly4YPJ8uwVInEs7s"></i>
+                                    <div data-page-node-id="gmuFEcBPWz6dN9MqN1ipi9">
+                                        <span class="education-detail-label" data-page-node-id="a233bmkt61VPOceTZDFzPQ">Research Focus</span>
+                                        <p data-page-node-id="aFKLg1ucPJS5sykix8tQBX">Data assimilation, machine learning, climate dynamics, and paleoclimate.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </article>
 
-                    <article class="education-entry nuist">
-                        <div class="education-rail" aria-hidden="true">
-                            <div class="education-mark">NUIST</div>
-                            <span class="education-period">2019<br>2023</span>
+                    <article class="education-entry nuist" data-page-node-id="77iLZ8C3p5E4wBUHM0IBWe">
+                        <div class="education-rail" aria-hidden="true" data-page-node-id="H7rw3a3LG0zlLwQo9RMpLz">
+                            <div class="education-mark" data-page-node-id="7ZGthhHBVlf9HcxmHXtjlR">NUIST</div>
+                            <span class="education-period" data-page-node-id="EtGS4JubpPve5jddp329W2">2019<br data-page-node-id="ZiG4esGSrLnymLQQga03Qc">2023</span>
                         </div>
-                        <div class="education-body">
-                            <div class="education-heading">
-                                <div>
-                                    <h3 class="education-degree">B.S. in Atmospheric Science</h3>
-                                    <p class="education-institution">Nanjing University of Information Science and Technology</p>
-                                    <p class="education-location"><i class="fas fa-map-marker-alt"></i> Nanjing, China</p>
+                        <div class="education-body" data-page-node-id="p4X0VTveyJLOQQc7LEtCxo">
+                            <div class="education-heading" data-page-node-id="w8mTdQ1NY2UTPxa7jaZWpb">
+                                <div data-page-node-id="vXmcZ7V6ENq5RX5i7m06fn">
+                                    <h3 class="education-degree" data-page-node-id="zLGkWF2oIHXXlsrAYjLccL">B.S. in Atmospheric Science</h3>
+                                    <p class="education-institution" data-page-node-id="aGFqBKAIzPPHoJXCVTIfw8">Nanjing University of Information Science and Technology</p>
+                                    <p class="education-location" data-page-node-id="Qhc8XlcfaPXA85LaMdjrWu"><i class="fas fa-map-marker-alt" data-page-node-id="69e2QJsOWnwyMlOgFIIdAq"></i> Nanjing, China</p>
                                 </div>
-                                <span class="education-status"><i class="fas fa-award"></i> With Honors</span>
+                                <span class="education-status" data-page-node-id="k6NKMz2rfnvD5C3eSGyBLS"><i class="fas fa-award" data-page-node-id="8K4XPGA0zvPJ4GI3n3Avpg"></i> With Honors</span>
                             </div>
 
-                            <div class="education-details">
-                                <div class="education-detail">
-                                    <i class="fas fa-user"></i>
-                                    <div>
-                                        <span class="education-detail-label">Advisor</span>
-                                        <p><a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Prof. Tim Li</a></p>
+                            <div class="education-details" data-page-node-id="EvtZfh5GJr366fJ0jTS6sc">
+                                <div class="education-detail" data-page-node-id="vwxYc6xm3BYLmvAzv67cqw">
+                                    <i class="fas fa-user" data-page-node-id="9jWfLeSlxfsJ9ABFEFRgqz"></i>
+                                    <div data-page-node-id="QkTIewT1FYKyx5S7NbDDbU">
+                                        <span class="education-detail-label" data-page-node-id="axqYZe9FKFyQAP3jdYeGgV">Advisor</span>
+                                        <p data-page-node-id="PoFVNFGN8XhBuKKnFDSv8Q"><a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank" data-page-node-id="mCWSsuFnO7qCfktXpzEgEX">Prof. Tim Li</a></p>
                                     </div>
                                 </div>
-                                <div class="education-detail">
-                                    <i class="fas fa-medal"></i>
-                                    <div>
-                                        <span class="education-detail-label">Academic Record</span>
-                                        <p>GPA: <strong>95/100</strong><span class="education-rank"><i class="fas fa-trophy"></i> Ranked 1st/50</span></p>
+                                <div class="education-detail" data-page-node-id="UvCTDTHxOz5aHc05lJoQCm">
+                                    <i class="fas fa-medal" data-page-node-id="CpbIuWu0MGNSsJj5DVpHr4"></i>
+                                    <div data-page-node-id="bye6osQ3TKWQfcDK10opiD">
+                                        <span class="education-detail-label" data-page-node-id="zC3CwAluKyVB2SJ0Odu3FQ">Academic Record</span>
+                                        <p data-page-node-id="gll4fl4Hoow01uw7r8hDKr">GPA: <strong data-page-node-id="09UEleFSvHaOOqb0eyWdye">95/100</strong><span class="education-rank" data-page-node-id="g04SbEChSNCc8fiEK1Zstu"><i class="fas fa-trophy" data-page-node-id="3fGIl2kzVSnDP3r95RkL18"></i> Ranked 1st/50</span></p>
                                     </div>
                                 </div>
-                                <div class="education-detail wide">
-                                    <i class="fas fa-book-open"></i>
-                                    <div>
-                                        <span class="education-detail-label">Core Courses</span>
-                                        <p>Atmospheric Fluid Dynamics, Atmospheric Physics, and Synoptic Meteorology.</p>
+                                <div class="education-detail wide" data-page-node-id="4ZaRfZ9NZbfeF2Uvkf96UB">
+                                    <i class="fas fa-book-open" data-page-node-id="23gSQwV3lobEOlRoVjS9JF"></i>
+                                    <div data-page-node-id="Km6oMrdj5mGmFlpq7JQY1r">
+                                        <span class="education-detail-label" data-page-node-id="myujFngEdESPTW8Nixuzmq">Core Courses</span>
+                                        <p data-page-node-id="izoUgombNMRIMKxMr2AyZp">Atmospheric Fluid Dynamics, Atmospheric Physics, and Synoptic Meteorology.</p>
                                     </div>
                                 </div>
-                                <div class="education-detail wide">
-                                    <i class="fas fa-scroll"></i>
-                                    <div>
-                                        <span class="education-detail-label">Undergraduate Thesis</span>
-                                        <p>
+                                <div class="education-detail wide" data-page-node-id="EnbjHxSFwnTUoe8Q3XQhCI">
+                                    <i class="fas fa-scroll" data-page-node-id="yxpCkhuPfKnWhMJ1ueh4hr"></i>
+                                    <div data-page-node-id="2LB2KYCvj8XI6ytTwKCM1l">
+                                        <span class="education-detail-label" data-page-node-id="GmY4cHiAjKnWCtVZrNaex1">Undergraduate Thesis</span>
+                                        <p data-page-node-id="p0Dd0S3ql8pUCaM4b2ZoO3">
                                             Why Is the Pacific Meridional Mode Most Pronounced in Boreal Spring?
-                                            <span class="education-actions">
-                                                <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
-                                                <a href="./zilu_undergradThesis.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Thesis (Chinese)</a>
+                                            <span class="education-actions" data-page-node-id="vGAiQkKFYO2Gj5GZP2J4oV">
+                                                <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank" data-page-node-id="wb8AazQoj6qseOxVO1SBRV"><i class="fas fa-file-alt" data-page-node-id="0Q0yy1Em9DzcprtRJGzm0q"></i> Paper</a>
+                                                <a href="./zilu_undergradThesis.pdf" target="_blank" data-page-node-id="2mVwDUZooTPWTYeGVi3wX0"><i class="fas fa-file-pdf" data-page-node-id="YOKCM1Ww1KTsEdYRE0TtOf"></i> Thesis (Chinese)</a>
                                             </span>
                                         </p>
                                     </div>
@@ -2829,334 +3007,334 @@
         </details>
 
         <!-- Projects Section -->
-        <details class="reveal">
-            <summary>Projects</summary>
-             <div class="section">
-                <ol>
-                    <li>
-                        <strong>Last Millennium Seasonal Reanalysis:</strong> Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>]
+        <details class="reveal" data-page-node-id="pMFBEYeGSMiIt145p7vELr">
+            <summary data-page-node-id="VaQNjJvVqce03gAmlTBigh">Projects</summary>
+             <div class="section" data-page-node-id="fgk3GKDRazOM2KBxlVjEtI">
+                <ol data-page-node-id="dNUJk3tCDoNf9fEisGDSyE">
+                    <li data-page-node-id="Nyj45EMSdIWsRjkH7Vp56u">
+                        <strong data-page-node-id="mpB7OeBwMX4bBXrzKHka9C">Last Millennium Seasonal Reanalysis:</strong> Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. [<a href="./photo/LMRS_v2.pdf" target="_blank" data-page-node-id="qM5bgCBS0p7Dm6E85drnBH">Poster</a>, <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank" data-page-node-id="R1vN0mDmRriy2kWzEwBqfL">Code</a>]
                     </li>
-                     <li>
-                        <strong>Deep Learning for Tropical Pacific Reconstruction:</strong> Developed a deep learning model coupled with online data assimilation to reconstruct tropical climate fields. [<a href="https://arxiv.org/abs/2406.07063" target="_blank">Paper</a>, <a href="./dl4enso.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">GitHub</a>]
+                     <li data-page-node-id="A2aDFOkV8o6kqPjg914C2T">
+                        <strong data-page-node-id="I9CZqToMHrEZVHCQHPRKtz">Deep Learning for Tropical Pacific Reconstruction:</strong> Developed a deep learning model coupled with online data assimilation to reconstruct tropical climate fields. [<a href="https://arxiv.org/abs/2406.07063" target="_blank" data-page-node-id="7lEvO4lFl07Cx1tNlCPhNE">Paper</a>, <a href="./dl4enso.pdf" target="_blank" data-page-node-id="QFNgMGeZKr2XPIZUtfG0qo">Poster</a>, <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank" data-page-node-id="4nOe0OqdboWXZNNqd4UTiq">GitHub</a>]
                     </li>
-                    <li>
-                        <strong>AMIP experiments on Deep Learning GCMs:</strong> Conducted AMIP experiments on various deep learning GCMs to study climate sensitivity and long-term simulation capabilities.
+                    <li data-page-node-id="uCyuTde8M7v0aqNnQ73ez7">
+                        <strong data-page-node-id="L7Q3AAwVy2I4PBVFOtHBqB">AMIP experiments on Deep Learning GCMs:</strong> Conducted AMIP experiments on various deep learning GCMs to study climate sensitivity and long-term simulation capabilities.
                     </li>
-                     <li>
-                        <strong>Sacpy:</strong> Built an efficient and user-friendly Python module for Statistical Analysis of Climate data. Widely used in the community. [<a href="https://zilum.github.io/sacpy/" target="_blank">Docs & GitHub</a>, <a href="./sacpy_poster.png" target="_blank">Poster</a>]
+                     <li data-page-node-id="qfvi1Pr5QxBhQidVqpxhvq">
+                        <strong data-page-node-id="9wrvu1BW8V11ENHR1rASCW">Sacpy:</strong> Built an efficient and user-friendly Python module for Statistical Analysis of Climate data. Widely used in the community. [<a href="https://zilum.github.io/sacpy/" target="_blank" data-page-node-id="0me66ksJSSBeanGjnSpsm9">Docs & GitHub</a>, <a href="./sacpy_poster.png" target="_blank" data-page-node-id="VKXTHbwOt2tg7fAJh5O3B0">Poster</a>]
                     </li>
-                     <li>
-                        <strong>CFR Framework:</strong> Contributed to developing CFR, a universal framework for climate field reconstruction. [<a href="https://fzhu2e.github.io/cfr/" target="_blank">GitHub</a>]
+                     <li data-page-node-id="ZGci5UY7HqTOmoim7UHJFE">
+                        <strong data-page-node-id="s0KNe82sMMabpwasGTeEYy">CFR Framework:</strong> Contributed to developing CFR, a universal framework for climate field reconstruction. [<a href="https://fzhu2e.github.io/cfr/" target="_blank" data-page-node-id="hiH4D8yEkI7bKdF4Vp3oCW">GitHub</a>]
                     </li>
-                    <li>
-                        <strong>Deep Learning for ENSO Prediction:</strong> Used deep learning (CNNs) and Grad-CAM to study predictability and precursors of El Niño/La Niña events. [<a href="https://zhuanlan.zhihu.com/p/435607626" target="_blank">Zhihu Article</a>, <a href="https://github.com/ZiluM/Deep-learning-for-multi-year-ENSO-Reproduction" target="_blank">GitHub</a>]
+                    <li data-page-node-id="BChEWUMXvbHgfKcBrEhdr4">
+                        <strong data-page-node-id="I5MU5v8qUqBTDPo0vxR0wA">Deep Learning for ENSO Prediction:</strong> Used deep learning (CNNs) and Grad-CAM to study predictability and precursors of El Niño/La Niña events. [<a href="https://zhuanlan.zhihu.com/p/435607626" target="_blank" data-page-node-id="KCQimJdCVlIqrnad843N5Q">Zhihu Article</a>, <a href="https://github.com/ZiluM/Deep-learning-for-multi-year-ENSO-Reproduction" target="_blank" data-page-node-id="rpfEolUVdusXBKvGQN2vMg">GitHub</a>]
                     </li>
-                    <li>
-                        <strong>Prof. John Mike Wallace's Website:</strong> Assisted Prof. J. M. Wallace in building his personal academic website. [<a href="https://atmos.washington.edu/wallace/" target="_blank">Website</a>]
+                    <li data-page-node-id="NTLTWJehOC1950G6r4odMW">
+                        <strong data-page-node-id="mdOkTeFRL8kui1NCo9QxB9">Prof. John Mike Wallace's Website:</strong> Assisted Prof. J. M. Wallace in building his personal academic website. [<a href="https://atmos.washington.edu/wallace/" target="_blank" data-page-node-id="qymTtpZnKi1H1WkwBufSDf">Website</a>]
                     </li>
                 </ol>
             </div>
         </details>
 
         <!-- Conference Presentations Section -->
-        <details class="reveal">
-            <summary>Conference Presentations & Talks</summary>
-            <div class="section talks-section">
-                <div class="talks-intro">
-                    <div>
-                        <h3>Sharing climate research across institutions and communities</h3>
-                        <p>Invited seminars, conference talks, and posters on paleoclimate reconstruction, data assimilation, machine learning, and atmospheric dynamics.</p>
+        <details class="reveal" data-page-node-id="LCZA7xHMBHwuB7iIUi20ry">
+            <summary data-page-node-id="obwKwSEergdOxR8sMyPB5N">Conference Presentations & Talks</summary>
+            <div class="section talks-section" data-page-node-id="q64WYMC8EIKHd1hnUCRiMq">
+                <div class="talks-intro" data-page-node-id="PmH3WwZ2gOAYMT4hZgnB9H">
+                    <div data-page-node-id="T7VpPfk5vEpWxu3cpLgDTG">
+                        <h3 data-page-node-id="mERAJow7tLzWpJcvb4yer3">Sharing climate research across institutions and communities</h3>
+                        <p data-page-node-id="GcnHx7OB0EVED7ffSG0B9t">Invited seminars, conference talks, and posters on paleoclimate reconstruction, data assimilation, machine learning, and atmospheric dynamics.</p>
                     </div>
-                    <div class="talks-count"><strong>19</strong><span>events<br>since 2023</span></div>
+                    <div class="talks-count" data-page-node-id="WCPpcDDEYCn6wzbMTNdLlb"><strong data-page-node-id="HC1UFcUx5r4X9lJHNr1lEu">19</strong><span data-page-node-id="km5KZT6A5POxbhhAvbOzuf">events<br data-page-node-id="nnrXuGKRNaTIqfHy6phP21">since 2023</span></div>
                 </div>
 
-                <div class="talk-legend" aria-label="Presentation types">
-                    <span style="--talk-color: #0f766e;"><i class="fas fa-microphone"></i> 7 Invited talks</span>
-                    <span style="--talk-color: #d97706;"><i class="fas fa-chalkboard-teacher"></i> 2 Oral presentations</span>
-                    <span style="--talk-color: #0284c7;"><i class="fas fa-image"></i> 6 Posters</span>
-                    <span style="--talk-color: #7c3aed;"><i class="fas fa-comments"></i> 3 Seminars</span>
-                    <span style="--talk-color: #059669;"><i class="fas fa-users"></i> 1 Hosted series</span>
+                <div class="talk-legend" aria-label="Presentation types" data-page-node-id="IrwtYSVzHsqyyEjSqZyDpQ">
+                    <span style="--talk-color: #0f766e;" data-page-node-id="zi0RxuUH4NQfVa8D1cgDHE"><i class="fas fa-microphone" data-page-node-id="oBRhOWXsWA5dlMUBCnDFuL"></i> 7 Invited talks</span>
+                    <span style="--talk-color: #d97706;" data-page-node-id="pwbnvmQy3VHFY5A18C2zID"><i class="fas fa-chalkboard-teacher" data-page-node-id="FQD3uhfCBdIGcTl8f5ipdE"></i> 2 Oral presentations</span>
+                    <span style="--talk-color: #0284c7;" data-page-node-id="54VTIsC0h5JbukUXxs1rjj"><i class="fas fa-image" data-page-node-id="guFfFaXGLvrWl9dRVNE8qU"></i> 6 Posters</span>
+                    <span style="--talk-color: #7c3aed;" data-page-node-id="1t65DQPUJlWRBGaXgBl3FD"><i class="fas fa-comments" data-page-node-id="kMttZD2SozOy68FiURqHXw"></i> 3 Seminars</span>
+                    <span style="--talk-color: #059669;" data-page-node-id="hT8jWsWbxN8Q7ky0KlrDDk"><i class="fas fa-users" data-page-node-id="Ys2gJyeeodBAwBahpqCgOU"></i> 1 Hosted series</span>
                 </div>
 
-                <div class="talk-timeline">
-                    <section class="talk-year-group" aria-labelledby="talk-year-2026">
-                        <div class="talk-year" id="talk-year-2026">2026</div>
-                        <div class="talk-year-events">
-                            <article class="talk-event host">
-                                <div class="talk-month">2026</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Paleoclimatology Group Seminar Series</strong>
-                                        <span class="talk-type"><i class="fas fa-users"></i> Year-long Host</span>
+                <div class="talk-timeline" data-page-node-id="S30dwJnbE2DzoyFYV7Wqu5">
+                    <section class="talk-year-group" aria-labelledby="talk-year-2026" data-page-node-id="GZ0ZNusKZj8hH0kJvmSj6j">
+                        <div class="talk-year" id="talk-year-2026" data-page-node-id="azu6jROgdkEcTxaAN43QkH">2026</div>
+                        <div class="talk-year-events" data-page-node-id="WwGA1QanpXqihzGaykdMs2">
+                            <article class="talk-event host" data-page-node-id="h0Ixie7N8RAnXhXbT8E839">
+                                <div class="talk-month" data-page-node-id="7vciX964iS6VNdiIf17RWs">2026</div>
+                                <div class="talk-content" data-page-node-id="VdeT0TFovlHkBPZ0ef1aQe">
+                                    <div class="talk-heading" data-page-node-id="MI9n49AlxBUawoF2pCLiZC">
+                                        <strong data-page-node-id="nH66agQDWwmXnF3oeAlGqy">Paleoclimatology Group Seminar Series</strong>
+                                        <span class="talk-type" data-page-node-id="ZD6QwD1P6eYKyPrNAgOf7p"><i class="fas fa-users" data-page-node-id="equR2zrssZ5QLpzQN9H6cj"></i> Year-long Host</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-video"></i> Online &middot; Host for the 2026 seminar series</p>
-                                    <div class="talk-actions">
-                                        <a href="https://space.bilibili.com/3494352997321600" target="_blank" rel="noopener">
-                                            <i class="fas fa-play-circle"></i> View seminar recordings
+                                    <p class="talk-location" data-page-node-id="ChHzdIUCafq1yZTYKU2EcU"><i class="fas fa-video" data-page-node-id="TCidptr50vIJrSYbYSp8W3"></i> Online &middot; Host for the 2026 seminar series</p>
+                                    <div class="talk-actions" data-page-node-id="OyjVBi5awr5VLYcEzla8iM">
+                                        <a href="https://space.bilibili.com/3494352997321600" target="_blank" rel="noopener" data-page-node-id="4TvbNSLrPdMxQA9HpFXalT">
+                                            <i class="fas fa-play-circle" data-page-node-id="nuiTjCNdOVbEY70XFAjjN0"></i> View seminar recordings
                                         </a>
                                     </div>
                                 </div>
                             </article>
 
-                            <article class="talk-event seminar">
-                                <div class="talk-month">May 8</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Climate Dynamics Seminar, University of Washington</strong>
-                                        <span class="talk-type"><i class="fas fa-comments"></i> Seminar</span>
+                            <article class="talk-event seminar" data-page-node-id="fbznk3tzSgMDPAu6QrWvHB">
+                                <div class="talk-month" data-page-node-id="sO7eNLSwtMB6SUq8u1GpTk">May 8</div>
+                                <div class="talk-content" data-page-node-id="eswJRGkG0RmvUZGEDiDFFD">
+                                    <div class="talk-heading" data-page-node-id="UltI67v8L7e7Ew48XNhlCX">
+                                        <strong data-page-node-id="mnY8BuL7s4ZtHKdOfkokna">Climate Dynamics Seminar, University of Washington</strong>
+                                        <span class="talk-type" data-page-node-id="kVfAaNRF8ZXbHjdh1P2lq3"><i class="fas fa-comments" data-page-node-id="DHDvmfXrerdzCIQLKjg7uM"></i> Seminar</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
-                                    <p class="talk-title">Beyond ECMWF?! Weak-Constraint 4D-Var over the Past 12,000 Years</p>
-                                    <a class="talk-preview" href="./assets/talks/uw-climate-dynamics-may-2026.jpg" target="_blank" aria-label="Open the title slide for the May 8, 2026 UW Climate Dynamics Seminar">
-                                        <img src="./assets/talks/uw-climate-dynamics-may-2026.jpg" alt="Title slide for Beyond ECMWF?! Weak-Constraint 4D-Var over the Past 12,000 Years" loading="lazy" decoding="async">
-                                        <span><i class="fas fa-expand-alt"></i> View title slide</span>
+                                    <p class="talk-location" data-page-node-id="ZRfxTBRwGFMl0hthb7UD4R"><i class="fas fa-map-marker-alt" data-page-node-id="r5dID4ilWxRvUNAibVZZsu"></i> Seattle, WA, USA</p>
+                                    <p class="talk-title" data-page-node-id="4fzK3GIbAfXcEUHusBoI1d">Beyond ECMWF?! Weak-Constraint 4D-Var over the Past 12,000 Years</p>
+                                    <a class="talk-preview" href="./assets/talks/uw-climate-dynamics-may-2026.jpg" target="_blank" aria-label="Open the title slide for the May 8, 2026 UW Climate Dynamics Seminar" data-page-node-id="QRzUnKlIDTqMuOiUZpcg56">
+                                        <img src="./assets/talks/uw-climate-dynamics-may-2026.jpg" alt="Title slide for Beyond ECMWF?! Weak-Constraint 4D-Var over the Past 12,000 Years" loading="lazy" decoding="async" data-page-node-id="cnAyEdPzwFtjR2C3HInDX3">
+                                        <span data-page-node-id="ywCKxgoMFPKFDiYOioFl83"><i class="fas fa-expand-alt" data-page-node-id="U5dbILpSTehQjZzlyCQWCB"></i> View title slide</span>
                                     </a>
                                 </div>
                             </article>
 
-                            <article class="talk-event invited">
-                                <div class="talk-month">Apr 21</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Atmospheric Science Forum, Nanjing University of Information Science and Technology</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
+                            <article class="talk-event invited" data-page-node-id="66H1rUJFHXpGDnc4MWOZ5o">
+                                <div class="talk-month" data-page-node-id="H3K6d6Qdy9InsCPGIkNcYN">Apr 21</div>
+                                <div class="talk-content" data-page-node-id="Bo8TEClCtHzqKl18GDUCQP">
+                                    <div class="talk-heading" data-page-node-id="UcM5ygdZINQBg08LauSPBE">
+                                        <strong data-page-node-id="VzAkh7qRLFwhRw6GTofDGE">Atmospheric Science Forum, Nanjing University of Information Science and Technology</strong>
+                                        <span class="talk-type" data-page-node-id="1wF7cU8BAGmB1ugNyG0mMY"><i class="fas fa-microphone" data-page-node-id="06GiL4RcClumgFpsRESEaf"></i> Invited Talk</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Nanjing, China &middot; Meteorology Building, Room 813</p>
-                                    <p class="talk-title">Deep Learning Atmospheric Models Reliably Simulate Out-of-Sample Heat and Cold Wave Frequencies</p>
-                                    <a class="talk-preview" href="./assets/talks/nuist-atmospheric-science-forum-apr-2026.jpg" target="_blank" aria-label="Open the event poster for the April 21, 2026 NUIST Atmospheric Science Forum">
-                                        <img src="./assets/talks/nuist-atmospheric-science-forum-apr-2026.jpg" alt="Chinese event poster for the April 21, 2026 NUIST Atmospheric Science Forum" loading="lazy" decoding="async">
-                                        <span><i class="fas fa-expand-alt"></i> View event poster</span>
+                                    <p class="talk-location" data-page-node-id="XFKIxu03O9josZ4jh1ZFM5"><i class="fas fa-map-marker-alt" data-page-node-id="4EGFwP46Bk5HlDsJrVsMgj"></i> Nanjing, China &middot; Meteorology Building, Room 813</p>
+                                    <p class="talk-title" data-page-node-id="vO0fvY3wSLnAmlnc71Edtt">Deep Learning Atmospheric Models Reliably Simulate Out-of-Sample Heat and Cold Wave Frequencies</p>
+                                    <a class="talk-preview" href="./assets/talks/nuist-atmospheric-science-forum-apr-2026.jpg" target="_blank" aria-label="Open the event poster for the April 21, 2026 NUIST Atmospheric Science Forum" data-page-node-id="5bsbXHOcrr2sHURy63reh5">
+                                        <img src="./assets/talks/nuist-atmospheric-science-forum-apr-2026.jpg" alt="Chinese event poster for the April 21, 2026 NUIST Atmospheric Science Forum" loading="lazy" decoding="async" data-page-node-id="hpdEYtGdvHX3D80WuVRG0f">
+                                        <span data-page-node-id="C1cC9mKOtihY9Vlu90tuYU"><i class="fas fa-expand-alt" data-page-node-id="wF2g2fCfZFkLrRdhjb456p"></i> View event poster</span>
                                     </a>
                                 </div>
                             </article>
 
-                            <article class="talk-event invited">
-                                <div class="talk-month">Jan</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Institute of Atmospheric Physics, Chinese Academy of Sciences</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
+                            <article class="talk-event invited" data-page-node-id="K2jFBpGx9L0Kg7VDH4FsqM">
+                                <div class="talk-month" data-page-node-id="VJrimiTMRcnfxqtonzaBDl">Jan</div>
+                                <div class="talk-content" data-page-node-id="AGIn3R2Al3CKTGVvWUNMGF">
+                                    <div class="talk-heading" data-page-node-id="5v2WV93I6A7LFRInxDrtDg">
+                                        <strong data-page-node-id="ms8bHQmjo1CjSAeygfNAYV">Institute of Atmospheric Physics, Chinese Academy of Sciences</strong>
+                                        <span class="talk-type" data-page-node-id="uB3q1rNwKAz2hDppK6SoWX"><i class="fas fa-microphone" data-page-node-id="iShwjPWoRwGhw2T0cymEmO"></i> Invited Talk</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                                    <p class="talk-title">Data Assimilation and Atmospheric Modelling over the Last Millennium</p>
+                                    <p class="talk-location" data-page-node-id="t7yETZ24odcQglzyBeCKis"><i class="fas fa-map-marker-alt" data-page-node-id="Pki2L5EUGdrlmrwDxaTYj9"></i> Beijing, China</p>
+                                    <p class="talk-title" data-page-node-id="8zhRVqYB2LjJbz0bOuh22m">Data Assimilation and Atmospheric Modelling over the Last Millennium</p>
                                 </div>
                             </article>
 
-                            <article class="talk-event invited">
-                                <div class="talk-month">Jan</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Peking University Earth and Space Sciences Seminar</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
+                            <article class="talk-event invited" data-page-node-id="prNLKo9SyPFngpmPdFYM9o">
+                                <div class="talk-month" data-page-node-id="oM1go2hz43Q3NN8S9yqg8Y">Jan</div>
+                                <div class="talk-content" data-page-node-id="OZ04hU3y344gOf3sLBj9MI">
+                                    <div class="talk-heading" data-page-node-id="7cH99PriM3xJwiGukPbRdP">
+                                        <strong data-page-node-id="hyCJtElZgmk73F3RCECC0c">Peking University Earth and Space Sciences Seminar</strong>
+                                        <span class="talk-type" data-page-node-id="IXZrdR7qjtiDRGnfSODvsX"><i class="fas fa-microphone" data-page-node-id="Nas5SDoOWHwvYpxSGTkiDh"></i> Invited Talk</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                                    <p class="talk-title">Data Assimilation over the Last Millennium</p>
-                                </div>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="talk-year-group" aria-labelledby="talk-year-2025">
-                        <div class="talk-year" id="talk-year-2025">2025</div>
-                        <div class="talk-year-events">
-                            <article class="talk-event oral">
-                                <div class="talk-month">Dec</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>AGU Fall Meeting</strong>
-                                        <span class="talk-type"><i class="fas fa-chalkboard-teacher"></i> Oral Presentation</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> New Orleans, LA, USA</p>
-                                    <p class="talk-title">Coupled Seasonal Data Assimilation over the Last Millennium</p>
-                                </div>
-                            </article>
-
-                            <article class="talk-event poster">
-                                <div class="talk-month">Dec</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>AGU Fall Meeting</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> New Orleans, LA, USA</p>
-                                    <p class="talk-title">Deep Learning Atmospheric Model Reliably Simulates Out-of-Sample Extreme Weather Events</p>
-                                    <div class="talk-actions">
-                                        <a href="./photo/poster_final.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Poster</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event invited">
-                                <div class="talk-month">Nov</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>University of Hawaii at Manoa ATMO Seminar</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Honolulu, HI, USA</p>
-                                    <p class="talk-title">Coupled Seasonal Data Assimilation over the Last Millennium</p>
-                                </div>
-                            </article>
-
-                            <article class="talk-event poster">
-                                <div class="talk-month">Oct</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Graduate Climate Conference (GCC)</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Boston, MA, USA</p>
-                                    <p class="talk-title">Sacpy: A Python Module for Statistical Analysis of Climate Data</p>
-                                </div>
-                            </article>
-
-                            <article class="talk-event poster">
-                                <div class="talk-month">Sep</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>PCC Summer Institute</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
-                                    <p class="talk-title">Last Millennium Seasonal Reanalysis</p>
-                                    <div class="talk-actions">
-                                        <a href="./photo/LMRS_v2.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Poster</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event invited">
-                                <div class="talk-month">Apr</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Paleoclimate Seminar, Ohio State University</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Columbus, OH, USA</p>
-                                    <p class="talk-title">Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</p>
-                                </div>
-                            </article>
-
-                            <article class="talk-event invited">
-                                <div class="talk-month">Mar</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Climate Dynamics Seminar, Nanjing Normal University</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Nanjing, China</p>
-                                    <p class="talk-title">Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics</p>
-                                    <div class="talk-actions">
-                                        <a href="./slides/Mar27NNU.pdf" target="_blank"><i class="fas fa-file-powerpoint"></i> Slides</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event invited">
-                                <div class="talk-month">Mar</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Data Assimilation Seminar, Nanjing University</strong>
-                                        <span class="talk-type"><i class="fas fa-microphone"></i> Invited Talk</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Nanjing, China</p>
-                                    <p class="talk-title">Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</p>
-                                </div>
-                            </article>
-
-                            <article class="talk-event seminar">
-                                <div class="talk-month">Feb</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Climate Dynamics Seminar, University of Washington</strong>
-                                        <span class="talk-type"><i class="fas fa-comments"></i> Seminar</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
-                                    <p class="talk-title">Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation</p>
-                                </div>
-                            </article>
-
-                        </div>
-                    </section>
-
-                    <section class="talk-year-group" aria-labelledby="talk-year-2024">
-                        <div class="talk-year" id="talk-year-2024">2024</div>
-                        <div class="talk-year-events">
-                            <article class="talk-event oral">
-                                <div class="talk-month">Dec</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>AGU Fall Meeting</strong>
-                                        <span class="talk-type"><i class="fas fa-chalkboard-teacher"></i> Oral Presentation</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Washington, D.C., USA</p>
-                                    <p class="talk-title">Reconstructing the Tropical Pacific Upper Ocean Using Online Data Assimilation with a Deep Learning Model</p>
-                                    <div class="talk-actions">
-                                        <a href="https://doi.org/10.1029/2024MS004422" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event poster">
-                                <div class="talk-month">Oct</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Graduate Climate Conference (GCC)</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
-                                    <p class="talk-title">Last Millennium Seasonal Reanalysis</p>
-                                    <div class="talk-actions">
-                                        <a href="./photo/LMRS_v2.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Poster</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event poster">
-                                <div class="talk-month">Jun</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>Nanjing Data Assimilation Workshop</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Nanjing, China</p>
-                                    <p class="talk-title">Deep Learning for Tropical Pacific Reconstruction</p>
-                                    <div class="talk-actions">
-                                        <a href="./dl4enso.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Poster</a>
-                                        <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="talk-event seminar">
-                                <div class="talk-month">May</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>PCC Summer Institute Talk, University of Washington</strong>
-                                        <span class="talk-type"><i class="fas fa-comments"></i> Seminar</span>
-                                    </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA, USA</p>
-                                    <p class="talk-title">Deep Learning for Data Assimilation</p>
+                                    <p class="talk-location" data-page-node-id="rspQWSn2UVTYssfSJPys5J"><i class="fas fa-map-marker-alt" data-page-node-id="hLtAya4dVMQPdm0t7KHAQG"></i> Beijing, China</p>
+                                    <p class="talk-title" data-page-node-id="kYKcZfhLP8c1i6FGNTEzQK">Data Assimilation over the Last Millennium</p>
                                 </div>
                             </article>
                         </div>
                     </section>
 
-                    <section class="talk-year-group" aria-labelledby="talk-year-2023">
-                        <div class="talk-year" id="talk-year-2023">2023</div>
-                        <div class="talk-year-events">
-                            <article class="talk-event poster">
-                                <div class="talk-month">Dec</div>
-                                <div class="talk-content">
-                                    <div class="talk-heading">
-                                        <strong>AGU Fall Meeting</strong>
-                                        <span class="talk-type"><i class="fas fa-image"></i> Poster</span>
+                    <section class="talk-year-group" aria-labelledby="talk-year-2025" data-page-node-id="ZtFT4t5FxgPfFugYpaooOh">
+                        <div class="talk-year" id="talk-year-2025" data-page-node-id="0arRufEElmP9gQVvSQExrM">2025</div>
+                        <div class="talk-year-events" data-page-node-id="LdbbpM5E5LV39DLpjFHQyV">
+                            <article class="talk-event oral" data-page-node-id="TYcZ5VroGj1eZA2STN8kKF">
+                                <div class="talk-month" data-page-node-id="MFAIOvG7AKA6iuYiSr4Byo">Dec</div>
+                                <div class="talk-content" data-page-node-id="TH0183BtgmDRbQ7zAFiJ5O">
+                                    <div class="talk-heading" data-page-node-id="SWkWAFLGTMs0BS9979udBF">
+                                        <strong data-page-node-id="1Y55HyKE6D4bpNwGjr5la0">AGU Fall Meeting</strong>
+                                        <span class="talk-type" data-page-node-id="ACNm6qDSU3ox3nHsRRm8f7"><i class="fas fa-chalkboard-teacher" data-page-node-id="Aao0jSeMmD0ECkH88VlApw"></i> Oral Presentation</span>
                                     </div>
-                                    <p class="talk-location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA, USA</p>
-                                    <p class="talk-title">Sacpy: Python Package for Statistical Analysis of Climate</p>
-                                    <div class="talk-actions">
-                                        <a href="./sacpy_poster.png" target="_blank"><i class="fas fa-image"></i> Poster</a>
-                                        <a href="https://zilum.github.io/sacpy/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                    <p class="talk-location" data-page-node-id="egeLxwE7DNPP8Yy7bKHbkq"><i class="fas fa-map-marker-alt" data-page-node-id="jMBAxmzYFEsMGvt8iC3g48"></i> New Orleans, LA, USA</p>
+                                    <p class="talk-title" data-page-node-id="Jbc4BU2aeZ75VAbs2DNXHJ">Coupled Seasonal Data Assimilation over the Last Millennium</p>
+                                </div>
+                            </article>
+
+                            <article class="talk-event poster" data-page-node-id="Bs0NCehElATQ4gYdfYJfAe">
+                                <div class="talk-month" data-page-node-id="0fI6C9GZ8TrzePCjLJx5U1">Dec</div>
+                                <div class="talk-content" data-page-node-id="NlDpMPO9HPTYjmjjLO9yVX">
+                                    <div class="talk-heading" data-page-node-id="KO1aWaAD2bDLaIUg5DF5kV">
+                                        <strong data-page-node-id="6LPvby6Y4YWzMfZWAQ3qUQ">AGU Fall Meeting</strong>
+                                        <span class="talk-type" data-page-node-id="H7CT6FdxiI1YNf4rG5nOhy"><i class="fas fa-image" data-page-node-id="tMxFUieQiTrozoGRb892zE"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="zxSbUXiXHXGEAyJhsBdaVN"><i class="fas fa-map-marker-alt" data-page-node-id="G1fWaTb8TchVWVjDXBgscI"></i> New Orleans, LA, USA</p>
+                                    <p class="talk-title" data-page-node-id="ncHfEpIC8w0KIRKwNHJgTo">Deep Learning Atmospheric Model Reliably Simulates Out-of-Sample Extreme Weather Events</p>
+                                    <div class="talk-actions" data-page-node-id="WdPBAdDXTVvjUnjNjZlP5V">
+                                        <a href="./photo/poster_final.pdf" target="_blank" data-page-node-id="9vPjb8QOyyNvDaBm1dGCld"><i class="fas fa-file-pdf" data-page-node-id="dZ9bbDDUEq8F0FJ8WdU4Yn"></i> Poster</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event invited" data-page-node-id="RAuKuKCfX1DNAYTJsAhmb4">
+                                <div class="talk-month" data-page-node-id="utRV1xmWZxDJDQS4zTkMMN">Nov</div>
+                                <div class="talk-content" data-page-node-id="ppYI84vYEWjf9BMQja1nfN">
+                                    <div class="talk-heading" data-page-node-id="lGKWq1v5Q7n6H58wavm4Fg">
+                                        <strong data-page-node-id="u9t9BkLu6vGd5P6znWoSuo">University of Hawaii at Manoa ATMO Seminar</strong>
+                                        <span class="talk-type" data-page-node-id="cgVIvp1EEaq4x8ppGKyYVI"><i class="fas fa-microphone" data-page-node-id="5OPWriVHD3iwZzD7eUFMVa"></i> Invited Talk</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="xmYyXlu0mis6G6N8guqt6A"><i class="fas fa-map-marker-alt" data-page-node-id="CkSZcxsrCTNR9uwULeBoGI"></i> Honolulu, HI, USA</p>
+                                    <p class="talk-title" data-page-node-id="fqIbd8S5eI0NSHzm67FOxe">Coupled Seasonal Data Assimilation over the Last Millennium</p>
+                                </div>
+                            </article>
+
+                            <article class="talk-event poster" data-page-node-id="lLb4XpPCdCPkLFjCp0SEUG">
+                                <div class="talk-month" data-page-node-id="EWSPQTORS2C4Z0lJWGkqxT">Oct</div>
+                                <div class="talk-content" data-page-node-id="GqfkdzylOc5qcz67teJA7k">
+                                    <div class="talk-heading" data-page-node-id="w9I5U3amNJbM5LcgOp0bfi">
+                                        <strong data-page-node-id="0wAOHSl9N3vMIsi0hzHlws">Graduate Climate Conference (GCC)</strong>
+                                        <span class="talk-type" data-page-node-id="Jjcde5mDwALHiBzWBPtBPT"><i class="fas fa-image" data-page-node-id="B1H7af2WAY4wXESBPsM4MS"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="ZtEbHBa7RxQM6tzOyaFbSh"><i class="fas fa-map-marker-alt" data-page-node-id="00VEEntqSvrjdsmh2Hhrxe"></i> Boston, MA, USA</p>
+                                    <p class="talk-title" data-page-node-id="Y4buz8Y40IlRkcfeyu14nW">Sacpy: A Python Module for Statistical Analysis of Climate Data</p>
+                                </div>
+                            </article>
+
+                            <article class="talk-event poster" data-page-node-id="qPXRoDTktkYPyI7DTcXsoT">
+                                <div class="talk-month" data-page-node-id="bbLBWWCnYTFkKOXQwRg8F1">Sep</div>
+                                <div class="talk-content" data-page-node-id="EqEbYkLYXubiclaF2ZsCeg">
+                                    <div class="talk-heading" data-page-node-id="L72cLJJtB610YikYSxaCcM">
+                                        <strong data-page-node-id="mkC0jvugb6VE3WsKYV2WE7">PCC Summer Institute</strong>
+                                        <span class="talk-type" data-page-node-id="KBJ3EOXLA4VjMZLVMsdkxz"><i class="fas fa-image" data-page-node-id="EcSSSFBI9UWrA2m8oPyyVO"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="KX9AyWjrpVNNCjUxj7XHGR"><i class="fas fa-map-marker-alt" data-page-node-id="3cJuUzrFOmzSyDwoTIf073"></i> Seattle, WA, USA</p>
+                                    <p class="talk-title" data-page-node-id="dnMAaxGYlQhVcLc59wnfUb">Last Millennium Seasonal Reanalysis</p>
+                                    <div class="talk-actions" data-page-node-id="FeHC5NfQ7V3efJRn0GyJOS">
+                                        <a href="./photo/LMRS_v2.pdf" target="_blank" data-page-node-id="RcCMZQOZBwbE3i0sOGKuiL"><i class="fas fa-file-pdf" data-page-node-id="XAmuWx1iIHbiATXhg4GSWK"></i> Poster</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event invited" data-page-node-id="dWpsXdmBM8XD4fbz3Vy5N9">
+                                <div class="talk-month" data-page-node-id="UzF8cEY1zGdT65STSAeuMI">Apr</div>
+                                <div class="talk-content" data-page-node-id="zrFCF6DuL9PowLsJ1tcqPt">
+                                    <div class="talk-heading" data-page-node-id="qDdYEmRhFATkgV50Pd6DMb">
+                                        <strong data-page-node-id="sSjInWjiiF6G3UrXJc3rLe">Paleoclimate Seminar, Ohio State University</strong>
+                                        <span class="talk-type" data-page-node-id="ovSMYjRiZB3aG7nrdlY0xM"><i class="fas fa-microphone" data-page-node-id="K18CztRQW8csCgMBbM0hrb"></i> Invited Talk</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="JsuWYwCoanL0Fedum0yC79"><i class="fas fa-map-marker-alt" data-page-node-id="2wp8aACnETdC6CwBSxEkEI"></i> Columbus, OH, USA</p>
+                                    <p class="talk-title" data-page-node-id="1b2C9xFsHLRyDCMFE1gAb8">Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</p>
+                                </div>
+                            </article>
+
+                            <article class="talk-event invited" data-page-node-id="Hq0tn6yqvuHTdSM2lVplTe">
+                                <div class="talk-month" data-page-node-id="n7CwMZFmyx0JmQMMiQzKKZ">Mar</div>
+                                <div class="talk-content" data-page-node-id="kDScmwBCkgRDHLlRrDTHd1">
+                                    <div class="talk-heading" data-page-node-id="dHk0irvrvOfDjQjdCzXcUg">
+                                        <strong data-page-node-id="FEGKcjt5qadZAS8e25efk8">Climate Dynamics Seminar, Nanjing Normal University</strong>
+                                        <span class="talk-type" data-page-node-id="EfGawNM06WR0E1mAzWHJNG"><i class="fas fa-microphone" data-page-node-id="7kZ2fhKp1rvzNyJIdFiHXR"></i> Invited Talk</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="BxeQMgTXDNYLTH5BEJNmnv"><i class="fas fa-map-marker-alt" data-page-node-id="MC6Kgz5MV5thSkmwyTCliG"></i> Nanjing, China</p>
+                                    <p class="talk-title" data-page-node-id="gpelzYwtsmvtLOADK7AZHJ">Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics</p>
+                                    <div class="talk-actions" data-page-node-id="TbxQmkrbqPMw0HTHj5rRWE">
+                                        <a href="./slides/Mar27NNU.pdf" target="_blank" data-page-node-id="j40c6RuICm5fSqHkirDNpW"><i class="fas fa-file-powerpoint" data-page-node-id="9hWEDRZuAzjKAnkds4QvD8"></i> Slides</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event invited" data-page-node-id="lP9dO4nDLaeXWqkQFRlS6K">
+                                <div class="talk-month" data-page-node-id="A37QQHHw49DoSrq7CqW8PS">Mar</div>
+                                <div class="talk-content" data-page-node-id="ll7mp0lG31JsbvHuT3IZv8">
+                                    <div class="talk-heading" data-page-node-id="HJBe13n9jatJANNxd7gtwA">
+                                        <strong data-page-node-id="47dUx8x7ipLmJDvhRFhs28">Data Assimilation Seminar, Nanjing University</strong>
+                                        <span class="talk-type" data-page-node-id="zINQPFa8DqJkdGk15TnrwE"><i class="fas fa-microphone" data-page-node-id="Cc0qD9EYWz553mh4TERC4c"></i> Invited Talk</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="iAIqVHweuje9w6OIjd7TQJ"><i class="fas fa-map-marker-alt" data-page-node-id="2AtMz3t8xX4d7flqqHEgkd"></i> Nanjing, China</p>
+                                    <p class="talk-title" data-page-node-id="vjLIhD62cwhRCDvwMEviWo">Ocean, Atmosphere, and Sea Ice Data Assimilation for the Last Millennium</p>
+                                </div>
+                            </article>
+
+                            <article class="talk-event seminar" data-page-node-id="1EfpSdfk7WOzCTuO42AOc9">
+                                <div class="talk-month" data-page-node-id="Grd2vyWRwpcVEgKyxQObBR">Feb</div>
+                                <div class="talk-content" data-page-node-id="YMWCY1OLw4ITAAi9FknH2o">
+                                    <div class="talk-heading" data-page-node-id="PL05QkBigBbTlcN7B9l9Bc">
+                                        <strong data-page-node-id="RrFHauYZuN9JKEDtBtAcnm">Climate Dynamics Seminar, University of Washington</strong>
+                                        <span class="talk-type" data-page-node-id="8fNr4wqeK1vo8FBrkxqBxS"><i class="fas fa-comments" data-page-node-id="inA60iz5BC65UB2015tUHS"></i> Seminar</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="A2W0nbCCNOlkIRsIyye9Nj"><i class="fas fa-map-marker-alt" data-page-node-id="onlZY8vMH3eeqqRciOrRSY"></i> Seattle, WA, USA</p>
+                                    <p class="talk-title" data-page-node-id="VguL3oG7CUWHxmQHdowssP">Uncovering Insights from the Last Millennium Using Coupled Seasonal Data Assimilation</p>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <section class="talk-year-group" aria-labelledby="talk-year-2024" data-page-node-id="0Ir2GJsKPz5GMywOSbRUhB">
+                        <div class="talk-year" id="talk-year-2024" data-page-node-id="tE19lHtuMUIzgxGbotGlgj">2024</div>
+                        <div class="talk-year-events" data-page-node-id="0MPwNSln9dgYjSdKD5mAaW">
+                            <article class="talk-event oral" data-page-node-id="MwAEVCiLv2HBHBUVUiqv6q">
+                                <div class="talk-month" data-page-node-id="Eo1qhO8mPmYog9uj6AXZhy">Dec</div>
+                                <div class="talk-content" data-page-node-id="6kYGTHky3YtOiSMCvHIzGU">
+                                    <div class="talk-heading" data-page-node-id="C5JOwwLFcuEjsbhtkb4Cfe">
+                                        <strong data-page-node-id="yGeXFKbyGCyLYm00iLRzid">AGU Fall Meeting</strong>
+                                        <span class="talk-type" data-page-node-id="zTjv9XB4AyNnEaOUFXTuD9"><i class="fas fa-chalkboard-teacher" data-page-node-id="Bd58hbJYwpYJPBakpEHOwz"></i> Oral Presentation</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="jCb04Nueye1MCWmQT1JFbr"><i class="fas fa-map-marker-alt" data-page-node-id="4wWyknOzMPo9DJuMT4a1qZ"></i> Washington, D.C., USA</p>
+                                    <p class="talk-title" data-page-node-id="EmGEUT9lK1HIBC5b6LmYQl">Reconstructing the Tropical Pacific Upper Ocean Using Online Data Assimilation with a Deep Learning Model</p>
+                                    <div class="talk-actions" data-page-node-id="WxG6neZWFarhNAshtsbRO0">
+                                        <a href="https://doi.org/10.1029/2024MS004422" target="_blank" data-page-node-id="SEH5CRtk9Am4p5rzgDbiUq"><i class="fas fa-file-alt" data-page-node-id="G0CtVJ821tcAAk0mfdKzti"></i> Paper</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event poster" data-page-node-id="IIsPu1tRhoTzAnnmE7P5Yl">
+                                <div class="talk-month" data-page-node-id="rSHgGwG7QrL7H6wJElb4KQ">Oct</div>
+                                <div class="talk-content" data-page-node-id="iIQNZr5vww1CnlYsrkvc0c">
+                                    <div class="talk-heading" data-page-node-id="KWBu3fAR2UmdVpAC3lBjfD">
+                                        <strong data-page-node-id="1ULiHVKFChTZyeJ5ws4OB0">Graduate Climate Conference (GCC)</strong>
+                                        <span class="talk-type" data-page-node-id="LLDho2tW2GBoYILcKN0oop"><i class="fas fa-image" data-page-node-id="EKNMF6hK628ERSrB6bZFXg"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="bfozyxmbLAEjxhug5VHQH2"><i class="fas fa-map-marker-alt" data-page-node-id="Q9UjIISUU9sr22RU6ggJZB"></i> Seattle, WA, USA</p>
+                                    <p class="talk-title" data-page-node-id="FPNq4sVEorsGTEScdWhinL">Last Millennium Seasonal Reanalysis</p>
+                                    <div class="talk-actions" data-page-node-id="9Zz0PhgPuiDwbcyaUIZzmv">
+                                        <a href="./photo/LMRS_v2.pdf" target="_blank" data-page-node-id="TTOqLKRO8Jxg71x3zD01HM"><i class="fas fa-file-pdf" data-page-node-id="Z6ctZeSHz7wjH5GdN8MEPZ"></i> Poster</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event poster" data-page-node-id="NTLKlcMxK8JJtzhFpho9yH">
+                                <div class="talk-month" data-page-node-id="X17Szt9Fp76JB4pniskUw6">Jun</div>
+                                <div class="talk-content" data-page-node-id="XMlWNXiNglm9v486qBX78m">
+                                    <div class="talk-heading" data-page-node-id="oIWrT8PKPlaqx8I4FMFr6r">
+                                        <strong data-page-node-id="HnCpCvL3g53GtO8bjrcQC8">Nanjing Data Assimilation Workshop</strong>
+                                        <span class="talk-type" data-page-node-id="sS7d3YduiqBwuGFZDmmDyd"><i class="fas fa-image" data-page-node-id="runVB523AUXoFTtFG3CyCb"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="4OrWA75XxaF0WLEFOKZL6c"><i class="fas fa-map-marker-alt" data-page-node-id="ppOMxh6tmCA3FUGkOyVJSD"></i> Nanjing, China</p>
+                                    <p class="talk-title" data-page-node-id="kRVUZDoteQmOBGbDrpWSsS">Deep Learning for Tropical Pacific Reconstruction</p>
+                                    <div class="talk-actions" data-page-node-id="CvNOfrHY5AfvkeJ6pxuXSG">
+                                        <a href="./dl4enso.pdf" target="_blank" data-page-node-id="syvniLLZH1q3Z0L9ychbdY"><i class="fas fa-file-pdf" data-page-node-id="rYWo6PslH2Mpvs6fDRB9Sj"></i> Poster</a>
+                                        <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank" data-page-node-id="S8lMonIoCtj2ay9U3Eormo"><i class="fab fa-github" data-page-node-id="4fSSpym2YyVSrL4BvZdzWg"></i> GitHub</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="talk-event seminar" data-page-node-id="HrlDzVUrHnBfMF0dSSh8Vo">
+                                <div class="talk-month" data-page-node-id="rlZEZ6teg9xzR1NlMlptQr">May</div>
+                                <div class="talk-content" data-page-node-id="ikdj8lUvDSriP2sEGinxCe">
+                                    <div class="talk-heading" data-page-node-id="a7UjLURgSygjKYyqnqtB2z">
+                                        <strong data-page-node-id="Je5vbTcWHu7Jqa0jbdn4hu">PCC Summer Institute Talk, University of Washington</strong>
+                                        <span class="talk-type" data-page-node-id="CrwQ4dHwgMRs63AhQAMF6R"><i class="fas fa-comments" data-page-node-id="h3hLs00TwlI6cOzo5U5u0g"></i> Seminar</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="wx2zOUpXTLd3XJDkhw5nE3"><i class="fas fa-map-marker-alt" data-page-node-id="7w0YmgGAkcN3TiWLfgJvHo"></i> Seattle, WA, USA</p>
+                                    <p class="talk-title" data-page-node-id="FUgFEAKsr5ghAfADEpP5tG">Deep Learning for Data Assimilation</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="talk-year-group" aria-labelledby="talk-year-2023" data-page-node-id="Ky27JgrW9ZZqR2OUPya0TZ">
+                        <div class="talk-year" id="talk-year-2023" data-page-node-id="I0dkNK0Def3iS8tw2H6Bjx">2023</div>
+                        <div class="talk-year-events" data-page-node-id="42YiaJTw1Ib2qGRxWJVSYE">
+                            <article class="talk-event poster" data-page-node-id="6INIV2bhV1JVfcOhJMXUm2">
+                                <div class="talk-month" data-page-node-id="yasZztK74vbw3slPY0VFtW">Dec</div>
+                                <div class="talk-content" data-page-node-id="F0ruJ9maBM3AjkKNwntcPe">
+                                    <div class="talk-heading" data-page-node-id="GRmwVnpVwGdXeeYQY0vSKU">
+                                        <strong data-page-node-id="uDpotPgKryCssuxM8alBMR">AGU Fall Meeting</strong>
+                                        <span class="talk-type" data-page-node-id="OiUajzA7X23tNaCvTS4Msu"><i class="fas fa-image" data-page-node-id="krWhY5jb4DTzIaAyy97ogo"></i> Poster</span>
+                                    </div>
+                                    <p class="talk-location" data-page-node-id="7rxLUbj46gDugjNogEAMXD"><i class="fas fa-map-marker-alt" data-page-node-id="f7xCat1NiTAiRk4xyQ2ij6"></i> San Francisco, CA, USA</p>
+                                    <p class="talk-title" data-page-node-id="1PdldS9zSRCBhhSIDUE46h">Sacpy: Python Package for Statistical Analysis of Climate</p>
+                                    <div class="talk-actions" data-page-node-id="r7b5uW16UgAMwE6peLiKl2">
+                                        <a href="./sacpy_poster.png" target="_blank" data-page-node-id="6MdheIe0QJ0TM1CZ6byquU"><i class="fas fa-image" data-page-node-id="QWvC8VKbcDh6rjJeOcgXjD"></i> Poster</a>
+                                        <a href="https://zilum.github.io/sacpy/" target="_blank" data-page-node-id="OIuGGMkIbvAWiBaBEmhYOp"><i class="fab fa-github" data-page-node-id="gGi6iHNHZoMKkehvqDD1UA"></i> GitHub</a>
                                     </div>
                                 </div>
                             </article>
@@ -3167,82 +3345,93 @@
         </details>
 
         <!-- Peer Review Summary Section -->
-        <details class="reveal peer-review">
-            <summary>
-                <span>Peer Review Service</span>
-                <span class="review-total">21 completed reviews · 13 journals</span>
+        <details class="reveal peer-review" data-page-node-id="oBZQ6tEreOiuRCtf165FW9">
+            <summary data-page-node-id="acpIhCO4G8yqNNYXFjCBHc">
+                <span data-page-node-id="kJ2XuCdGJViRfVpPXEuxKQ">Peer Review Service</span>
+                <span class="review-total" data-page-node-id="yYWvzxxTA5IuYi8N2aQbrT">21 completed reviews · 13 journals</span>
             </summary>
-            <div class="section peer-review-section">
-                <div class="review-intro">
-                    <strong class="review-number">21</strong>
-                    <div>
-                        <strong>Completed peer reviews</strong>
-                        <p>Supporting rigorous, open, and reproducible research across climate, weather, and Earth system science.</p>
+            <div class="section peer-review-section" data-page-node-id="QYZZLPXwn7fO9PzOWHoJ8d">
+                <div class="review-intro" data-page-node-id="ijqp7MdYNaPJpGdNbnES2L">
+                    <strong class="review-number" data-page-node-id="3w6JOkEfIw01TBS0xlqyJC">21</strong>
+                    <div data-page-node-id="Qt1GahVxfnMSE84pQIO85D">
+                        <strong data-page-node-id="UDNJeG5DCbi7TZ7m6ARPbj">Completed peer reviews</strong>
+                        <p data-page-node-id="xR4EdmDA6wTsJtvI00BEup">Supporting rigorous, open, and reproducible research across climate, weather, and Earth system science.</p>
                     </div>
                 </div>
 
-                <div class="journal-shelf" aria-label="Selected journals reviewed for">
-                    <a class="journal-cover" href="https://www.earth-system-science-data.net/" target="_blank" rel="noopener" style="--tilt: -1.6deg; --delay: -0.4s;" aria-label="Earth System Science Data, 3 reviews">
-                        <img src="./assets/journal-covers/essd.jpg" alt="Earth System Science Data journal cover" loading="lazy" decoding="async">
-                        <span class="cover-count">3×</span>
-                        <span class="cover-label">Earth System Science Data</span>
+                <div class="journal-shelf" aria-label="Selected journals reviewed for" data-page-node-id="g1AsTgW3wn0wQ5z1pkLGIl">
+                    <a class="journal-cover" href="https://www.earth-system-science-data.net/" target="_blank" rel="noopener" style="--tilt: -1.6deg; --delay: -0.4s;" aria-label="Earth System Science Data, 3 reviews" data-page-node-id="xx8agWYOkrthncFZ2OSyY9">
+                        <img src="./assets/journal-covers/essd.jpg" alt="Earth System Science Data journal cover" loading="lazy" decoding="async" data-page-node-id="kmsFd03qvzZq2sCt8CMLU3">
+                        <span class="cover-count" data-page-node-id="IG8R8dt2RHPhoqdwqAOoEW">3×</span>
+                        <span class="cover-label" data-page-node-id="HOHYbTayB8eMymcTntuJmu">Earth System Science Data</span>
                     </a>
-                    <a class="journal-cover" href="https://agupubs.onlinelibrary.wiley.com/journal/19422466" target="_blank" rel="noopener" style="--tilt: 1.2deg; --delay: -1.8s;" aria-label="Journal of Advances in Modeling Earth Systems, 2 reviews">
-                        <img src="./assets/journal-covers/james.jpg" alt="Journal of Advances in Modeling Earth Systems cover" loading="lazy" decoding="async">
-                        <span class="cover-count">3×</span>
-                        <span class="cover-label">JAMES</span>
+                    <a class="journal-cover" href="https://agupubs.onlinelibrary.wiley.com/journal/19422466" target="_blank" rel="noopener" style="--tilt: 1.2deg; --delay: -1.8s;" aria-label="Journal of Advances in Modeling Earth Systems, 2 reviews" data-page-node-id="uK1AHHxH5S6rjcNjSOfBDv">
+                        <img src="./assets/journal-covers/james.jpg" alt="Journal of Advances in Modeling Earth Systems cover" loading="lazy" decoding="async" data-page-node-id="D74SXWV1nnKDW37USQ3iWk">
+                        <span class="cover-count" data-page-node-id="FUPrMyolnrj3lgE1HjlYjy">3×</span>
+                        <span class="cover-label" data-page-node-id="AXyEXKbFImIZZux0fWQWtY">JAMES</span>
                     </a>
-                    <a class="journal-cover" href="https://www.ametsoc.org/ams/publications/journals/journal-of-climate/" target="_blank" rel="noopener" style="--tilt: -0.7deg; --delay: -2.8s;" aria-label="Journal of Climate, 1 review">
-                        <img src="./assets/journal-covers/journal-of-climate.png" alt="Journal of Climate journal cover" loading="lazy" decoding="async">
-                        <span class="cover-count">2×</span>
-                        <span class="cover-label">Journal of Climate</span>
+                    <a class="journal-cover" href="https://www.ametsoc.org/ams/publications/journals/journal-of-climate/" target="_blank" rel="noopener" style="--tilt: -0.7deg; --delay: -2.8s;" aria-label="Journal of Climate, 1 review" data-page-node-id="ozBwJB3vWVuv4iFmcCijap">
+                        <img src="./assets/journal-covers/journal-of-climate.png" alt="Journal of Climate journal cover" loading="lazy" decoding="async" data-page-node-id="WBbLE9mZE9DpQ3lma7Foyi">
+                        <span class="cover-count" data-page-node-id="ozwRoEtXFoB7p6P052JqFr">2×</span>
+                        <span class="cover-label" data-page-node-id="PosUJYDBHVGSaZcMVyRxiK">Journal of Climate</span>
                     </a>
-                    <a class="journal-cover" href="https://www.nature.com/npjclimatsci/" target="_blank" rel="noopener" style="--tilt: 1.7deg; --delay: -3.7s;" aria-label="npj Climate and Atmospheric Science, 2 reviews">
-                        <img src="./assets/journal-covers/npj-climate.jpg" alt="npj Climate and Atmospheric Science journal artwork" loading="lazy" decoding="async">
-                        <span class="cover-count">2×</span>
-                        <span class="cover-label">npj Climate and Atmospheric Science</span>
+                    <a class="journal-cover" href="https://www.nature.com/npjclimatsci/" target="_blank" rel="noopener" style="--tilt: 1.7deg; --delay: -3.7s;" aria-label="npj Climate and Atmospheric Science, 2 reviews" data-page-node-id="Oj7T7FSzNhD8FYmiyllW76">
+                        <img src="./assets/journal-covers/npj-climate.jpg" alt="npj Climate and Atmospheric Science journal artwork" loading="lazy" decoding="async" data-page-node-id="FZVsBWep4vMLRn4YKFoLAX">
+                        <span class="cover-count" data-page-node-id="InL7CNASTxUY6HhQ9dQGCB">2×</span>
+                        <span class="cover-label" data-page-node-id="HJcHBSE9p4aPeUURDBw6cW">npj Climate and Atmospheric Science</span>
                     </a>
-                    <a class="journal-cover" href="https://link.springer.com/journal/382" target="_blank" rel="noopener" style="--tilt: -1.2deg; --delay: -1.1s;" aria-label="Climate Dynamics, 1 review">
-                        <img src="./assets/journal-covers/climate-dynamics.jpg" alt="Climate Dynamics journal cover" loading="lazy" decoding="async">
-                        <span class="cover-count">1×</span>
-                        <span class="cover-label">Climate Dynamics</span>
+                    <a class="journal-cover" href="https://link.springer.com/journal/382" target="_blank" rel="noopener" style="--tilt: -1.2deg; --delay: -1.1s;" aria-label="Climate Dynamics, 1 review" data-page-node-id="Aq9AhCKN1rj3QIpSaNdJC3">
+                        <img src="./assets/journal-covers/climate-dynamics.jpg" alt="Climate Dynamics journal cover" loading="lazy" decoding="async" data-page-node-id="ygNAnmXuCB6JpCYiq4VdfG">
+                        <span class="cover-count" data-page-node-id="fIt5N4O97zFUBFBNtWsy23">1×</span>
+                        <span class="cover-label" data-page-node-id="UF0ZSuV35vCDvyRa1UtUFa">Climate Dynamics</span>
                     </a>
-                    <a class="journal-cover" href="https://www.geoscientific-model-development.net/" target="_blank" rel="noopener" style="--tilt: 0.8deg; --delay: -2.2s;" aria-label="Geoscientific Model Development, 1 review">
-                        <img src="./assets/journal-covers/gmd.jpg" alt="Geoscientific Model Development journal cover" loading="lazy" decoding="async">
-                        <span class="cover-count">1×</span>
-                        <span class="cover-label">Geoscientific Model Development</span>
+                    <a class="journal-cover" href="https://www.geoscientific-model-development.net/" target="_blank" rel="noopener" style="--tilt: 0.8deg; --delay: -2.2s;" aria-label="Geoscientific Model Development, 1 review" data-page-node-id="Sv7BYBMDuqOKgcgyaYkGUA">
+                        <img src="./assets/journal-covers/gmd.jpg" alt="Geoscientific Model Development journal cover" loading="lazy" decoding="async" data-page-node-id="OxYU5ogxRs9pdZQK4iEoil">
+                        <span class="cover-count" data-page-node-id="82PjtCVdYFYjJ3mCiX7M4H">1×</span>
+                        <span class="cover-label" data-page-node-id="PGr7BWumPmLmX5JBzm87ZG">Geoscientific Model Development</span>
                     </a>
                 </div>
 
-                <div class="review-more">
-                    <h4>Also reviewed for</h4>
-                    <ul class="review-journal-list">
-                        <li>PLOS ONE <span>3×</span></li>
-                        <li>JGR: Machine Learning and Computation <span>1×</span></li>
-                        <li>JGR: Atmospheres <span>1×</span></li>
-                        <li>Atmosphere <span>1×</span></li>
-                        <li>Radio Science <span>1×</span></li>
-                        <li>Frontiers in Earth Science <span>1×</span></li>
-                        <li>npj Natural Hazards <span>1×</span></li>
+                <div class="review-more" data-page-node-id="qKhOJWTrqVUIL3oWJzDrjX">
+                    <h4 data-page-node-id="CPmAntxYNVXaRI19UazY4H">Also reviewed for</h4>
+                    <ul class="review-journal-list" data-page-node-id="MwfuwfglTVc6p8ZY4enEuS">
+                        <li data-page-node-id="5dt50PppPLln8EnFVzM5TU">PLOS ONE <span data-page-node-id="OhDFJeqws8Llqnpz6pNyXF">3×</span></li>
+                        <li data-page-node-id="oMWpSazTjDHBluPMzxX5cD">JGR: Machine Learning and Computation <span data-page-node-id="V26oj4P2AroaU3euxk5Zq8">1×</span></li>
+                        <li data-page-node-id="hrTuNUHOkR7YJVDf7110Y2">JGR: Atmospheres <span data-page-node-id="FnleXjfFHvsXvo5IGZxKMN">1×</span></li>
+                        <li data-page-node-id="nCdQ01cFWdfWsOzAOnAM3N">Atmosphere <span data-page-node-id="BYzHpcDAg2WnTxeotGtP02">1×</span></li>
+                        <li data-page-node-id="I5kqxvZqUuyyzMBtMN9qRt">Radio Science <span data-page-node-id="Gs6AiDrfEK9X5ESI4K0ghx">1×</span></li>
+                        <li data-page-node-id="PLhrMlgQmMk7JaYcXXJJNQ">Frontiers in Earth Science <span data-page-node-id="JtR3LsZ3JVGlSDM1gJx41C">1×</span></li>
+                        <li data-page-node-id="cjP3pTZrfJx3ijxkus453D">npj Natural Hazards <span data-page-node-id="Bmf4ZS1FnXUP5N4a6zH43l">1×</span></li>
                     </ul>
                 </div>
             </div>
         </details>
 
         <!-- Footer -->
-        <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;">
-            <nav class="footer-links" aria-label="Additional profiles">
-                <a href="https://www.researchgate.net/profile/Zilu-Meng" target="_blank" rel="noopener">ResearchGate</a>
-                <a href="https://orcid.org/0000-0001-5706-592X" target="_blank" rel="noopener">ORCID</a>
-                <a href="https://www.zhihu.com/people/lowkkk/" target="_blank" rel="noopener">Zhihu</a>
-                <a href="https://x.com/Zilu4Climate" target="_blank" rel="noopener">X</a>
+        <footer style="text-align: center; margin-top: 40px; font-size: 0.9em; color: #6c757d;" data-page-node-id="gCnwC7b30bQv8J8NZYzmLc">
+            <nav class="footer-links" aria-label="Additional profiles" data-page-node-id="TKKN0KevchhM6AO1yvIhfh">
+                <a href="https://www.researchgate.net/profile/Zilu-Meng" target="_blank" rel="noopener" data-page-node-id="iiJNv5PbT3acPgHRmkBx9X">ResearchGate</a>
+                <a href="https://orcid.org/0000-0001-5706-592X" target="_blank" rel="noopener" data-page-node-id="MH778eoBsQhdQIP4xLoW2z">ORCID</a>
+                <a href="https://www.zhihu.com/people/lowkkk/" target="_blank" rel="noopener" data-page-node-id="QNHPyXnAyLyyGcDAYwfBRT">Zhihu</a>
+                <a href="https://x.com/Zilu4Climate" target="_blank" rel="noopener" data-page-node-id="bMfyaR80qsqbYj3wo0wqUn">X</a>
             </nav>
-            <p>© 2026 Zilu Meng. Last updated: Sep 2026</p>
+            <p data-page-node-id="4ZSHnjSem1AwBhFgQCHHcb">© 2026 Zilu Meng. Last updated: Sep 2026</p>
             <!-- Remember to update the date here manually when you make changes -->
         </footer>
         
 
     </div> <!-- End Container -->
+
+    <div class="video-modal" id="video-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Enlarged LMR4D-Var animation">
+        <div class="video-modal-backdrop" data-video-close></div>
+        <div class="video-modal-frame">
+            <video class="video-modal-player" id="video-modal-player" src="./videos/lmr4dvar_joint_optimization.mp4" poster="./videos/lmr4dvar_joint_optimization_poster.png" controls loop playsinline></video>
+            <p class="video-modal-caption"><strong>LMR4D-Var</strong> · 1000–2000 · 1 objective · click outside or press Esc to close</p>
+            <button class="video-modal-close" type="button" data-video-close aria-label="Close enlarged animation">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
 
     <script>
         function setupTheme() {
@@ -3360,6 +3549,7 @@
                 li.classList.toggle('first-author', li.dataset.firstAuthor === '1');
 
                 li.querySelectorAll('a').forEach((link) => {
+                    if (link.classList.contains('pub-video-card')) return;
                     const href = (link.getAttribute('href') || '').toLowerCase();
                     const originalLabel = link.textContent.replace(/[\[\]]/g, '').trim();
                     link.classList.add('pub-resource');
@@ -3534,6 +3724,51 @@
             });
         }
 
+        function setupVideoLightbox() {
+            const trigger = document.querySelector('[data-video-open]');
+            const modal = document.getElementById('video-modal');
+            const player = document.getElementById('video-modal-player');
+            if (!trigger || !modal || !player) return;
+
+            const heroVideo = document.querySelector('.field-video');
+            const closeButton = modal.querySelector('.video-modal-close');
+            let lastFocused = null;
+
+            function openModal() {
+                lastFocused = document.activeElement;
+                if (heroVideo) {
+                    try {
+                        player.currentTime = heroVideo.currentTime;
+                    } catch (error) {
+                        /* currentTime may be unavailable before metadata loads */
+                    }
+                }
+                modal.hidden = false;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                const played = player.play();
+                if (played && typeof played.catch === 'function') played.catch(() => {});
+                if (closeButton) closeButton.focus();
+            }
+
+            function closeModal() {
+                modal.hidden = true;
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+                player.pause();
+                if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+            }
+
+            trigger.addEventListener('click', openModal);
+            if (heroVideo) heroVideo.addEventListener('click', openModal);
+            modal.querySelectorAll('[data-video-close]').forEach((el) => {
+                el.addEventListener('click', closeModal);
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.hidden) closeModal();
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             setupTheme();
             setupScrollUI();
@@ -3543,6 +3778,7 @@
             secureExternalLinks();
             setupClimateCanvas();
             setupInteractiveMotion();
+            setupVideoLightbox();
         });
     </script>
 </body>
