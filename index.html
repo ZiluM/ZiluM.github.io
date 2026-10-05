@@ -1169,6 +1169,65 @@
             font-size: 0.8em;
         }
 
+        .pub-article-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 9px 0 2px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(180, 97, 34, 0.06);
+            color: var(--text);
+            text-decoration: none;
+            transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+        }
+
+        .pub-article-card:hover {
+            background: rgba(180, 97, 34, 0.13);
+            border-color: #b46122;
+            transform: translateY(-1px);
+        }
+
+        .pub-article-card .pub-article-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #b46122;
+            color: #fff;
+            font-size: 1.05em;
+        }
+
+        .pub-article-body {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .pub-article-title {
+            color: #b46122;
+            font-size: 0.88em;
+            font-weight: 800;
+        }
+
+        .pub-article-desc {
+            color: var(--muted);
+            font-size: 0.8em;
+            line-height: 1.42;
+        }
+
+        .pub-article-card .fa-arrow-up-right-from-square {
+            margin-left: auto;
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 0.8em;
+        }
+
         .pub-toggle {
             display: block;
             width: 100%;
@@ -3008,6 +3067,14 @@
                         [<a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">Data</a>],
                         [<a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>],
                         [<a href="https://www.bilibili.com/video/BV19tGNzQE3R" target="_blank">Bilibili Video (Chinese)</a>].
+                        <a class="pub-article-card" href="./lmr-seasonal/">
+                            <span class="pub-article-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+                            <span class="pub-article-body">
+                                <span class="pub-article-title">Research Page · LMR Seasonal</span>
+                                <span class="pub-article-desc">Seasonal climate reconstruction for 800–2000 CE: key findings, figures, data specifications, a Python example, and citation.</span>
+                            </span>
+                            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
                     </li>
                     <li data-status="journal">
                         <strong>Meng, Z.</strong>, & Hakim, G. J. (2024).
@@ -3057,6 +3124,7 @@
                 <p>
                     <strong>Dataset:</strong> <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html" target="_blank">LMR Seasonal Data Portal</a>
                 </p>
+                <p><a href="./lmr-seasonal/">Research overview, key figures, and data usage guide</a></p>
                 <p>
                     "Online" data assimilation (DA) is used to generate a seasonal-resolution reanalysis dataset over the last millennium by combining forecasts from an ocean–atmosphere–sea-ice coupled linear inverse model with climate proxy records. Instrumental verification reveals that this reconstruction achieves the highest correlation skill, while using fewer proxies, in surface temperature reconstructions compared to other paleo-DA products, particularly during boreal winter when proxy data are scarce. Reconstructed ocean and sea-ice variables also have high correlation with instrumental and satellite datasets. Verification against independent proxy records shows that reconstruction skill is robust throughout the last millennium. Analysis of the results reveals that the method effectively captures the seasonal evolution and amplitude of El Niño events, seasonal temperature trends that are consistent with orbital forcing over the last millennium, and polar-amplified cooling in the transition from the Medieval Climate Anomaly to the Little Ice Age.
                 </p>
@@ -3064,7 +3132,7 @@
                     <strong>Key Features:</strong>
                 </p>
                 <ul>
-                    <li>Seasonal resolution paleoclimate reanalysis spanning the last millennium (850-2000 CE)</li>
+                    <li>Seasonal resolution paleoclimate reanalysis spanning 800–2000 CE</li>
                     <li>Coupled ocean-atmosphere-sea ice reconstruction using online data assimilation</li>
                     <li>High correlation skill with instrumental data, especially during data-sparse winter months</li>
                     <li>Captures seasonal evolution and amplitude of ENSO events</li>
@@ -3191,7 +3259,7 @@
              <div class="section">
                 <ol>
                     <li>
-                        <strong>Last Millennium Seasonal Reanalysis:</strong> Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>]
+                        <strong><a href="./lmr-seasonal/">Last Millennium Seasonal Reanalysis:</a></strong> Developed a seasonal reanalysis dataset for the last millennium using online data assimilation. [<a href="./photo/LMRS_v2.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>]
                     </li>
                      <li>
                         <strong>Deep Learning for Tropical Pacific Reconstruction:</strong> Developed a deep learning model coupled with online data assimilation to reconstruct tropical climate fields. [<a href="https://arxiv.org/abs/2406.07063" target="_blank">Paper</a>, <a href="./dl4enso.pdf" target="_blank">Poster</a>, <a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">GitHub</a>]
@@ -3767,6 +3835,7 @@
 
                 li.querySelectorAll('a').forEach((link) => {
                     if (link.classList.contains('pub-video-card')) return;
+                    if (link.classList.contains('pub-article-card')) return;
                     const href = (link.getAttribute('href') || '').toLowerCase();
                     const originalLabel = link.textContent.replace(/[\[\]]/g, '').trim();
                     link.classList.add('pub-resource');

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LMR Seasonal | Seasonal Climate Reconstruction, 800–2000 CE</title>
+  <meta name="description" content="LMR Seasonal reconstructs surface temperature, ocean heat content, and Northern Hemisphere sea ice for 800–2000 CE. Explore the paper, 800-member dataset, code, and a Python example.">
+  <meta name="theme-color" content="#f7f8f4">
+  <link rel="canonical" href="https://zilum.github.io/lmr-seasonal/">
+  <meta name="citation_title" content="Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium">
+  <meta name="citation_author" content="Zilu Meng">
+  <meta name="citation_author" content="Gregory J. Hakim">
+  <meta name="citation_author" content="Eric J. Steig">
+  <meta name="citation_publication_date" content="2025/12/01">
+  <meta name="citation_journal_title" content="Journal of Climate">
+  <meta name="citation_volume" content="38">
+  <meta name="citation_issue" content="23">
+  <meta name="citation_firstpage" content="7229">
+  <meta name="citation_lastpage" content="7247">
+  <meta name="citation_doi" content="10.1175/JCLI-D-25-0048.1">
+  <meta name="citation_pdf_url" content="https://zilum.github.io/lmr-seasonal/paper.pdf">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LMR Seasonal — The last millennium, season by season">
+  <meta property="og:description" content="A coupled atmosphere–ocean–sea ice reconstruction for 800–2000 CE. Paper, key findings, open data, code, and citation.">
+  <meta property="og:url" content="https://zilum.github.io/lmr-seasonal/">
+  <meta property="og:image" content="https://zilum.github.io/lmr-seasonal/assets/millennium-temperature.webp">
+  <meta property="og:image:alt" content="Global mean temperature and medieval-to-Little-Ice-Age temperature patterns from the LMR Seasonal paper, Figure 14.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EZM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://zilum.github.io/lmr-seasonal/",
+        "url": "https://zilum.github.io/lmr-seasonal/",
+        "name": "LMR Seasonal | Seasonal Climate Reconstruction, 800–2000 CE",
+        "inLanguage": "en",
+        "mainEntity": {"@id": "https://zilum.github.io/lmr-seasonal/#article"}
+      },
+      {
+        "@type": "Person",
+        "@id": "https://zilum.github.io/#zilu-meng",
+        "name": "Zilu Meng",
+        "url": "https://zilum.github.io/",
+        "sameAs": "https://orcid.org/0000-0001-5706-592X"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://zilum.github.io/lmr-seasonal/#article",
+        "headline": "Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium",
+        "name": "Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium",
+        "author": [
+          {"@id": "https://zilum.github.io/#zilu-meng"},
+          {"@type": "Person", "name": "Gregory J. Hakim"},
+          {"@type": "Person", "name": "Eric J. Steig"}
+        ],
+        "datePublished": "2025-12-01",
+        "identifier": "10.1175/JCLI-D-25-0048.1",
+        "sameAs": "https://doi.org/10.1175/JCLI-D-25-0048.1",
+        "isPartOf": {
+          "@type": "PublicationIssue",
+          "issueNumber": "23",
+          "isPartOf": {
+            "@type": "PublicationVolume",
+            "volumeNumber": "38",
+            "isPartOf": {"@type": "Periodical", "name": "Journal of Climate"}
+          }
+        },
+        "pageStart": "7229",
+        "pageEnd": "7247",
+        "inLanguage": "en",
+        "keywords": ["LMR Seasonal", "paleoclimate reconstruction", "online data assimilation", "ENSO", "Arctic sea ice", "ocean heat content"],
+        "description": "A seasonal-resolution reconstruction of coupled atmosphere, ocean, and Northern Hemisphere sea ice using a linear inverse model and paleoclimate proxies, with instrumental and independent-proxy verification.",
+        "encoding": {"@type": "MediaObject", "contentUrl": "https://zilum.github.io/lmr-seasonal/paper.pdf", "encodingFormat": "application/pdf"}
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://zilum.github.io/lmr-seasonal/#dataset",
+        "name": "Last Millennium Reanalysis (LMR) Seasonal",
+        "description": "Seasonal climate reconstruction for 800–2000 CE on a 2-degree grid, with 800 ensemble members. Global surface air temperature, sea surface temperature, and upper-300-m ocean heat content; Northern Hemisphere sea ice concentration and thickness.",
+        "url": "https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html",
+        "sameAs": "https://doi.org/10.5281/zenodo.17268597",
+        "identifier": "10.5281/zenodo.17268597",
+        "creator": [
+          {"@id": "https://zilum.github.io/#zilu-meng"},
+          {"@type": "Person", "name": "Gregory J. Hakim"},
+          {"@type": "Person", "name": "Eric J. Steig"}
+        ],
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "temporalCoverage": "0800/2000",
+        "measurementTechnique": "Online ensemble Kalman filtering with a coupled linear inverse model and paleoclimate proxies",
+        "variableMeasured": [
+          {"@type": "PropertyValue", "name": "Surface air temperature anomaly", "unitText": "K"},
+          {"@type": "PropertyValue", "name": "Sea surface temperature anomaly", "unitText": "K"},
+          {"@type": "PropertyValue", "name": "Ocean heat content anomaly, 0–300 m", "unitText": "J/m²"},
+          {"@type": "PropertyValue", "name": "Northern Hemisphere sea ice concentration anomaly", "unitText": "%"},
+          {"@type": "PropertyValue", "name": "Northern Hemisphere sea ice thickness anomaly", "unitText": "m"}
+        ],
+        "citation": {"@id": "https://zilum.github.io/lmr-seasonal/#article"},
+        "distribution": {
+          "@type": "DataDownload",
+          "name": "Ensemble-mean gridded fields",
+          "encodingFormat": "application/gzip",
+          "contentUrl": "https://zenodo.org/records/17268597/files/mean_files.tar.gz?download=1"
+        }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGE6Y107VX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VGE6Y107VX');
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">ZM</span><span>Zilu Meng<span class="brand-caption">Research</span></span></a>
+      <nav aria-label="Page navigation">
+        <a href="#findings">Findings</a>
+        <a href="#method">Method</a>
+        <a href="#data">Data &amp; code</a>
+        <a class="nav-cite" href="#citation">Cite this work <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="paper-title">
+      <div class="hero-main">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Journal of Climate · 2025</p>
+        <p class="project-name">LMR <em>Seasonal</em></p>
+        <h1 id="paper-title">Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium</h1>
+        <p class="hero-deck">Reconstructing past climate, season by season, by combining paleoclimate records with the memory of the ocean, atmosphere, and sea ice.</p>
+        <p class="authors"><a href="../">Zilu Meng</a>, Gregory J. Hakim &amp; Eric J. Steig<br><span>University of Washington</span></p>
+        <div class="actions">
+          <a class="button primary" href="./paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#data">Explore the data <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="https://github.com/ZiluM/LMR_Seasonal">Source code <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="research-uptake-link"><a href="#research-use">See how other studies use LMR Seasonal <span aria-hidden="true">↓</span></a></p>
+      </div>
+      <section id="abstract" class="hero-abstract" aria-labelledby="abstract-title">
+        <p class="eyebrow">Published abstract</p>
+        <h2 id="abstract-title">The paper in the authors’ words</h2>
+        <p>“Online” data assimilation (DA) is used to generate a seasonal-resolution reanalysis dataset over the last millennium by combining forecasts from an ocean–atmosphere–sea ice coupled linear inverse model with climate proxy records. Instrumental verification reveals that this reconstruction achieves the highest correlation skill while using fewer proxies in surface temperature reconstructions compared to other paleo-DA products, particularly during boreal winter when proxy data are scarce. Reconstructed ocean and sea ice variables also have high correlation with instrumental and satellite datasets. Verification against independent proxy records shows that reconstruction skill is robust throughout the last millennium. Analysis of the results reveals that the method effectively captures the seasonal evolution and amplitude of El Niño events, seasonal temperature trends that are consistent with orbital forcing over the last millennium, and polar-amplified cooling in the transition from the medieval climate anomaly to the little ice age.</p>
+        <p class="source-note">From the <a href="./paper.pdf#page=1">published Journal of Climate paper</a>. <a href="../paper/clim-JCLI-D-25-0048.1-2.pdf">Original-resolution PDF</a> is also available.</p>
+      </section>
+      <dl class="facts">
+        <div><dt>Published data coverage</dt><dd>800–2000 <span>CE</span></dd></div>
+        <div><dt>Temporal resolution</dt><dd>4 <span>seasons / year</span></dd></div>
+        <div><dt>Ensemble size</dt><dd>800 <span>members</span></dd></div>
+        <div><dt>Spatial resolution</dt><dd>2° × 2° <span>grid</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="overview section-band" aria-labelledby="overview-title">
+      <div class="shell overview-grid">
+        <div><p class="eyebrow">The research question</p><h2 id="overview-title">How did climate evolve<br>within each year?</h2></div>
+        <div class="overview-copy">
+          <p>Many paleoclimate records are sensitive to a particular season. Annual averaging can obscure that information. LMR Seasonal preserves four seasons per year and uses a coupled forecast model to carry information from one season into the next.</p>
+          <p>The result is a gridded paleoclimate reanalysis of surface air temperature, sea surface temperature, upper-ocean heat content, and Northern Hemisphere sea ice. It supports research on <strong>ENSO evolution, seasonal temperature trends, and multicentennial climate change</strong>.</p>
+          <p class="source-note">This page accompanies <a href="https://doi.org/10.1175/JCLI-D-25-0048.1">Meng, Hakim &amp; Steig (2025)</a>. The published data range is documented in the <a href="https://zenodo.org/records/17268597">dataset archive</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="findings" class="shell section" aria-labelledby="findings-title">
+      <div class="section-heading"><div><p class="eyebrow">Evidence from the paper</p><h2 id="findings-title">What the reconstruction reveals</h2></div><p>Three results, with the figures<br>and context behind them.</p></div>
+      <article class="finding" id="finding-skill">
+        <div class="finding-copy"><span class="finding-number">01</span><h3>Seasonal information improves winter reconstruction.</h3>
+          <p>Against HadCRUT5 over 1880–2000, LMR Seasonal reconstructs surface temperature in all four seasons. Compared with PHYDA, its relative advantage is more pronounced in boreal winter, when temperature-sensitive proxies are sparse.</p>
+          <p>The comparison varies by region and season: PHYDA performs better in parts of North America and Eurasia during summer. The figure maps those differences rather than implying a uniform improvement.</p>
+          <a class="source-link" href="./paper.pdf#page=11">Paper §3a · Fig. 4 <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="paper-figure"><a href="./assets/seasonal-temperature-skill.webp" aria-label="Open Figure 4 at full resolution"><img src="./assets/seasonal-temperature-skill.webp" width="2000" height="2228" alt="Figure 4: maps of LMR Seasonal surface temperature correlation with HadCRUT5 for DJF, JJA, MAM, and SON, plus PHYDA winter and summer correlations and the differences between reconstructions." loading="lazy"></a><figcaption><strong>Fig. 4 · Seasonal temperature verification.</strong> Left: LMR Seasonal in all four seasons. Right: PHYDA and correlation differences for DJF and JJA. Black dots in the difference maps indicate significance at the 95% level. Verification period: 1880–2000.</figcaption></figure>
+      </article>
+      <article class="finding" id="finding-enso">
+        <div class="finding-copy"><span class="finding-number">02</span><h3>El Niño emerges as an evolving event.</h3>
+          <p>The reconstruction captures much of the seasonal evolution of four El Niño onset classes in the instrumental period, including strong basin-wide, moderate eastern-Pacific, moderate central-Pacific, and successive events.</p>
+          <p>Reconstructed amplitudes are smaller for some classes. The central-Pacific comparison is based on only three events during 1900–2000. These modern comparisons help assess the reconstruction before using the longer record to study ENSO.</p>
+          <a class="source-link" href="./paper.pdf#page=14">Paper §3a · Figs. 10–11 <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="paper-figure"><a href="./assets/enso-evolution.webp" aria-label="Open Figure 10 at full resolution"><img src="./assets/enso-evolution.webp" width="2000" height="2068" alt="Figure 10: longitude-time composites of tropical Pacific sea surface temperature anomalies for four El Niño classes. HadISST observations are on the left and LMR Seasonal on the right." loading="lazy"></a><figcaption><strong>Fig. 10 · El Niño onset and evolution.</strong> HadISST (left) and LMR Seasonal (right), using events from 1900–2000. Rows show the four event classes; dots indicate composite anomalies significant at the 95% level. The color scale is SST anomaly in °C.</figcaption></figure>
+      </article>
+      <article class="finding" id="finding-millennium">
+        <div class="finding-copy"><span class="finding-number">03</span><h3>Long-term cooling has a seasonal and polar signature.</h3>
+          <p>For 850–1850 CE, reconstructed cooling is greater in DJF and SON than in MAM and JJA, consistent with a delayed climate response to orbital-insolation trends. These trends emerge from proxy assimilation; trends were removed from the model training data.</p>
+          <p>The reconstruction also resolves amplified high-latitude cooling from the Medieval Climate Anomaly (950–1250 CE) to the Little Ice Age (1400–1700 CE), alongside changes in Northern Hemisphere sea ice and upper-ocean heat content.</p>
+          <a class="source-link" href="./paper.pdf#page=15">Paper §4 · Figs. 13–15 <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="paper-figure"><a href="./assets/millennium-temperature.webp" aria-label="Open Figure 14 at full resolution"><img src="./assets/millennium-temperature.webp" width="2000" height="1682" alt="Figure 14: global mean temperature across 800–2000 CE and maps of Medieval Climate Anomaly minus Little Ice Age temperature for LMR Seasonal, LMRv2, PHYDA, and LMR Online." loading="lazy"></a><figcaption><strong>Fig. 14 · Medieval climate and the Little Ice Age.</strong> Top: global mean temperature, including 20-year running means and LMR Seasonal ensemble intervals. Maps: MCA minus LIA temperature. Hatching marks regions that do not pass the 95% significance test.</figcaption></figure>
+      </article>
+    </section>
+
+    <section id="method" class="method section-band" aria-labelledby="method-title">
+      <div class="shell section">
+        <div class="section-heading"><div><p class="eyebrow">How the system works</p><h2 id="method-title">Forecast. Update. Carry the memory forward.</h2></div></div>
+        <div class="method-grid">
+          <article><span class="step">01 / FORECAST</span><h3>A coupled climate prior</h3><p>A linear inverse model (LIM), trained on climate-model output, forecasts surface temperature, upper-ocean heat content, and Northern Hemisphere sea ice from one season to the next.</p></article>
+          <article><span class="step">02 / ASSIMILATE</span><h3>Proxies in their own seasons</h3><p>Proxy system models connect tree rings, corals, and ice cores to climate variables. An ensemble Kalman filter updates the appropriate season or set of seasons using each record’s temperature sensitivity.</p></article>
+          <article><span class="step">03 / CYCLE</span><h3>Information persists</h3><p>The updated climate state initializes the next forecast. Ocean and sea ice persistence help transmit proxy information into seasons with fewer records. Annual-mean proxies update the available seasonal states.</p></article>
+        </div>
+        <div class="season-strip" aria-label="Seasonal forecast cycle"><span><strong>DJF</strong>Dec–Feb</span><span aria-hidden="true">→</span><span><strong>MAM</strong>Mar–May</span><span aria-hidden="true">→</span><span><strong>JJA</strong>Jun–Aug</span><span aria-hidden="true">→</span><span><strong>SON</strong>Sep–Nov</span><span class="cycle-note">→ next year</span></div>
+        <p class="source-note">Method: <a href="./paper.pdf#page=2">paper §2, Fig. 2 and Table 1</a>. Instrumental verification uses temperature, ocean, and sea ice reference datasets. Independent-proxy verification withholds 20% of proxies across 50 bootstrap experiments (<a href="./paper.pdf#page=14">§3b, Fig. 12</a>).</p>
+      </div>
+    </section>
+
+    <section id="data" class="shell section" aria-labelledby="data-title">
+      <div class="section-heading"><div><p class="eyebrow">Use the reconstruction</p><h2 id="data-title">Open data. A practical starting point.</h2></div><p>NetCDF files · 800 ensemble members<br>Four seasonal means per year</p></div>
+      <div class="resource-grid">
+        <a class="resource" href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html"><span class="resource-kind">DATA PORTAL <span aria-hidden="true">↗</span></span><h3>Choose a variable</h3><p>Climate indices, ensemble means, and individual members hosted at the University of Washington.</p></a>
+        <a class="resource" href="https://doi.org/10.5281/zenodo.17268597"><span class="resource-kind">ARCHIVED DATA <span aria-hidden="true">↗</span></span><h3>Ensemble means</h3><p>Version v1 on Zenodo, with a persistent dataset DOI. The archive contains gridded ensemble means.</p></a>
+        <a class="resource" href="https://github.com/ZiluM/LMR_Seasonal"><span class="resource-kind">SOURCE CODE <span aria-hidden="true">↗</span></span><h3>Reproduce the workflow</h3><p>LIM training, proxy-model calibration, and data assimilation, with configuration files.</p></a>
+      </div>
+      <div class="data-spec">
+        <h3>What is available?</h3>
+        <p>The published files cover <strong>800–2000 CE</strong>. Global temperature and ocean fields use a 90 × 180 grid; Northern Hemisphere sea ice fields use a 45 × 180 grid. Both have 2° spacing.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Available gridded variables"><table><caption>Ensemble-mean gridded fields</caption><thead><tr><th scope="col">Variable</th><th scope="col">Description</th><th scope="col">Units</th><th scope="col">Coverage</th><th scope="col">File</th></tr></thead><tbody>
+          <tr><th scope="row"><code>tas</code></th><td>2-m surface air temperature anomaly</td><td>K</td><td>Global</td><td><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/mean/tas_mean.nc">tas_mean.nc</a></td></tr>
+          <tr><th scope="row"><code>tos</code></th><td>Sea surface temperature anomaly</td><td>K</td><td>Global oceans</td><td><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/mean/tos_mean.nc">tos_mean.nc</a></td></tr>
+          <tr><th scope="row"><code>ohc300</code></th><td>Ocean heat content anomaly, 0–300 m</td><td>J m<sup>−2</sup></td><td>Global oceans</td><td><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/mean/ohc300_mean.nc">ohc300_mean.nc</a></td></tr>
+          <tr><th scope="row"><code>sic</code></th><td>Sea ice concentration anomaly</td><td>%</td><td>Northern Hemisphere</td><td><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/mean/sic_mean.nc">sic_mean.nc</a></td></tr>
+          <tr><th scope="row"><code>sit</code></th><td>Sea ice thickness anomaly</td><td>m</td><td>Northern Hemisphere</td><td><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/mean/sit_mean.nc">sit_mean.nc</a></td></tr>
+        </tbody></table></div>
+        <p>Ensemble indices include <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/index/GMT_ens.nc">global mean temperature</a> (K), <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/index/Nino34_ens.nc">Niño-3.4</a> (K), <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/index/SIA_ens.nc">Northern Hemisphere sea ice area</a> (m²), and <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/data/index/SIV_ens.nc">sea ice volume</a> (m³).</p>
+        <aside class="data-note"><strong>Before interpreting the values</strong><p>The <a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/index.html">data portal</a> documents anomalies relative to the 1950–1980 climatological mean, except for sea ice area and volume. Sea ice concentration anomalies can be negative; they are not absolute concentrations. Use the ensemble members or index ensembles to assess uncertainty.</p></aside>
+      </div>
+      <div class="quickstart">
+        <div class="quickstart-copy"><p class="eyebrow">A small first download</p><h3>Read the Niño-3.4 ensemble in Python.</h3><p>Start with one climate-index file. The example calculates the ensemble mean and interquartile range for 1900–2000.</p><p>Use <code>cftime</code> to decode the full record, including early dates. File timestamps in January, April, July, and October label DJF, MAM, JJA, and SON, respectively; these are three-month averages. DJF includes December of the previous year.</p><p class="source-note">Dependencies: <code>xarray</code>, <code>netCDF4</code>, <code>cftime</code>.<br><a href="https://atmos.uw.edu/~zilumeng/LMR_Seasonal/quickstart.html">Full data-portal guide <span aria-hidden="true">↗</span></a></p></div>
+        <div class="code-panel"><div class="code-toolbar"><span>Python · Niño-3.4</span><button type="button" data-copy="python-example" hidden>Copy code</button></div><pre><code id="python-example">from pathlib import Path
+from urllib.request import urlretrieve
+import xarray as xr
+
+path = Path("Nino34_ens.nc")
+if not path.exists():
+    urlretrieve(
+        "https://atmos.uw.edu/~zilumeng/LMR_Seasonal/"
+        "data/index/Nino34_ens.nc", path
+    )
+
+with xr.open_dataset(path, use_cftime=True) as ds:
+    nino = ds["Nino34"].sel(time=slice("1900", "2000"))
+    mean = nino.mean("ens_num")
+    iqr = nino.quantile([0.25, 0.75], dim="ens_num")
+    print(mean)
+    print(iqr)</code></pre><p class="code-status" aria-live="polite"></p></div>
+      </div>
+      <p class="source-note">Data license: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code license: <a href="https://github.com/ZiluM/LMR_Seasonal/blob/main/LINCENSE">BSD 3-Clause</a>. For a first look, use the ensemble means or indices; the full gridded ensemble is approximately 2 TB.</p>
+    </section>
+
+    <section id="research-use" class="shell section research-use" aria-labelledby="research-use-title">
+      <div class="section-heading"><div><p class="eyebrow">Selected research uses</p><h2 id="research-use-title">How other studies<br>use this work</h2></div><p>Independent studies that cite Meng, Hakim &amp; Steig (2025), with the specific use documented in each paper.</p></div>
+      <div class="research-use-grid">
+        <article class="research-use-item">
+          <span class="resource-kind">DATA COMPARISON</span>
+          <h3><a href="https://cp.copernicus.org/articles/22/915/2026/">Climate field reconstructions for the North Atlantic region of annual and seasonal resolution spanning CE 1241–1970</a></h3>
+          <p class="study-reference">Sjolte &amp; Tao (2026) · <em>Climate of the Past</em>, 22, 915–933</p>
+          <p>Compares LMR Seasonal summer and winter temperatures with a North Atlantic reconstruction spanning 1241–1970, examining spatial agreement and how it changes through time.</p>
+          <p class="study-evidence">Use documented in §§2.3 and 3.5, including Figs. 8 and 11.<br><a href="https://doi.org/10.5194/cp-22-915-2026">doi:10.5194/cp-22-915-2026</a></p>
+        </article>
+        <article class="research-use-item">
+          <span class="resource-kind">REGIONAL TEMPERATURE EVALUATION</span>
+          <h3><a href="https://www.nature.com/articles/s41597-026-06959-0">Gridded millennial summer temperature dataset over the Yangtze River Basin</a></h3>
+          <p class="study-reference">Dilawar et al. (2026) · <em>Scientific Data</em>, 13, 687</p>
+          <p>Compares LMR Seasonal with a new Yangtze River Basin summer temperature dataset and observations to evaluate regional temperature patterns and variability.</p>
+          <p class="study-evidence"><a href="https://www.nature.com/articles/s41597-026-06959-0#Sec21">Technical Validation</a> · <a href="https://www.nature.com/articles/s41597-026-06959-0#Fig7">Fig. 7</a> · <a href="https://www.nature.com/articles/s41597-026-06959-0#ref-CR75">Reference 75</a><br><a href="https://doi.org/10.1038/s41597-026-06959-0">doi:10.1038/s41597-026-06959-0</a></p>
+        </article>
+        <article class="research-use-item">
+          <span class="resource-kind">CLIMATE SIMULATION ASSESSMENT</span>
+          <h3><a href="https://www.nature.com/articles/s41467-026-70049-3">Millennial land carbon emissions in China offset by carbon sinks of the past four decades</a></h3>
+          <p class="study-reference">Chen et al. (2026) · <em>Nature Communications</em>, 17, 3234</p>
+          <p>Uses LMR Seasonal alongside other reconstructions to assess simulated temperature variability and long-term trends in China for a millennial land-carbon study.</p>
+          <p class="study-evidence"><a href="https://www.nature.com/articles/s41467-026-70049-3#Sec9">Climate forcing methods</a> · <a href="https://www.nature.com/articles/s41467-026-70049-3#Fig1">Fig. 1a</a> · <a href="https://www.nature.com/articles/s41467-026-70049-3#ref-CR37">Reference 37</a><br><a href="https://doi.org/10.1038/s41467-026-70049-3">doi:10.1038/s41467-026-70049-3</a></p>
+        </article>
+        <article class="research-use-item">
+          <span class="resource-kind">METHOD REUSE</span>
+          <h3><a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026MS005767">Non-Gaussian Assimilation of Atmospheric and Oceanic Data in Latent Space for Paleoclimate Reconstruction</a></h3>
+          <p class="study-reference">Lin et al. (2026) · <em>Journal of Advances in Modeling Earth Systems</em>, 18(7), e2026MS005767</p>
+          <p>Cites Meng et al. (2025) for two choices in its linear inverse model: retaining 15 principal components per variable and handling negative noise-covariance eigenvalues while preserving total variance.</p>
+          <p class="study-evidence">Use documented in §2.1.1, “Linear Inverse Model.”<br><a href="https://doi.org/10.1029/2026MS005767">doi:10.1029/2026MS005767</a></p>
+        </article>
+      </div>
+      <p class="source-note research-use-note">Selected examples, checked 4 October 2026; this is not a complete citation list. Data comparisons and methodological citations are identified separately. For references to include in your own work, see <a href="#citation">Cite this work</a>.</p>
+    </section>
+
+    <section class="limits section-band" aria-labelledby="limits-title"><div class="shell section limits-grid">
+      <div><p class="eyebrow">Scope &amp; interpretation</p><h2 id="limits-title">Read the skill<br>alongside the result.</h2><p class="source-note">Based on paper §§2–5.</p></div>
+      <div><ul class="limits-list">
+        <li><strong>Seasonal climate fields.</strong> Four three-month averages per year support seasonal-to-multicentennial analyses. This dataset does not resolve daily weather or individual storms.</li>
+        <li><strong>Regional skill varies.</strong> Sparse proxies and model teleconnections limit some regions, including the Southern Ocean. Modern verification does not provide equally direct constraints for every earlier year.</li>
+        <li><strong>Northern Hemisphere sea ice.</strong> Southern Hemisphere sea ice is not reconstructed. Sea ice skill varies by location and season; the framework was not specifically optimized for sea ice.</li>
+        <li><strong>Ensemble means smooth variability.</strong> Averaging can reduce event amplitudes and temporal variance. Retain ensemble information when drawing conclusions about individual events or uncertainty.</li>
+        <li><strong>Coupled statistical dynamics.</strong> The LIM describes climate anomalies using relationships learned from model output. Interpret patterns together with proxy coverage, validation, and the assumptions of the reconstruction.</li>
+      </ul></div>
+    </div></section>
+
+
+    <section id="citation" class="citation-section" aria-labelledby="citation-title"><div class="shell section">
+      <div class="section-heading"><div><p class="eyebrow">Reference &amp; resources</p><h2 id="citation-title">Cite this work</h2></div><a class="button secondary" href="./citation.bib" download>Download BibTeX <span aria-hidden="true">↓</span></a></div>
+      <div class="citation-guidance" aria-label="Recommended references by use">
+        <article><span class="resource-kind">DISCUSSING THE FRAMEWORK</span><h3>Cite the paper</h3><p>Use Meng, Hakim &amp; Steig (2025) when discussing the seasonal reconstruction, method, or scientific results. Cite the final Journal of Climate article for the published findings.</p></article>
+        <article><span class="resource-kind">ANALYZING THE DATA</span><h3>Cite the paper and data source</h3><p>Also cite the dataset DOI and version when using the archived ensemble means. For indices or full members from the UW portal, record the portal URL, files used, and download date.</p></article>
+        <article><span class="resource-kind">USING THE CODE</span><h3>Cite the paper and code version</h3><p>The repository requests a citation to the paper. Also identify the <a href="https://github.com/ZiluM/LMR_Seasonal">code repository</a> and the commit or release used, so readers can locate your implementation.</p></article>
+      </div>
+      <h3 class="reference-label">Published paper</h3>
+      <p class="citation-text">Meng, Z., G. J. Hakim, and E. J. Steig, 2025: Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium. <em>Journal of Climate</em>, <strong>38</strong>(23), 7229–7247. <a href="https://doi.org/10.1175/JCLI-D-25-0048.1">doi:10.1175/JCLI-D-25-0048.1</a>.</p>
+      <p class="dataset-citation"><strong>Archived ensemble-mean data:</strong> Meng, Z., G. J. Hakim, and E. J. Steig, 2025: <em>Last Millennium Reanalysis (LMR) Seasonal: A Millennium of Climate Data</em>, version v1. Zenodo. <a href="https://doi.org/10.5281/zenodo.17268597">doi:10.5281/zenodo.17268597</a>. Indices and full ensemble members are available separately through the UW portal.</p>
+      <div class="citation-code"><div class="code-toolbar"><span>BibTeX · published article</span><button type="button" data-copy="bibtex-example" hidden>Copy citation</button></div><pre><code id="bibtex-example">@article{Meng2025LMRSeasonal,
+  author  = {Meng, Zilu and Hakim, Gregory J. and Steig, Eric J.},
+  title   = {Coupled Seasonal Data Assimilation of Sea Ice, Ocean,
+             and Atmospheric Dynamics over the Last Millennium},
+  journal = {Journal of Climate},
+  year    = {2025},
+  volume  = {38},
+  number  = {23},
+  pages   = {7229--7247},
+  doi     = {10.1175/JCLI-D-25-0048.1}
+}</code></pre><p class="code-status" aria-live="polite"></p></div>
+      <div class="citation-code"><div class="code-toolbar"><span>BibTeX · archived ensemble-mean dataset</span><button type="button" data-copy="dataset-bibtex" hidden>Copy dataset citation</button></div><pre><code id="dataset-bibtex">@misc{Meng2025LMRSeasonalData,
+  author    = {Meng, Zilu and Hakim, Gregory J. and Steig, Eric J.},
+  title     = {Last Millennium Reanalysis (LMR) Seasonal:
+               A Millennium of Climate Data},
+  year      = {2025},
+  publisher = {Zenodo},
+  note      = {Version v1; ensemble-mean archive},
+  doi       = {10.5281/zenodo.17268597},
+  url       = {https://doi.org/10.5281/zenodo.17268597}
+}</code></pre><p class="code-status" aria-live="polite"></p></div>
+      <nav class="all-resources" aria-label="All research resources"><a href="https://doi.org/10.1175/JCLI-D-25-0048.1">Journal article ↗</a><a href="./paper.pdf">Paper PDF ↗</a><a href="../paper/LMR_Season-2.pdf">Supplementary material ↗</a><a href="https://arxiv.org/abs/2501.14130">arXiv preprint ↗</a><a href="https://www.bilibili.com/video/BV19tGNzQE3R">Talk in Chinese ↗</a></nav>
+      <p class="source-note">The arXiv link is the January 2025 preprint. For the final results and citation, use the published Journal of Climate article linked above. Figures on this page are from the published paper.</p>
+    </div></section>
+  </main>
+  <footer class="shell site-footer"><a href="../">← Zilu Meng’s academic homepage</a><span>Questions about the data? <a href="mailto:zilumeng@uw.edu">zilumeng@uw.edu</a></span></footer>
+  <script>
+    if (navigator.clipboard && window.isSecureContext) {
+      document.querySelectorAll('[data-copy]').forEach((button) => {
+        button.hidden = false;
+        button.addEventListener('click', async () => {
+          const status = button.closest('div').parentElement.querySelector('.code-status');
+          try {
+            await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
+            status.textContent = 'Copied to clipboard.';
+          } catch {
+            status.textContent = 'Select and copy the text manually.';
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
