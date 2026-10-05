@@ -2428,14 +2428,16 @@
             }
 
             .talks-intro {
+                flex-direction: column;
                 align-items: flex-start;
+                gap: 16px;
                 padding: 20px;
             }
 
             .talks-count {
-                flex-direction: column;
-                align-items: center;
-                gap: 2px;
+                flex-direction: row;
+                align-items: baseline;
+                gap: 8px;
             }
 
             .talks-count strong {
@@ -2861,6 +2863,10 @@
                             spells occur, and how unusual recent changes are. My goal is to turn scattered evidence into climate
                             information that is physically consistent, useful, and easier to understand.
                         </p>
+                        <p>
+                            At Planette AI, I work on subseasonal-to-seasonal (S2S) weather forecasting and evaluate AI weather
+                            models, using high-performance and cloud computing to analyze forecast skill.
+                        </p>
                     </div>
 
                     <aside class="about-current" aria-label="Current position and academic background">
@@ -2884,10 +2890,17 @@
                             </div>
                         </div>
                         <div class="about-current-item">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            <div>
+                                <strong>Research Intern &middot; Planette AI</strong>
+                                <span>Aug 2026&ndash;present &middot; S2S forecasting and AI weather model analysis</span>
+                            </div>
+                        </div>
+                        <div class="about-current-item">
                             <i class="fas fa-graduation-cap"></i>
                             <div>
                                 <strong>Background</strong>
-                                <span>B.S. with Honors from NUIST, advised by <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Tim Li</a></span>
+                                <span>B.S. with Honors from Nanjing University of Information Science and Technology, advised by <a href="https://iprc.soest.hawaii.edu/people/li.php" target="_blank">Tim Li</a></span>
                             </div>
                         </div>
                     </aside>
@@ -2928,7 +2941,7 @@
             <summary>Publications</summary>
             <div class="section publication-section">
                 <div class="pub-overview">
-                    <p><strong><span id="pub-count">12</span> publications</strong> · recent work shown first</p>
+                    <p><strong><span id="pub-article-count">9</span> journal articles</strong> &middot; <strong><span id="pub-preprint-count">3</span> preprints</strong> &middot; by year</p>
                     <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar">
                         <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                         <span>Google Scholar</span>
@@ -2939,11 +2952,11 @@
                     <li data-status="preprint">
                         Cuzzone, J., Briner, J., Otiniano, G., et al., including <strong>Meng, Z.</strong> (2026).
                         Greenland Ice Sheet to fall below its Holocene minimum size by 2300.
-                        <em>Research Square</em>.
+                        <em>Research Square preprint</em>.
                         <a href="https://doi.org/10.21203/rs.3.rs-9962320/v1" target="_blank">https://doi.org/10.21203/rs.3.rs-9962320/v1</a>,
                         <a href="https://www.researchsquare.com/article/rs-9962320/v1" target="_blank">Research Square</a>.
                     </li>
-                    <li>
+                    <li data-status="preprint">
                         <strong>Meng, Z.</strong>, Hakim, G. J., Emile-Geay, J., Gondhalekar, T., & Steig, E. J. (2026).
                         Coupled multiscale paleoclimate reconstruction with four-dimensional variational data assimilation.
                         <a href="https://arxiv.org/abs/2608.19469" target="_blank">arXiv:2608.19469</a>.
@@ -2956,34 +2969,34 @@
                             <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
                     </li>
-                    <li>
-                        Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong>Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2025). 
-                        Progresses and Prospects of Paleoclimate Data Assimilation. 
-                        <em>SCIENCE CHINA: Earth Science</em>, <a href="https://doi.org/10.1007/s11430-025-1810-2" target="_blank">https://doi.org/10.1007/s11430-025-1810-2</a>, <a href="./paper/SCES_eng.pdf" target="_blank">[PDF]</a>, <a href="./paper/ScienceChinaEarthScience.pdf" target="_blank">[PDF in Chinese]</a>.
+                    <li data-status="journal">
+                        Ning, L., Liu, J., Liu, Z., Xing, F., Wu, F., Yan, M., <strong>Meng, Z.</strong>, Chen, K., Qin, Y., Sun, W., & Wen, Q. (2026).
+                        Progress and prospects of paleoclimate data assimilation.
+                        <em>Science China Earth Sciences</em>, 69, 1605&ndash;1617. <a href="https://doi.org/10.1007/s11430-025-1810-2" target="_blank">https://doi.org/10.1007/s11430-025-1810-2</a>, <a href="./paper/SCES_eng.pdf" target="_blank">[PDF]</a>, <a href="./paper/ScienceChinaEarthScience.pdf" target="_blank">[PDF in Chinese]</a>.
                     </li>
-                    <li>
+                    <li data-status="journal">
                         Hua, Z., Karamperidou, C., & <strong>Meng, Z.</strong> (2026).
                         Extratropical Atmospheric Circulation Response to ENSO in Deep Learning Pacific Pacemaker Experiments.
                         <em>Artificial Intelligence for the Earth Systems</em>, 5(4), 250114.
                         <a href="https://doi.org/10.1175/AIES-D-25-0114.1" target="_blank">https://doi.org/10.1175/AIES-D-25-0114.1</a>.
                     </li>
-                    <li>
+                    <li data-status="preprint">
                         <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
                         Large-Ensemble Simulations Reveal Links Between Atmospheric Blocking Frequency and Sea Surface Temperature Variability. <a href="https://arxiv.org/abs/2602.05083" target="_blank">arXiv:2602.05083</a>.
                     </li>
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, Hakim, G. J., Yang, W., & Vecchi, G. A. (2026).
                         Deep learning atmospheric models reliably simulate out-of-sample land heat and cold wave frequencies.
                         <em>Geophysical Research Letters</em>, 53(3), e2025GL117990.
                         <a href="https://doi.org/10.1029/2025GL117990" target="_blank">https://doi.org/10.1029/2025GL117990</a>.
                     </li>                    
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, & Polvani, L. M. (2026).
                         No evidence of statistically significant Eurasian winter warming or cooling caused by large eruptions over the last millennium.
                         <em>npj Climate and Atmospheric Science</em>.
                         <a href="https://doi.org/10.1038/s41612-026-01535-0" target="_blank">https://doi.org/10.1038/s41612-026-01535-0</a>.
                     </li>
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, Hakim, G. J., & Steig, E. J. (2025).
                         Coupled Seasonal Data Assimilation of Sea Ice, Ocean, and Atmospheric Dynamics over the Last Millennium.
                         <em>Journal of Climate</em>, 38, 7229–7247. 
@@ -2996,7 +3009,7 @@
                         [<a href="https://github.com/ZiluM/LMR_Seasonal" target="_blank">Code</a>],
                         [<a href="https://www.bilibili.com/video/BV19tGNzQE3R" target="_blank">Bilibili Video (Chinese)</a>].
                     </li>
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, & Hakim, G. J. (2024).
                         Reconstructing the Tropical Pacific Upper Ocean using Online Data Assimilation with a Deep Learning model.
                         <em>Journal of Advances in Modeling Earth Systems</em>, 16, e2024MS004422.
@@ -3004,7 +3017,7 @@
                         [<a href="https://github.com/ZiluM/DataAssimlationWithDL" target="_blank">Code</a>],
                         [<a href="./dl4enso.pdf" target="_blank">Poster</a>].
                     </li>
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, & Li, T. (2024).
                         Why is the Pacific meridional mode most pronounced in boreal spring?
                         <em>Climate Dynamics</em>, 62(1), 459–471.
@@ -3014,14 +3027,14 @@
                         [<a href="https://zilum.github.io/sacpy/" target="_blank">Sacpy Code</a>],
                         [<a href="./sacpy_poster.png" target="_blank">Sacpy Poster</a>].
                     </li>
-                    <li>
+                    <li data-status="journal">
                         Zhu, F., Emile-Geay, J., Anchukaitis, K. J., McKay, N. P., Stevenson, S., & <strong>Meng, Z.</strong> (2023).
                         A pseudoproxy emulation of the PAGES 2k database using a hierarchy of proxy system models.
                         <em>Scientific Data</em>, 10, 624.
                         <a href="https://doi.org/10.1038/s41597-023-02489-1" target="_blank">https://doi.org/10.1038/s41597-023-02489-1</a>.
                         [<a href="https://fzhu2e.github.io/cfr/" target="_blank">CFR Code</a>].
                     </li>
-                    <li>
+                    <li data-status="journal">
                         <strong>Meng, Z.</strong>, Hu, Z., Ai, Z., Zhang, Y., & Shan, K. (2021).
                         Research on Planar Double Compound Pendulum Based on RK-8 Algorithm.
                         <em>Journal on Big Data</em>, 3, 11–20.
@@ -3210,15 +3223,15 @@
                         <h3>Sharing climate research across institutions and communities</h3>
                         <p>Invited seminars, conference talks, and posters on paleoclimate reconstruction, data assimilation, machine learning, and atmospheric dynamics.</p>
                     </div>
-                    <div class="talks-count"><strong>19</strong><span>events<br>since 2023</span></div>
+                    <div class="talks-count"><strong id="talk-count">21</strong><span>presentations since 2023<br>+ <span id="hosted-series-count">1</span> hosted series</span></div>
                 </div>
 
                 <div class="talk-legend" aria-label="Presentation types">
-                    <span style="--talk-color: #0f766e;"><i class="fas fa-microphone"></i> 7 Invited talks</span>
-                    <span style="--talk-color: #d97706;"><i class="fas fa-chalkboard-teacher"></i> 3 Oral presentations</span>
-                    <span style="--talk-color: #0284c7;"><i class="fas fa-image"></i> 8 Posters</span>
-                    <span style="--talk-color: #7c3aed;"><i class="fas fa-comments"></i> 3 Seminars</span>
-                    <span style="--talk-color: #059669;"><i class="fas fa-users"></i> 1 Hosted series</span>
+                    <span style="--talk-color: #0f766e;"><i class="fas fa-microphone"></i> <b data-talk-count="invited">7</b> Invited talks</span>
+                    <span style="--talk-color: #d97706;"><i class="fas fa-chalkboard-teacher"></i> <b data-talk-count="oral">3</b> Oral presentations</span>
+                    <span style="--talk-color: #0284c7;"><i class="fas fa-image"></i> <b data-talk-count="poster">8</b> Posters</span>
+                    <span style="--talk-color: #7c3aed;"><i class="fas fa-comments"></i> <b data-talk-count="seminar">3</b> Seminars</span>
+                    <span style="--talk-color: #059669;"><i class="fas fa-users"></i> <b data-talk-count="host">1</b> Hosted series</span>
                 </div>
 
                 <div class="talk-timeline">
@@ -3617,7 +3630,7 @@
                 <a href="https://www.zhihu.com/people/lowkkk/" target="_blank" rel="noopener">Zhihu</a>
                 <a href="https://x.com/Zilu4Climate" target="_blank" rel="noopener">X</a>
             </nav>
-            <p>© 2026 Zilu Meng. Last updated: Sep 2026</p>
+            <p>© 2026 Zilu Meng. Last updated: Oct 2026</p>
             <!-- Remember to update the date here manually when you make changes -->
         </footer>
         
@@ -3737,9 +3750,10 @@
         function setupPublicationTools() {
             const pubRoot = document.getElementById('publications');
             if (!pubRoot) return;
-            const items = Array.from(pubRoot.querySelectorAll('ol li'));
+            const items = Array.from(pubRoot.querySelectorAll('.pub-list > li'));
             const list = pubRoot.querySelector('.pub-list');
-            const count = document.getElementById('pub-count');
+            const articleCount = document.getElementById('pub-article-count');
+            const preprintCount = document.getElementById('pub-preprint-count');
             const toggle = document.getElementById('pub-toggle');
             const visibleLimit = 6;
 
@@ -3770,7 +3784,8 @@
                 .sort((a, b) => Number(b.dataset.year) - Number(a.dataset.year))
                 .forEach((li) => list.appendChild(li));
 
-            count.textContent = String(items.length);
+            articleCount.textContent = String(items.filter((li) => li.dataset.status === 'journal').length);
+            preprintCount.textContent = String(items.filter((li) => li.dataset.status === 'preprint').length);
             let expanded = false;
 
             function updateVisibleItems() {
@@ -3789,6 +3804,19 @@
                 updateVisibleItems();
             });
             updateVisibleItems();
+        }
+
+        function setupTalkCounts() {
+            const root = document.getElementById('talks');
+            if (!root) return;
+            const events = Array.from(root.querySelectorAll('.talk-event'));
+            const hostedSeries = events.filter((event) => event.classList.contains('host')).length;
+            root.querySelector('#talk-count').textContent = String(events.length - hostedSeries);
+            root.querySelector('#hosted-series-count').textContent = String(hostedSeries);
+            root.querySelectorAll('[data-talk-count]').forEach((count) => {
+                const type = count.dataset.talkCount;
+                count.textContent = String(events.filter((event) => event.classList.contains(type)).length);
+            });
         }
 
         function secureExternalLinks() {
@@ -3994,6 +4022,7 @@
             setupSectionNav();
             setupReveal();
             setupPublicationTools();
+            setupTalkCounts();
             secureExternalLinks();
             setupClimateCanvas();
             setupInteractiveMotion();
