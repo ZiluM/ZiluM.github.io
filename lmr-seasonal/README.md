@@ -96,3 +96,8 @@ Update figure captions and limitations when scientific content changes.
 Check local paths, live resource links, and desktop/mobile rendering before
 deploying. Crawling eligibility and structured metadata do not guarantee an
 AI search citation.
+
+The root-level 32-character `.txt` key enables IndexNow ownership verification.
+After public page updates, send only changed URLs to the official IndexNow
+endpoint after confirming the key is live. A successful submission is not
+confirmation of indexing. Keep the key file available for later updates.
