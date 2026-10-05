@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="zh-CN" data-sp-mode="scroll" data-page-node-id="W4vb4ZBnt4cfYBjkt6csNr">
+<head data-page-node-id="ee1SMGo3rqrNHUKTMGxE9p">
+  <meta charset="utf-8" data-page-node-id="45cv1NWAJO14Eh8tKP1aC3">
+  <meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="mJTtcW6cdvXJ7MD3muIc2X">
+  <meta name="description" content="为什么太平洋经向模在北半球春季最强？孟子路与李天明发表于 Climate Dynamics 的研究解读。" data-page-node-id="f94w6naIMz5lLCIegnlAIL">
+  <title>为什么太平洋经向模总在春季最强？</title>
+  <link rel="preconnect" href="https://fonts.font.im" data-page-node-id="FwpKR7nTATc3dtR8GGHv1J">
+  <link rel="preconnect" href="https://gstatic.font.im" crossorigin data-page-node-id="lqOLRjTGHvaQhcidA9MVmh">
+  <link href="https://fonts.font.im/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" data-page-node-id="fl0qKLhs6KyfmsRsDQe6GF">
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --paper: #ffffff;
+      --ink: #142136;
+      --ink-soft: #48586e;
+      --muted: #7a8799;
+      --line: #dbe5ee;
+      --blue: #176f9e;
+      --blue-deep: #0d4f75;
+      --blue-pale: #e8f3f8;
+      --aqua: #3e9b9a;
+      --warm: #c87942;
+      --warm-pale: #fbf0e8;
+      --shadow: 0 18px 52px rgba(31, 72, 105, .10);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --max: 1120px;
+      --reading: 760px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 86% 5%, rgba(62,155,154,.13), transparent 25rem),
+        linear-gradient(180deg, #f4f9fb 0, var(--bg) 28rem, #fff 100%);
+      font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+      line-height: 1.85;
+      letter-spacing: .01em;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:hover { color: var(--blue-deep); }
+    img { max-width: 100%; height: auto; }
+    strong { color: var(--blue-deep); font-weight: 700; }
+
+    .page-shell { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .reading { width: min(100%, var(--reading)); margin-inline: auto; }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      padding: 56px 0 72px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: -10vw;
+      top: 18%;
+      width: 42vw;
+      height: 42vw;
+      max-width: 560px;
+      max-height: 560px;
+      border: 1px solid rgba(23,111,158,.10);
+      border-radius: 50%;
+      box-shadow: 0 0 0 64px rgba(23,111,158,.025), 0 0 0 128px rgba(23,111,158,.018);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .kicker::before { content: ""; width: 40px; height: 2px; background: var(--aqua); }
+
+    h1, h2, h3, .serif { font-family: "Noto Serif SC", serif; }
+    h1 {
+      margin: 24px 0 24px;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      font-weight: 900;
+      max-width: 9.5em;
+    }
+    h1 em { color: var(--blue); font-style: normal; position: relative; white-space: nowrap; }
+    h1 em::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -.08em;
+      height: .12em;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--aqua), rgba(62,155,154,.12));
+    }
+
+    .hero-lead {
+      max-width: 43em;
+      color: var(--ink-soft);
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.8;
+    }
+    .hero-meta { margin-top: 32px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--blue-deep); color: white; }
+    .button.secondary { border: 1px solid var(--line); background: rgba(255,255,255,.75); color: var(--blue-deep); }
+
+    .ocean-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      min-height: 440px;
+      overflow: hidden;
+      border-radius: 180px 180px 24px 24px;
+      background:
+        radial-gradient(circle at 70% 22%, rgba(255,255,255,.85) 0 5%, transparent 5.4%),
+        linear-gradient(162deg, #dceff3 0 32%, #82bdc5 32.2% 34%, #2b7ca2 34.2% 62%, #185b82 62.2% 100%);
+      border: 1px solid rgba(13,79,117,.12);
+      box-shadow: var(--shadow);
+    }
+    .ocean-card::before,
+    .ocean-card::after {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 22%;
+      left: -10%;
+      border: 2px solid rgba(255,255,255,.50);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+    .ocean-card::before { top: 39%; }
+    .ocean-card::after { top: 54%; opacity: .55; }
+    .pmm-band {
+      position: absolute;
+      width: 76%;
+      height: 13%;
+      right: -2%;
+      top: 42%;
+      border-radius: 999px;
+      transform: rotate(35deg);
+      background: linear-gradient(90deg, rgba(255,214,151,.15), rgba(250,180,113,.85), rgba(255,240,208,.45));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .ocean-label {
+      position: absolute;
+      left: 28px; bottom: 28px; right: 28px;
+      padding: 18px 20px;
+      color: white;
+      border: 1px solid rgba(255,255,255,.30);
+      background: rgba(13,79,117,.42);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+    }
+    .ocean-label b { display: block; font-family: "Noto Serif SC", serif; font-size: 24px; }
+    .ocean-label span { font-size: 12px; opacity: .82; }
+
+    .paper-strip {
+      border-block: 1px solid var(--line);
+      background: rgba(255,255,255,.74);
+      padding: 28px 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .paper-strip .page-shell { display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
+    .paper-strip b { color: var(--blue-deep); text-transform: uppercase; letter-spacing: .12em; }
+
+    main section { padding: 88px 0; }
+    main section:nth-child(even) { background: linear-gradient(135deg, rgba(232,243,248,.68), rgba(255,255,255,.55)); }
+
+    .section-heading { margin-bottom: 40px; }
+    .section-no { color: var(--aqua); font-weight: 700; font-size: 13px; letter-spacing: .15em; }
+    h2 { margin: 8px 0 12px; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.25; letter-spacing: -.025em; }
+    .section-deck { margin: 0; color: var(--muted); font-size: 16px; }
+    h3 { margin: 0 0 16px; font-size: 22px; line-height: 1.4; letter-spacing: -.01em; }
+    p { margin: 0 0 24px; color: var(--ink-soft); }
+
+    .paper-figure {
+      margin: 40px 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      box-shadow: 0 10px 34px rgba(31,72,105,.07);
+    }
+    .paper-figure a {
+      display: block;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #f7fafc;
+    }
+    .paper-figure img {
+      display: block;
+      width: 100%;
+      transition: transform .35s ease;
+    }
+    .paper-figure a:hover img { transform: scale(1.012); }
+    .paper-figure figcaption {
+      padding: 14px 8px 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .figure-number {
+      color: var(--blue-deep);
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .figure-grid .paper-figure { margin: 0; }
+    .figure-note {
+      margin: -20px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .quote {
+      margin: 40px auto;
+      padding: 32px 32px 32px 40px;
+      border-left: 4px solid var(--aqua);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: var(--paper);
+      box-shadow: 0 10px 36px rgba(31,72,105,.08);
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .stat {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 26px rgba(31,72,105,.06);
+    }
+    .stat .number { color: var(--blue); font-size: clamp(42px, 6vw, 68px); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+    .stat .label { display: block; margin-top: 10px; color: var(--muted); font-size: 13px; }
+    .stat.warm .number { color: var(--warm); }
+
+    .method-list { display: grid; gap: 0; counter-reset: method; }
+    .method {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      counter-increment: method;
+    }
+    .method:last-child { border-bottom: 1px solid var(--line); }
+    .method::before {
+      content: "0" counter(method);
+      color: var(--aqua);
+      font-family: "Noto Serif SC", serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .method p { margin-bottom: 0; }
+
+    .findings { display: grid; gap: 24px; }
+    .finding {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, .42fr);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 38px rgba(31,72,105,.07);
+    }
+    .finding:nth-child(even) { grid-template-columns: minmax(220px, .42fr) minmax(0, 1fr); }
+    .finding:nth-child(even) .finding-copy { order: 2; }
+    .finding:nth-child(even) .finding-visual { order: 1; }
+    .finding-copy { padding: 40px; }
+    .finding-tag { color: var(--aqua); font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+    .finding-copy p:last-child { margin-bottom: 0; }
+    .finding-visual {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background: linear-gradient(145deg, var(--blue-pale), #f5fbfb);
+      border-left: 1px solid var(--line);
+    }
+    .finding:nth-child(even) .finding-visual { border-left: 0; border-right: 1px solid var(--line); }
+    .visual-big { font-family: "Noto Serif SC", serif; color: var(--blue-deep); text-align: center; }
+    .visual-big b { display: block; font-size: clamp(42px, 6vw, 72px); line-height: 1.05; }
+    .visual-big span { display: block; margin-top: 12px; color: var(--muted); font-family: "Noto Sans SC", sans-serif; font-size: 12px; line-height: 1.5; }
+
+    .bar-compare { width: 100%; display: grid; gap: 20px; }
+    .bar-row { display: grid; grid-template-columns: 44px 1fr 54px; gap: 10px; align-items: center; font-size: 12px; color: var(--ink-soft); }
+    .track { height: 12px; background: #dce8ed; border-radius: 999px; overflow: hidden; }
+    .fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue-deep), var(--aqua)); }
+    .fill.fall { width: 27%; background: linear-gradient(90deg, #d59a70, var(--warm)); }
+    .fill.spring { width: 100%; }
+
+    .mechanism {
+      padding: 48px;
+      border-radius: var(--radius-lg);
+      background: var(--blue-deep);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    .mechanism h3 { color: white; margin-bottom: 32px; }
+    .chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+    .chain-item { position: relative; }
+    .chain-item:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -23px; top: 12px;
+      color: #94d5d0;
+      font-size: 20px;
+    }
+    .chain-item b { display: block; font-family: "Noto Serif SC", serif; font-size: 18px; color: white; }
+    .chain-item span { display: block; margin-top: 8px; color: rgba(255,255,255,.65); font-size: 12px; line-height: 1.6; }
+
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .mode-card { padding: 28px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--paper); }
+    .mode-card .mode-number { color: var(--blue); font-size: 36px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mode-card p { margin: 12px 0 0; font-size: 14px; }
+
+    .enso-box {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      overflow: hidden;
+      border: 1px solid #efd9ca;
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+    }
+    .enso-label { display: grid; place-items: center; min-height: 250px; padding: 32px; background: var(--warm-pale); text-align: center; }
+    .enso-label b { color: var(--warm); font-family: "Noto Serif SC", serif; font-size: 64px; line-height: 1; }
+    .enso-label span { display: block; margin-top: 10px; color: #8d6145; font-size: 13px; }
+    .enso-copy { padding: 40px; }
+
+    .impact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+    .impact-card { min-height: 220px; padding: 32px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); }
+    .impact-card:first-child { grid-row: span 2; background: linear-gradient(150deg, var(--blue-deep), #247e9c); color: white; border: 0; }
+    .impact-card:first-child h3, .impact-card:first-child p, .impact-card:first-child strong { color: white; }
+    .impact-card:first-child p { opacity: .78; }
+    .impact-card p:last-child { margin-bottom: 0; }
+
+    .story {
+      position: relative;
+      padding: 48px;
+      border-radius: var(--radius-lg);
+      background: #f5f0e9;
+      border: 1px solid #e8ded1;
+    }
+    .story::before { content: "本科毕业论文 · 2023"; display: block; margin-bottom: 20px; color: var(--warm); font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+
+    .authors { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .author { padding: 32px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); }
+    .author .initials { width: 56px; height: 56px; display: grid; place-items: center; margin-bottom: 20px; border-radius: 50%; background: var(--blue-pale); color: var(--blue-deep); font-family: "Noto Serif SC", serif; font-weight: 700; }
+    .author p { font-size: 14px; margin-bottom: 0; }
+
+    footer { padding: 64px 0 max(64px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: white; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+    .footer-title { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .copyright { margin-top: 20px; color: var(--muted); font-size: 12px; }
+
+    .reveal { transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .7s ease; }
+    .js .reveal { opacity: 0; transform: translateY(20px); }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding-top: 88px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ocean-card { min-height: 380px; max-width: 520px; width: 100%; justify-self: end; aspect-ratio: 5 / 4; border-radius: 140px 24px 24px 24px; }
+      .finding, .finding:nth-child(even) { grid-template-columns: 1fr; }
+      .finding-copy, .finding:nth-child(even) .finding-copy { order: 1; }
+      .finding-visual, .finding:nth-child(even) .finding-visual { order: 2; border: 0; border-top: 1px solid var(--line); }
+      .chain { grid-template-columns: 1fr 1fr; }
+      .chain-item:not(:last-child)::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell { width: min(calc(100% - 32px), var(--max)); }
+      .hero { padding: 64px 0 48px; }
+      h1 { font-size: clamp(40px, 13vw, 58px); }
+      .hero-links { flex-direction: column; }
+      .button { width: 100%; }
+      .ocean-card { min-height: 340px; aspect-ratio: 4 / 5; }
+      .paper-strip .page-shell { grid-template-columns: 1fr; gap: 8px; }
+      main section { padding: 64px 0; }
+      .stats, .mode-grid, .impact-grid, .authors, .enso-box, .figure-grid { grid-template-columns: 1fr; }
+      .impact-card:first-child { grid-row: auto; }
+      .method { grid-template-columns: 48px 1fr; gap: 16px; }
+      .finding-copy, .story, .mechanism, .enso-copy { padding: 28px; }
+      .finding-visual { min-height: 210px; }
+      .chain { grid-template-columns: 1fr; }
+      .chain-item { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.13); }
+      .chain-item:last-child { border-bottom: 0; padding-bottom: 0; }
+      .footer-grid { grid-template-columns: 1fr; align-items: start; }
+      .quote { padding: 24px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .hero { min-height: auto; }
+      .button { border: 1px solid #ccc; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      main section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body data-page-node-id="vw8iFFW15ZPXNJsuialWcj">
+  <header class="hero" data-page-node-id="nHSLZ3IJCeQTpWVTaJnCxB">
+    <div class="page-shell hero-grid" data-page-node-id="J3UJhqXjPYTIK62QkHXdEP">
+      <div data-page-node-id="3meb0G7YJN0NAlukzFEfyg">
+        <div class="kicker" data-page-node-id="S6NEnawRFArQXZzgOuWKNg">Climate Dynamics · Research Story</div>
+        <h1 data-page-node-id="Ig7jaTgC8F48nWTgRW5zU9">为什么太平洋经向模总在<em data-page-node-id="LPdMd5tJVPgTqKl0dDAoh6">春季</em>最强？</h1>
+        <p class="hero-lead" data-page-node-id="rJhcbJM1iSEhikGgNI7i0D">一项结合观测诊断与多层次数值实验的研究揭示：春季的背景平均态、大气响应与中纬度遥相关共同放大了风—蒸发—海温反馈；ENSO 本身并不是这种季节锁相的原因。</p>
+        <div class="hero-links" data-page-node-id="2tlrTVuIB1jD7TpTKfUAuV">
+          <a class="button primary" href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank" rel="noopener" data-page-node-id="IhVBSFeffJku3Jck4WDGsd">阅读论文</a>
+          <a class="button secondary" href="https://github.com/ZiluM/PMMPhaseLocking" target="_blank" rel="noopener" data-page-node-id="jGzBhm7O5jbaF3OX6d7UvC">查看开源代码</a>
+        </div>
+        <div class="hero-meta" data-page-node-id="o7b1jjb81R6qJCraMdksdR">Meng, Z. &amp; Li, T. (2024) · Climate Dynamics 62, 459–471</div>
+      </div>
+      <div class="ocean-card" aria-label="太平洋经向模示意图" data-page-node-id="zYruC0q0HSaJjyqa1Jggx3">
+        <div class="pmm-band" data-page-node-id="NAj8fcvHK1jUq4UUIO7UFp"></div>
+        <div class="ocean-label" data-page-node-id="4daiKKpdNyIfl5Aoi1ncjR"><b data-page-node-id="fNyo2WHi67RSuo6KIioee3">PMM</b><span data-page-node-id="uBgSK7ctXauamgoRB5QcSu">东北—西南倾斜的海温异常带</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="paper-strip" data-page-node-id="fXSP2X8KgJkOWFCMpiIDvd">
+    <div class="page-shell" data-page-node-id="NQTCPsXV241K7J4HDihdTu">
+      <b data-page-node-id="AMpOrEH1BrZkSabHPCZaBn">一句话概括</b>
+      <div data-page-node-id="e3MF6GJp7LAPnyuEprjcFf">春季的热带平均风场和海表温度场最有利于 WES 反馈，中纬度向热带的大气遥相关也更显著——三股力量共同把春季推上 PMM 的“C位”。</div>
+    </div>
+  </div>
+
+  <main data-page-node-id="3yz3V7J7Dduz5DlmtkUPTa">
+    <section data-page-node-id="TmHlomSczrgM0fO8WhJxQH">
+      <div class="reading reveal" data-page-node-id="lsyoc5Pael7Ivm8AbLJaIM">
+        <div class="section-heading" data-page-node-id="Id8VxpRA5ZKPd8XgWIzg1G">
+          <div class="section-no" data-page-node-id="Tr20i1qWdv7g2Yeo7mrcoT">01 · BACKGROUND</div>
+          <h2 data-page-node-id="Eug4zDqFhUj1Ly6c7oT81c">先说说 PMM 是什么</h2>
+          <p class="section-deck" data-page-node-id="t7FYk9LGVYZLRAlzYCt6gw">厄尔尼诺并不是一夜之间出现的，它有一串“前奏”。</p>
+        </div>
+        <p data-page-node-id="F5GV87ERGVqOkwXCC7Halz"><strong data-page-node-id="XVGeFrRWAldwxkElTIngtQ">太平洋经向模（Pacific Meridional Mode，PMM）</strong>是热带和副热带中东太平洋的一个海气耦合模态。它最鲜明的特征，是一个从美国加利福尼亚湾延伸至赤道中太平洋、呈东北—西南走向的海表温度异常带。</p>
+        <p data-page-node-id="tRJKsj6CQeAlScGqI6obDQ">当正 PMM 发生时，异常西南风抵消平均东北信风，海面蒸发随之减少，海温升高；升高的海温又进一步削弱信风。这个自我强化的过程被称为<strong data-page-node-id="16y9T7vfY9YZJQf0U3n0Jx">风—蒸发—海温反馈（Wind–Evaporation–SST feedback，WES）</strong>。</p>
+        <div class="quote" data-page-node-id="XzFbQphFfBEkTZ0wspdevO">一个微小的风场扰动，经过海气相互作用，可能像滚雪球一样长成影响整个热带太平洋的气候信号。</div>
+        <p data-page-node-id="ha4r6SRiDUcTPPK0Bzm3E6">PMM 不仅是 ENSO 的重要前兆，还与西北太平洋热带气旋、中国夏季极端高温以及跨大西洋—太平洋的年代际变化有关。因此，它何时发展、为何发展，直接关系到我们对季节气候可预报性的理解。</p>
+        <div class="stats" data-page-node-id="LF4l85As9FsPwDtrUkVr6Z">
+          <div class="stat" data-page-node-id="4rmXzkhVWX1ypiRHLIQLro">
+            <div class="number" data-page-node-id="KapIFwRcS8oo0vzU4AdIbi">18.9%</div>
+            <span class="label" data-page-node-id="QkcGnTwgVf6U9V7rchaXco">PMM 在北半球春季的季节 EOF 方差占比</span>
+          </div>
+          <div class="stat warm" data-page-node-id="Gt0AVtE0xxL3vYmnTUrFK1">
+            <div class="number" data-page-node-id="O1cMA4F2kmzC1UdvioSxYa">10.1%</div>
+            <span class="label" data-page-node-id="3MFlUaUvMeNtZMHz8y9hah">PMM 在北半球秋季的季节 EOF 方差占比</span>
+          </div>
+        </div>
+        <figure class="paper-figure">
+          <a href="assets/fig01_enso_composite.png" target="_blank"><img src="assets/fig01_enso_composite.png" loading="lazy" alt="EOF 分析与季节方差：第一和第二模态的空间结构、时间序列和季节强度对比"></a>
+          <figcaption><span class="figure-number">论文图 1</span>　1980—2018 年热带太平洋 EOF 分析。（a-b）第一、二模态的 SSTA 空间结构与 10 m 风异常；（b）中绿色框线为 PMM 关键区 KPR；（c）两个主成分的时间演变；（d）两个模态的方差随季节的变化：ENSO 模态（PC1）冬季最强，PMM 模态（PC2）春季（MAM）最强、秋季（SON）最弱。点击图片可查看大图。</figcaption>
+        </figure>
+        <p data-page-node-id="gBCu0jvt7T6OE1lAfVExl8"><strong data-page-node-id="8tAWbzdGxxhDIGHAb7IjZ0">问题由此而来：为什么偏偏是春季？</strong></p>
+      </div>
+    </section>
+
+    <section data-page-node-id="S0qRPGXSRJuoOwfRAQoaFr">
+      <div class="reading reveal" data-page-node-id="VgdeTClCVgnsVyxGU66Suk">
+        <div class="section-heading" data-page-node-id="UFMf3yr3hsX1BptLEHtX4i">
+          <div class="section-no" data-page-node-id="J78hCD6hUH5l6HXQtlMNZ5">02 · APPROACH</div>
+          <h2 data-page-node-id="z2C5TjbVbNjabdwsFbuNKM">怎样把季节锁相逐层拆开</h2>
+          <p class="section-deck" data-page-node-id="cAr5OuoztlYJwnUsVBkOd9">从观测诊断到理想化实验，每一步都尽量只改变一个因素。</p>
+        </div>
+        <div class="method-list" data-page-node-id="gKVECwZ2ycCfPcNPI4YrjU">
+          <article class="method" data-page-node-id="53QvcFv9GfgK938JIRNqMl">
+            <div data-page-node-id="cP3BCepephn8J4g7jzAthd"><h3 data-page-node-id="HGKsfNBqiA9rwF6pGc356O">混合层热收支诊断</h3><p data-page-node-id="VAYlWFqiNLLlo6F13JMdTL">利用 HadISST、NCEP2 与 GODAS 数据，计算 PMM 生命周期中各项海温变化率的贡献，并对潜热通量进行线性分解，区分异常风与海气比湿差的作用。</p></div>
+          </article>
+          <article class="method" data-page-node-id="YWw1NB14mX0DMh22FB3xq4">
+            <div data-page-node-id="FftRipHt6FSOD1lU8lGrul"><h3 data-page-node-id="1e4yXrU1vCfAP39VbzpuIR">理想化大气模式实验</h3><p data-page-node-id="KHNBlPfHQz4X5OXlhajGpk">在 ECHAM 模式中，分别给春季与秋季施加完全相同的 PMM 加热场，比较大气风场和潜热通量的响应——只看大气背景态带来的季节差异。</p></div>
+          </article>
+          <article class="method" data-page-node-id="Fpm55EQI8Ynbq42YEpH1f5">
+            <div data-page-node-id="RYQ9PqsTNQ0ENR4VriPZjf"><h3 data-page-node-id="xDav8xSdSuBxkceuyOFET9">中间海气耦合模式实验</h3><p data-page-node-id="mE6ufbDYMDfchzpw7L2m0x">在 Cane–Zebiak 型模式中分别指定春、秋季平均态，再加入相同的 PMM 型初始扰动，直接比较扰动增长率。</p></div>
+          </article>
+          <article class="method" data-page-node-id="FUWriKxAK4f66rha8WhJMH">
+            <div data-page-node-id="NY548mmNFof3wC2bTuNpbM"><h3 data-page-node-id="UDHr9MhHlEFJw0RokTnkq2">遥相关与 ENSO 排除实验</h3><p data-page-node-id="pULWqvJuRmFERZtM8AOjpQ">分析 AL 与 NPO 两个北太平洋大气模态，并使用热带太平洋起搏器实验（POGA）检验 ENSO 是否会“倒过来”制造 PMM 的春季偏好。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section data-page-node-id="Z1mG06oMu3cmptr1ZSyiAH">
+      <div class="page-shell reveal" data-page-node-id="biTwOnnEno2HRmJRxVUI8k">
+        <div class="section-heading reading" data-page-node-id="K8MpFK5Muf5FmwOgMs7EsZ">
+          <div class="section-no" data-page-node-id="5nDG7NpZWcImDVFJSbSnUt">03 · FINDINGS</div>
+          <h2 data-page-node-id="1ZCPPjk6eGRRFCaYjLULKu">五个核心发现</h2>
+          <p class="section-deck" data-page-node-id="dOpW88dzK5o64guDxZryjZ">答案不是单一机制，而是一组在春季同时对齐的物理过程。</p>
+        </div>
+
+        <div class="findings" data-page-node-id="LdqvH5Fw3TWW0tJd4blYyu">
+          <article class="finding" data-page-node-id="f7s1qbeh9Oc31vlTTBT1Bh">
+            <div class="finding-copy" data-page-node-id="oYJ8iBFXkqM3gqllgifYKd">
+              <div class="finding-tag" data-page-node-id="Kvo71EWz8RPe5eCveSU1m2">FINDING 01</div>
+              <h3 data-page-node-id="RL5K5kONWAOTnYZhNOKSVD">WES 反馈是 PMM 增长的主引擎</h3>
+              <p data-page-node-id="6EvxomDYAT62HEgbDHCFrd">混合层热收支显示，PMM 在成熟期<strong data-page-node-id="kfsFWatMkmdGhE0habcPmY">前两个月</strong>增长最快，主要驱动力是表面潜热通量异常。进一步分解表明，关键项来自<strong data-page-node-id="THOJWZDB5IJ08PXBGwDssJ">异常风与平均风的相互作用</strong>：异常西南风抵消东北信风，减少蒸发并加热海洋表面；海气比湿差项则倾向于抑制增长。</p>
+            </div>
+            <div class="finding-visual" data-page-node-id="Evh94Pg7HiUlB6oPzpomBS"><div class="visual-big" data-page-node-id="jBwiodf90ZqVtB7oKL1E0e"><b data-page-node-id="FqFMJRgry5aAxCzLREWG2a">−2</b><span data-page-node-id="PeXKGqMdLrprCkCyoY2s6D">成熟期前两个月<br data-page-node-id="duub6xe0JD4atzD5hFgZ3r">增长最快</span></div></div>
+          </article>
+
+          <div class="figure-grid">
+            <figure class="paper-figure">
+              <a href="assets/fig04_growth_heatbudget.png" target="_blank"><img src="assets/fig04_growth_heatbudget.png" loading="lazy" alt="PMM 海温增长与混合层热收支"></a>
+              <figcaption><span class="figure-number">论文图 4</span>　PMM 海温在成熟前两个月增长最快；混合层热收支表明热力学过程占主导。</figcaption>
+            </figure>
+            <figure class="paper-figure">
+              <a href="assets/fig05_surface_fluxes.png" target="_blank"><img src="assets/fig05_surface_fluxes.png" loading="lazy" alt="潜热、长波、短波和感热通量异常"></a>
+              <figcaption><span class="figure-number">论文图 5</span>　四种表面热通量异常中，潜热通量在 PMM 关键区域的作用最突出。</figcaption>
+            </figure>
+          </div>
+
+          <article class="finding" data-page-node-id="Ycr6zGFjbIU5TBdejl3DZ3">
+            <div class="finding-copy" data-page-node-id="EbYvLOzXOJXGGU72diEguu">
+              <div class="finding-tag" data-page-node-id="dHX9qITsZePeXdNMtMcJcE">FINDING 02</div>
+              <h3 data-page-node-id="ZGf8zgSzHpdqEx29RPu9nE">同样的加热，春季大气响应更强</h3>
+              <p data-page-node-id="dwV8Q68UIB1vfe4wMsG5Ef">在 ECHAM 实验中，春、秋季接收完全相同的 PMM 加热，但春季产生的异常风与正潜热通量响应明显更强。春季异常覆盖整个 PMM 关键区域，秋季则主要局限于南部。这说明大气背景态本身就在“偏爱”春季。</p>
+            </div>
+            <div class="finding-visual" data-page-node-id="7GUuBmv3UxBl3SxLMdm0Jb"><div class="visual-big" data-page-node-id="zqusJPZtTteWNyRNHg2LLH"><b data-page-node-id="DhfXiXzSfdv7qE8SgYBsKY">Spring &gt; Fall</b><span data-page-node-id="dLO9if4ycHmyVAetyZbrCM">异常风与潜热通量响应</span></div></div>
+          </article>
+
+          <figure class="paper-figure">
+            <a href="assets/fig06_lhf_decomposition.png" target="_blank"><img src="assets/fig06_lhf_decomposition.png" loading="lazy" alt="春季与秋季潜热通量异常线性分解"></a>
+            <figcaption><span class="figure-number">论文图 6</span>　潜热通量异常的线性分解。春季（JFM）由异常风产生的潜热通量异常更强、覆盖范围更广；秋季（JAS）响应明显减弱。</figcaption>
+          </figure>
+
+          <article class="finding" data-page-node-id="U4SDF6ryDzCqtIlU3qcNDU">
+            <div class="finding-copy" data-page-node-id="wzTa5CvzMJX4vk4MvHLlCg">
+              <div class="finding-tag" data-page-node-id="NLuEPwdnmqIBBUiQDnLNg3">FINDING 03</div>
+              <h3 data-page-node-id="VtcEx36DGZO3V7EOulbHnY">春季背景态让扰动增长快近 4 倍</h3>
+              <p data-page-node-id="zKciwZ36wJ2U9OQRGiSBg7">中间海气耦合模式给出了最直观的对比：春季背景态下 PMM 增长率为<strong data-page-node-id="UBhRCsbVjaSrhxeAuBVaJW">1.1 K/年</strong>，秋季仅为<strong data-page-node-id="K0l4rqI3XHKUSf3HsEOrTd">0.3 K/年</strong>；冬季和夏季介于两者之间。</p>
+            </div>
+            <div class="finding-visual" data-page-node-id="5uubS3LWpqi8364HEI1Kg2">
+              <div class="bar-compare" aria-label="PMM 增长率对比" data-page-node-id="9JR9Ueed65SD3dqvZ0vdSn">
+                <div class="bar-row" data-page-node-id="hveoAGFwQzJJQvTwDHVC7h"><span data-page-node-id="gVj4ZdGeD0FSi0yI6WW070">春季</span><div class="track" data-page-node-id="B41GzsBtRioyEwboq86zwI"><div class="fill spring" data-page-node-id="CuJ23iSHSq51od90DlxAPD"></div></div><b data-page-node-id="GDL5dWU8kLGHvRHi5RlVsC">1.1</b></div>
+                <div class="bar-row" data-page-node-id="4qhMpM1GlvHAW1negJfDHS"><span data-page-node-id="jcvhLZQCFfnIwjzwKBmzDp">秋季</span><div class="track" data-page-node-id="qH3rsJCSuFeFUEGweXb0Fd"><div class="fill fall" data-page-node-id="dFeU8SmFUZrkrPu8CUm2bE"></div></div><b data-page-node-id="p4qH9siKKBGWjigb3ZZnjW">0.3</b></div>
+                <small style="color:var(--muted);text-align:right" data-page-node-id="pnsFUkWGIWXtcRfvfor2WB">单位：K/年</small>
+              </div>
+            </div>
+          </article>
+
+          <figure class="paper-figure">
+            <a href="assets/fig10_coupled_model.png" target="_blank"><img src="assets/fig10_coupled_model.png" loading="lazy" alt="中间海气耦合模式中春季和秋季 PMM 扰动演化"></a>
+            <figcaption><span class="figure-number">论文图 10</span>　中间海气耦合模式实验。红线代表春季背景态、蓝线代表秋季背景态；相同初始扰动在春季增长显著更快。</figcaption>
+          </figure>
+
+          <article class="finding" data-page-node-id="RAGsBqEXMqC4Mjqbp3dC0q">
+            <div class="finding-copy" data-page-node-id="RV28tMw5bm9B3MjIKAlXl2">
+              <div class="finding-tag" data-page-node-id="dGagqz4Xe3TsRBRRkOGojj">FINDING 04</div>
+              <h3 data-page-node-id="dWVgjWXSYER2SlyzdOdIF2">中纬度信号在春季更容易“点火”</h3>
+              <p data-page-node-id="8nHXwWCShMszDU1Dopq78L">北太平洋海平面气压的两个主模态——阿留申低压（AL）模态和北太平洋涛动（NPO）模态——在春季与两个月后的 PMM 都有更强联系。NPO 的南北偶极结构能在 PMM 关键区激发更强的西南风，因此比位置偏北的 AL 模态更有效。</p>
+            </div>
+            <div class="finding-visual" data-page-node-id="tRiDRKE6KmjDmy6dp4y1nY"><div class="visual-big" data-page-node-id="ezFvAEDBkzapKaRhtApCpT"><b data-page-node-id="s2BINNVvBW8dVq9CYDIfwO">NPO</b><span data-page-node-id="qUGVGcQX0Mslkr0cggC4NE">比 AL 模态更有效地<br data-page-node-id="Ir3OLz9KlTDIGpqPokAtch">触发 PMM 发展</span></div></div>
+          </article>
+
+          <figure class="paper-figure">
+            <a href="assets/fig13_extratropical_forcing.png" target="_blank"><img src="assets/fig13_extratropical_forcing.png" loading="lazy" alt="AL 和 NPO 模态在春秋两季与 PMM 的关系"></a>
+            <figcaption><span class="figure-number">论文图 13</span>　北太平洋两个大气模态的季节对比。红色为春季（JFM）、蓝色为秋季（JAS）：春季的滞后相关、潜热通量强迫和模态方差都更强。</figcaption>
+          </figure>
+
+          <article class="finding" data-page-node-id="LFwKWRkyZxxohSrWBthW0p">
+            <div class="finding-copy" data-page-node-id="jaZL1V7aoqTYGXwBv5pOQZ">
+              <div class="finding-tag" data-page-node-id="wSzxRL19J4IbbajzZMZ1eJ">FINDING 05</div>
+              <h3 data-page-node-id="BGyxsQ9V5BLrI4h5ebVXFs">ENSO 不是 PMM 季节锁相的原因</h3>
+              <p data-page-node-id="of2eq00ASxPxOEyBCdrH8N">POGA 起搏器实验包含 10 个成员、约 200 个样本。结果显示，在被独立约束的 ENSO 演化过程中，并没有出现显著的 PMM 信号；ENSO 激发的阿留申低压也过于偏北，无法有效作用于 PMM 关键区。</p>
+            </div>
+            <div class="finding-visual" data-page-node-id="J5tj4uDYZTVGfqjuh5DWEE"><div class="visual-big" data-page-node-id="ogtEhw1HTqtZI3S4RnBg8A"><b data-page-node-id="XdgS9thLPHCoJr3tzYG7ag">≠</b><span data-page-node-id="yWlxb1md5jgrW7C3ipJmxz">PMM 春季偏好<br data-page-node-id="tboRpkKIzbGjR0LKLvNcqC">不是 ENSO 的附属效应</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section data-page-node-id="BS6d9CT7HYxlxgiJQk2GsM">
+      <div class="page-shell reveal" data-page-node-id="FN67GnHmMg3YnoI8LLxuzI">
+        <div class="section-heading reading" data-page-node-id="FlDDgpCSVQfAHBI2B6lgyy">
+          <div class="section-no" data-page-node-id="BHZzFJ6DqOdpOaBGD39OhG">04 · MECHANISM</div>
+          <h2 data-page-node-id="uBP3ZmPW66L0R5mU2l3KNB">春季背景态如何放大 WES 反馈</h2>
+          <p class="section-deck" data-page-node-id="QE7ixNp0jSgJgKc6zEFE07">从冷舌到信风，一条完整的物理链条。</p>
+        </div>
+        <div class="mechanism" data-page-node-id="YJFjN3X8JPq1qTk2u5DviQ">
+          <h3 data-page-node-id="59R9u7I1tzlDYcR6bhLU1P">春季路径</h3>
+          <div class="chain" data-page-node-id="oNLAqMNF8eFVv8ps626BZG">
+            <div class="chain-item" data-page-node-id="9uVLoOtaaqMCfi5PLXcjFn"><b data-page-node-id="qBPPqLO0MxJwkcX2pvN8xn">冷舌最弱</b><span data-page-node-id="RGziGIiEK7eTrnQGUK0PqE">赤道东太平洋海温季节背景改变</span></div>
+            <div class="chain-item" data-page-node-id="DDBVhsVWGN2cDvD8KZnfA8"><b data-page-node-id="JuwPt5xcumamEevYaQB0ZS">ITCZ 偏南</b><span data-page-node-id="tTyuXWTmDBwGni9mXLCF65">热带辐合带位置随之南移</span></div>
+            <div class="chain-item" data-page-node-id="QblScdnPhftGwcZNurHHVW"><b data-page-node-id="5U5aOdcrlqNiZTuyl20nij">信风更强、更广</b><span data-page-node-id="9EcskDI9O0yx3WimqTNqOx">KPR 平均东北风速达到 6.54 m/s</span></div>
+            <div class="chain-item" data-page-node-id="OXYoNuommb20uIc10Kjrox"><b data-page-node-id="yqvnbzhcNlwqrIGv8mBukB">WES 反馈最强</b><span data-page-node-id="rM7cTJ22p4ObdX8FsSzUh7">异常风更有效地减少蒸发并升高 SST</span></div>
+          </div>
+        </div>
+        <div class="stats" data-page-node-id="T3dhMVw9BIQzT35tBhaIzx">
+          <div class="stat" data-page-node-id="7PEqlwmssdxUb3RqjlmdYO"><div class="number" data-page-node-id="VVGAQ3qI9GP5sGeW9K1SKX">6.54</div><span class="label" data-page-node-id="iCCUqDpyF6J5MG72lgx5lv">春季 KPR 平均东北风速（m/s）</span></div>
+          <div class="stat warm" data-page-node-id="J0CJsX0Pq4Fou2xDxJAPm2"><div class="number" data-page-node-id="dOEwGICR2TBfoUfR36NDz3">4.30</div><span class="label" data-page-node-id="JwgYZTZ43SzjJ0NIM7HbQ3">秋季 KPR 平均东北风速（m/s）</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-page-node-id="3haFK1tk3XGvokdXWY09dk">
+      <div class="reading reveal" data-page-node-id="ZzQzsYHE0mJT7kw5NyS0az">
+        <div class="section-heading" data-page-node-id="BVU8I6YqZmb1DOkryD7ycy">
+          <div class="section-no" data-page-node-id="r43FP5ft7IaEjlv7igYBNS">05 · EXTRATROPICS</div>
+          <h2 data-page-node-id="YWTHNOXPC3PMrIaI5KJDRn">来自中纬度的两种“前置信号”</h2>
+        </div>
+        <div class="mode-grid" data-page-node-id="2SDFTL2twziaJlpyu2YyBz">
+          <article class="mode-card" data-page-node-id="xQfqxXCCwOfphfK3l7Pr2a">
+            <div class="mode-number" data-page-node-id="R0ZVhcOA20YL7v4jp6B3ZV">43.1%</div>
+            <h3 data-page-node-id="G9WC7wcPisEDWeDJQE80nv">AL 模态</h3>
+            <p data-page-node-id="XuIDRrKERGsY8QHD2vKBd4">北太平洋 SLP 第一模态，以阿留申群岛附近的低压中心为特征。由于中心位置偏北，其异常风和潜热通量对 PMM 关键区的覆盖有限。</p>
+          </article>
+          <article class="mode-card" data-page-node-id="iJHq9IssTmfjW1hkORctMi">
+            <div class="mode-number" data-page-node-id="LNW9g8m9k2XjmYaiO9gDCV">15.2%</div>
+            <h3 data-page-node-id="72tSTM24BLzb8Oc51yc46q">NPO 模态</h3>
+            <p data-page-node-id="wfGre2cwaj82pO06gV44AR">北太平洋 SLP 第二模态，呈南北偶极结构。南侧低压可在副热带 PMM 区域激发强烈西南风，因此与 PMM 的联系更紧密。</p>
+          </article>
+        </div>
+        <p data-page-node-id="HzW7MKxfG1fEA5FkCtka9y">两种模态在春季的方差更大，与两个月后 PMM 的相关也更显著。换句话说，春季不仅热带背景态更有利，<strong data-page-node-id="VXhuTGmj67aBM87dBBM6TE">来自中纬度的“点火信号”也更强</strong>。</p>
+      </div>
+    </section>
+
+    <section data-page-node-id="fWyF6ESlUlTy7qP5XxHuB2">
+      <div class="page-shell reveal" data-page-node-id="vlcRpqLlZaV1wHhEmh9GVB">
+        <div class="section-heading reading" data-page-node-id="EvHXWh0G7mNfTjkDknpua0">
+          <div class="section-no" data-page-node-id="eDFQAHVOc2kHmbHf7SvC4T">06 · ENSO TEST</div>
+          <h2 data-page-node-id="nFXsCQMA1hVkun2yKCzHbq">会不会只是 ENSO 的影子？</h2>
+          <p class="section-deck" data-page-node-id="7xNpcAkZke5le71qmBAmkx">起搏器实验给出了否定答案。</p>
+        </div>
+        <div class="enso-box" data-page-node-id="zZgXh5JfRIzKS19KhJ0lSS">
+          <div class="enso-label" data-page-node-id="sZ3lNLqbmBgVAxXHWUZl4a"><div data-page-node-id="D7qlRyipNzG0UY7cw0ztcP"><b data-page-node-id="vquF3dJEOBc9hCUxSdTmbN">200+</b><span data-page-node-id="zTCuqDNmrIOcwCOEH7oPHB">POGA 合成样本<br data-page-node-id="SfgVEk9tC9mCuDnjD9GwN9">10 个集合成员</span></div></div>
+          <div class="enso-copy" data-page-node-id="PDyBKUBg4HKfaowDUeyECN">
+            <p data-page-node-id="m1ldfrr6zq3K1CFJH1JTUN">观测合成中，PMM 常出现在 ENSO 事件发生前一年的春季。但这并不能自动证明 ENSO 导致了 PMM：两者存在双向作用，很难仅凭观测分离因果。</p>
+            <p data-page-node-id="qKBOqAsY4hQPEPE6fwi8K7">因此，研究采用热带太平洋起搏器实验，将热带东太平洋 SST 约束为观测值，从而单独提取 ENSO 强迫。结果是：<strong data-page-node-id="xXOwtnhKEeCEuJXpbBcUhL">ENSO 演化中没有显著 PMM 信号</strong>，相应的大气遥相关位置也不足以在 PMM 关键区产生有效的西南风。</p>
+            <p style="margin-bottom:0" data-page-node-id="E3tIouZJuRABW4U5aT3C5u"><strong data-page-node-id="aoUcmatDxELY0310eO0oPW">PMM 的春季偏好主要来自自身海气耦合动力学，而不是 ENSO 的附属效应。</strong></p>
+          </div>
+        </div>
+        <figure class="paper-figure">
+          <a href="assets/fig15_poga_enso.png" target="_blank"><img src="assets/fig15_poga_enso.png" loading="lazy" alt="POGA 起搏器实验中 ENSO 事件的季节演化合成"></a>
+          <figcaption><span class="figure-number">论文图 15</span>　POGA 起搏器实验中约 200 个 ENSO 样本的季节演化合成。即使热带东太平洋 SST 被约束为观测 ENSO 信号，副热带北太平洋仍未形成显著、稳定的 PMM 响应。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section data-page-node-id="bqhrSZdrQhgHfxkKH3IEB6">
+      <div class="page-shell reveal" data-page-node-id="Ixqfr7qFHSqCxduP19OE7j">
+        <div class="section-heading reading" data-page-node-id="b7dyVkoWyN6CTnfVjHMXWr">
+          <div class="section-no" data-page-node-id="80ezqRcIyZMpGrfUmE1PnV">07 · SIGNIFICANCE</div>
+          <h2 data-page-node-id="833JAlxtYDA48xESHivQ10">为什么这些发现重要</h2>
+        </div>
+        <div class="impact-grid" data-page-node-id="LrFTXF6EAKfSpz1FyI5iCG">
+          <article class="impact-card" data-page-node-id="EqZyfYePGpE8ZF7wxEJL3L">
+            <h3 data-page-node-id="U34xEFokk2iDxBRwOACaAG">理解 ENSO 的春季前兆</h3>
+            <p data-page-node-id="5w93RV3duoyELEXamJFjNi">PMM 是厄尔尼诺的重要前兆信号，其季节锁相直接影响它能否有效触发后续 ENSO。研究把春季优势分解为背景平均态、大气响应和中纬度遥相关三种协同机制，并排除了 ENSO “倒因”的干扰。</p>
+          </article>
+          <article class="impact-card" data-page-node-id="g2gPF1lVfMzDpI9V25Efg8"><h3 data-page-node-id="bLzwl9EmkV2Ioc4Uq5sbRN">理解海气耦合</h3><p data-page-node-id="xClP3NCivApHQhOBldTSkD">从热收支定位关键过程，再用不同复杂度的模型逐个验证假说，这一框架也适用于 ENSO、IOD 等其他季节锁相问题。</p></article>
+          <article class="impact-card" data-page-node-id="TJHb3nZgW93ErEASjYNTT7"><h3 data-page-node-id="QhLw9WRnBIovDjUPvAsNHj">实验设计的价值</h3><p data-page-node-id="DwHCWClFpxeLvuEkWS1j14">AGCM、中间耦合模式与 POGA 起搏器分别控制不同变量，把四种潜在机制拆得足够干净。</p></article>
+        </div>
+        <figure class="paper-figure">
+          <a href="assets/fig16_summary.png" target="_blank"><img src="assets/fig16_summary.png" loading="lazy" alt="PMM 春季锁相主要机制总结示意图"></a>
+          <figcaption><span class="figure-number">论文图 16</span>　机制总结：冷舌—ITCZ 的季节移动控制平均风与异常风响应，中纬度强迫进一步增强春季潜热通量；ENSO 对应的 AL 模态过于偏北，未能形成有效贡献。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section data-page-node-id="zDknpDwphhQRYFWtbtr81R">
+      <div class="reading reveal" data-page-node-id="19PskcI0Yzv4Bxg3WcyQcQ">
+        <div class="section-heading" data-page-node-id="ugDo7L8HqGwhYFANolGRf1">
+          <div class="section-no" data-page-node-id="sej2pb6WjLmFluDMHsq4Nj">08 · BACKSTORY</div>
+          <h2 data-page-node-id="TXzRffi4ITH99ERnWIGvcG">从本科毕业论文到期刊论文</h2>
+        </div>
+        <div class="story" data-page-node-id="jNHFl6QGwo5CR0pHHeSZWI">
+          <p data-page-node-id="CegTkTEoLnMEBYaxDfEYGZ">这项研究源自孟子路的本科毕业论文，2023 年 5 月完成于南京信息工程大学长望学院大气科学实验班，指导教师为 <strong data-page-node-id="YvYP756hfZHYSHL9CAnhct">Tim Li（李天明）</strong>教授。</p>
+          <p data-page-node-id="C0CgSO3hdhzghokgKQw4nC">工作覆盖观测诊断、理想化大气模式、中间海气耦合模式和热带太平洋起搏器实验四个层次。本科阶段完成这样一套系统研究，并最终发表于 <em data-page-node-id="KyP0y74aIECvpvG3AQyFdZ">Climate Dynamics</em>，背后是清晰的控制变量思路和扎实的物理分析。</p>
+          <p style="margin-bottom:0" data-page-node-id="5Q9Oco704HFhPo26RDEqZv">论文分析代码已完整开源：<a href="https://github.com/ZiluM/PMMPhaseLocking" target="_blank" rel="noopener" data-page-node-id="GgFyzDsoEk5NGN7yjhN3AW">github.com/ZiluM/PMMPhaseLocking</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section data-page-node-id="AUAFR9mPv9xYSalR1hT6So">
+      <div class="reading reveal" data-page-node-id="kjPBnlfRySf1UTOOHrqnwC">
+        <div class="section-heading" data-page-node-id="GX07Pv6uxmVtuqq25t5IXG">
+          <div class="section-no" data-page-node-id="GoPHPowsDA4ossPliza3VZ">09 · AUTHORS</div>
+          <h2 data-page-node-id="xSG0N4FdB3S6swFc5SH5gB">作者信息</h2>
+        </div>
+        <div class="authors" data-page-node-id="JV3pCWVJ6yd39twQQBFq2G">
+          <article class="author" data-page-node-id="eJihTzPDl01iBS5v7kSuzc">
+            <div class="initials" data-page-node-id="ZHM480Fm2KywBnpID1jkmm">ZM</div>
+            <h3 data-page-node-id="LEiolnnaXFpTmX7HgLxloa">孟子路 · Zilu Meng</h3>
+            <p data-page-node-id="UmD9w17DNoTLsBRcwtEvNv">University of Washington 气候与大气科学博士候选人，研究方向涵盖古气候重建、数据同化、机器学习与气候动力学，也是开源气候数据分析工具 Sacpy 的作者。</p>
+          </article>
+          <article class="author" data-page-node-id="HBNWNc6rR4F1ePRjln5780">
+            <div class="initials" data-page-node-id="NcnxKP7CCKRrewE1shLSJA">TL</div>
+            <h3 data-page-node-id="yPOp5c5utoG7g42z25MP4Y">Tim Li · 李天明</h3>
+            <p data-page-node-id="F8GfKKglclDhuj3DY93v1i">长期从事热带气候动力学、ENSO 与季风等研究，是本文通讯作者及孟子路本科阶段的指导教师。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-page-node-id="QUYgVtMN5qRCoC5UJQoXbo">
+    <div class="page-shell footer-grid" data-page-node-id="YeDxGGw3BS4ZdVYMXtOyWD">
+      <div data-page-node-id="lpIedZY8FGGQdPy9K4zkCm">
+        <div class="footer-title" data-page-node-id="8i0Llehf5elimPpEkIjYAa">Why is the Pacific Meridional Mode Most Pronounced in Boreal Spring?</div>
+        <div class="copyright" data-page-node-id="uLyY7whMJ3gmr3fcLCh8tP">Meng &amp; Li · Climate Dynamics · Online published 21 August 2023 · Volume publication 2024</div>
+      </div>
+      <div class="footer-links" data-page-node-id="JnOfVnKB0DjZwwDAN2HyvC">
+        <a href="https://doi.org/10.1007/s00382-023-06914-4" target="_blank" rel="noopener" data-page-node-id="91o2zOwjPs1QDYTCc8C0P8">DOI</a>
+        <a href="https://github.com/ZiluM/PMMPhaseLocking" target="_blank" rel="noopener" data-page-node-id="1G6IB1AN6Bi95R16QC2oSZ">Code</a>
+        <a href="https://zilum.github.io/zilu_undergradThesis.pdf" target="_blank" rel="noopener" data-page-node-id="8dKay8yEUvrt2JDFiXD8V9">本科论文</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
