@@ -1,4 +1,4 @@
-# LMR Four-D / LMR4D-Var research page
+# LMR 4dvar / LMR4D-Var research page
 
 Public route: <https://zilum.github.io/lmr-four-d/>.
 Static HTML and CSS, matching the LMR Seasonal research-page design. Scientific
