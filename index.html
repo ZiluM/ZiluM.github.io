@@ -3000,7 +3000,7 @@ gap: 3px;
             <summary data-page-node-id="CAMbr8W4izOknhYrHDHuLd">Publications</summary>
             <div class="section publication-section" data-page-node-id="wGaSE2Bof95HJRldcgl7b6">
                 <div class="pub-overview" data-page-node-id="VyEQ82bFiRMz8zyk90UMWg">
-                    <p data-page-node-id="M29MNhboz9aGt9O3c7aDRH"><strong><span id="pub-article-count">9</span> journal articles</strong> &middot; <strong><span id="pub-preprint-count">3</span> preprints</strong> &middot; by year</p>
+                    <p data-page-node-id="M29MNhboz9aGt9O3c7aDRH"><strong><span id="pub-article-count">9</span> journal articles</strong> &middot; <strong><span id="pub-preprint-count">3</span> preprints</strong> &middot; <strong><span id="pub-review-count">1</span> under review</strong> &middot; by year</p>
                     <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar" data-page-node-id="dcXMuqjplOnnVyAySZEFLv">
                         <i class="fas fa-graduation-cap" aria-hidden="true" data-page-node-id="dgfpSU4hSjrRVHDy6t8wd4"></i>
                         <span data-page-node-id="vxbJ5QHqdRR3trdQBId23r">Google Scholar</span>
@@ -3008,6 +3008,11 @@ gap: 3px;
                     </a>
                 </div>
                 <ol class="pub-list" data-page-node-id="5K7Ouq0D5qKckweiLDMg88">
+                    <li data-status="under-review">
+                        Emile-Geay, J., <strong>Meng, Z.</strong>, Hakim, G. J., Cuesta-Valero, F. J., Beltrami, H., Steig, E. J., Shang, A., Gondhalekar, T., &amp; Lyu, Z. (2026).
+                        Validation of climate fields via forward modeling of borehole temperature profiles.
+                        <em>Climate of the Past</em>, under review.
+                    </li>
                     <li data-status="preprint" data-page-node-id="CVycOqpc1F01s9MWEDj3FB">
                         Cuzzone, J., Briner, J., Otiniano, G., et al., including <strong data-page-node-id="3ArCo7qzaSqJGLBOQFIvFl">Meng, Z.</strong> (2026).
                         Greenland Ice Sheet to fall below its Holocene minimum size by 2300.
@@ -3840,6 +3845,7 @@ gap: 3px;
             const list = pubRoot.querySelector('.pub-list');
             const articleCount = document.getElementById('pub-article-count');
             const preprintCount = document.getElementById('pub-preprint-count');
+            const reviewCount = document.getElementById('pub-review-count');
             const toggle = document.getElementById('pub-toggle');
             const visibleLimit = 6;
 
@@ -3873,6 +3879,7 @@ gap: 3px;
 
             articleCount.textContent = String(items.filter((li) => li.dataset.status === 'journal').length);
             preprintCount.textContent = String(items.filter((li) => li.dataset.status === 'preprint').length);
+            reviewCount.textContent = String(items.filter((li) => li.dataset.status === 'under-review').length);
             let expanded = false;
 
             function updateVisibleItems() {
