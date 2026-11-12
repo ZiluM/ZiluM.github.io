@@ -1024,6 +1024,29 @@
             color: var(--text);
         }
 
+        .pub-filter-bar {
+            padding: 10px 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pub-author-filter {
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--accent-2);
+            font: inherit;
+            font-size: 0.76em;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .pub-author-filter:hover,
+        .pub-author-filter[aria-pressed="true"] {
+            background: rgba(15, 118, 110, 0.1);
+            border-color: var(--accent-2);
+        }
+
         .pub-scholar-link {
             display: inline-flex;
             align-items: center;
@@ -3007,7 +3030,10 @@ gap: 3px;
                         <i class="fas fa-arrow-up-right-from-square" aria-hidden="true" data-page-node-id="svsVzdfPPacGphO78DX7Vk"></i>
                     </a>
                 </div>
-                <ol class="pub-list" data-page-node-id="5K7Ouq0D5qKckweiLDMg88">
+                <div class="pub-filter-bar">
+                    <button class="pub-author-filter" id="pub-author-filter" type="button" aria-pressed="false" aria-controls="pub-list">First author only</button>
+                </div>
+                <ol id="pub-list" class="pub-list" data-page-node-id="5K7Ouq0D5qKckweiLDMg88">
                     <li data-status="under-review">
                         Sun, W., et al., including <strong>Meng, Z.</strong> (2026).
                         Increased interannual precipitation whiplashes over Eastern China since the 1850s.
@@ -3862,6 +3888,7 @@ gap: 3px;
             const articleCount = document.getElementById('pub-article-count');
             const reviewCount = document.getElementById('pub-review-count');
             const toggle = document.getElementById('pub-toggle');
+            const authorFilter = document.getElementById('pub-author-filter');
             const visibleLimit = 6;
 
             items.forEach((li) => {
@@ -3892,21 +3919,29 @@ gap: 3px;
                 .sort((a, b) => Number(b.dataset.year) - Number(a.dataset.year))
                 .forEach((li) => list.appendChild(li));
 
-            totalCount.textContent = String(items.length);
-            articleCount.textContent = String(items.filter((li) => li.dataset.status === 'journal').length);
-            reviewCount.textContent = String(items.filter((li) => ['under-review', 'preprint'].includes(li.dataset.status)).length);
             let expanded = false;
+            let firstAuthorOnly = false;
 
             function updateVisibleItems() {
-                items.forEach((li, index) => {
-                    li.classList.toggle('hidden-pub', !expanded && index >= visibleLimit);
-                });
-                toggle.hidden = items.length <= visibleLimit;
+                const matches = items.filter((li) => !firstAuthorOnly || li.dataset.firstAuthor === '1');
+                const visible = new Set(expanded ? matches : matches.slice(0, visibleLimit));
+                items.forEach((li) => li.classList.toggle('hidden-pub', !visible.has(li)));
+                totalCount.textContent = String(matches.length);
+                articleCount.textContent = String(matches.filter((li) => li.dataset.status === 'journal').length);
+                reviewCount.textContent = String(matches.filter((li) => ['under-review', 'preprint'].includes(li.dataset.status)).length);
+                authorFilter.setAttribute('aria-pressed', String(firstAuthorOnly));
+                toggle.hidden = matches.length <= visibleLimit;
                 toggle.setAttribute('aria-expanded', String(expanded));
                 toggle.innerHTML = expanded
                     ? '<i class="fas fa-chevron-up"></i> Show fewer'
-                    : `<i class="fas fa-chevron-down"></i> Show all ${items.length} publications`;
+                    : `<i class="fas fa-chevron-down"></i> Show all ${matches.length} publications`;
             }
+
+            authorFilter.addEventListener('click', () => {
+                firstAuthorOnly = !firstAuthorOnly;
+                expanded = firstAuthorOnly;
+                updateVisibleItems();
+            });
 
             toggle.addEventListener('click', () => {
                 expanded = !expanded;
