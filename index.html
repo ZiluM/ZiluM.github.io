@@ -3023,7 +3023,7 @@ gap: 3px;
             <summary data-page-node-id="CAMbr8W4izOknhYrHDHuLd">Publications</summary>
             <div class="section publication-section" data-page-node-id="wGaSE2Bof95HJRldcgl7b6">
                 <div class="pub-overview" data-page-node-id="VyEQ82bFiRMz8zyk90UMWg">
-                    <p data-page-node-id="M29MNhboz9aGt9O3c7aDRH"><strong><span id="pub-total-count">16</span> publications</strong> &middot; <strong><span id="pub-article-count">9</span> journal articles</strong> &middot; <strong><span id="pub-review-count">7</span> under review</strong> &middot; by year</p>
+                    <p data-page-node-id="M29MNhboz9aGt9O3c7aDRH"><strong><span id="pub-total-count">17</span> publications</strong> &middot; <strong><span id="pub-article-count">9</span> journal articles</strong> &middot; <strong><span id="pub-review-count">7</span> under review</strong> &middot; <strong><span id="pub-prep-count">1</span> in preparation</strong> &middot; by year</p>
                     <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=s9Qn0d0AAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="View all publications on Google Scholar" data-page-node-id="dcXMuqjplOnnVyAySZEFLv">
                         <i class="fas fa-graduation-cap" aria-hidden="true" data-page-node-id="dgfpSU4hSjrRVHDy6t8wd4"></i>
                         <span data-page-node-id="vxbJ5QHqdRR3trdQBId23r">Google Scholar</span>
@@ -3034,6 +3034,11 @@ gap: 3px;
                     <button class="pub-author-filter" id="pub-author-filter" type="button" aria-pressed="false" aria-controls="pub-list">First author only</button>
                 </div>
                 <ol id="pub-list" class="pub-list" data-page-node-id="5K7Ouq0D5qKckweiLDMg88">
+                    <li data-status="in-preparation">
+                        <strong>Meng, Z.</strong>, &amp; Hakim, G. J. (2026).
+                        Unforced Climate Dynamics Shape the Ocean’s Memory of Volcanic Forcing.
+                        In preparation.
+                    </li>
                     <li data-status="under-review">
                         Sun, W., et al., including <strong>Meng, Z.</strong> (2026).
                         Increased interannual precipitation whiplashes over Eastern China since the 1850s.
@@ -3888,6 +3893,7 @@ gap: 3px;
             const totalCount = document.getElementById('pub-total-count');
             const articleCount = document.getElementById('pub-article-count');
             const reviewCount = document.getElementById('pub-review-count');
+            const prepCount = document.getElementById('pub-prep-count');
             const toggle = document.getElementById('pub-toggle');
             const authorFilter = document.getElementById('pub-author-filter');
             const visibleLimit = 6;
@@ -3930,6 +3936,7 @@ gap: 3px;
                 totalCount.textContent = String(matches.length);
                 articleCount.textContent = String(matches.filter((li) => li.dataset.status === 'journal').length);
                 reviewCount.textContent = String(matches.filter((li) => ['under-review', 'preprint'].includes(li.dataset.status)).length);
+                prepCount.textContent = String(matches.filter((li) => li.dataset.status === 'in-preparation').length);
                 authorFilter.setAttribute('aria-pressed', String(firstAuthorOnly));
                 toggle.hidden = matches.length <= visibleLimit;
                 toggle.setAttribute('aria-expanded', String(expanded));
